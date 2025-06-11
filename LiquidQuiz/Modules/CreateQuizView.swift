@@ -10,14 +10,16 @@ import SwiftUI
 struct CreateQuizView: View {
     
     @State private var quizTheme: String = String()
-    @Namespace var namespace
+    @State private var questionCount: Double = 10.0
+    private let questionCountRange: (from: Float, to: Float) = (1.0, 30.0)
+    
+    @Namespace private var namespace
     
     internal var body: some View {
         VStack(spacing: 50) {
             Text(Texts.QuizGenerate.title)
                 .font(.largeTitle)
                 .fontWeight(.semibold)
-            
             themeContent
         }
     }
@@ -27,22 +29,54 @@ struct CreateQuizView: View {
             TextField(Texts.QuizGenerate.textField,
                       text: $quizTheme.animation())
                 .textFieldStyle(.roundedBorder)
-                .padding(.horizontal, 30)
             
+            quiestionCountSlider
             glassContent
+                .padding(.top, 20)
+            generateButton
+        }
+        .padding(.horizontal, 30)
+    }
+    
+    private var quiestionCountSlider: some View {
+        Slider(value: $questionCount.animation(),
+               in: 1...30,
+               step: 5) {
+            Text(Texts.QuizGenerate.slider)
+        } minimumValueLabel: {
+            Text("\(questionCountRange.from.formatted(.number))")
+        } maximumValueLabel: {
+            Text("\(questionCountRange.to.formatted(.number))")
         }
     }
     
     private var glassContent: some View {
         GlassEffectContainer {
             HStack {
-                if !quizTheme.isEmpty {
-                    clearButton
+                questionsCountView
+                Spacer()
+                HStack {
+                    if !quizTheme.isEmpty {
+                        clearButton
+                    }
+                    randomButton
                 }
-                randomButton
-                generateButton
             }
         }
+    }
+    
+    private var questionsCountView: some View {
+        Text("\(questionCount.formatted(.number.rounded(rule: .down, increment: 1.0)))")
+            .contentTransition(.numericText(value: questionCount))
+        
+            .padding(10)
+            .glassEffect(.regular.interactive(), in: .circle)
+        
+            .onTapGesture {
+                withAnimation {
+                    questionCount = 10
+                }
+            }
     }
     
     private var clearButton: some View {

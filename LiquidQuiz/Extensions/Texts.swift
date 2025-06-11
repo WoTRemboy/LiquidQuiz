@@ -13,6 +13,7 @@ struct Texts {
         static let textField = "ex. Countries"
         static let random = "Suggest"
         static let generate = "Create"
+        static let slider = "Questions Count"
     }
     
     enum Namespace {
