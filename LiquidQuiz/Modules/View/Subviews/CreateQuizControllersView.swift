@@ -1,0 +1,48 @@
+//
+//  CreateQuizControllersView.swift
+//  LiquidQuiz
+//
+//  Created by Roman Tverdokhleb on 11/06/2025.
+//
+
+import SwiftUI
+
+struct CreateQuizControllersView: View {
+    
+    @EnvironmentObject private var viewModel: QuizViewModel
+    
+    internal var body: some View {
+        VStack(spacing: 20) {
+            textField
+            
+            if viewModel.isSliderExpanded {
+                quiestionCountSlider
+            }
+        }
+    }
+    
+    private var textField: some View {
+        TextField(Texts.QuizGenerate.textField,
+                  text: $viewModel.quizTheme.animation())
+        .padding()
+        .glassEffect(.regular.interactive())
+    }
+    
+    private var quiestionCountSlider: some View {
+        Slider(value: $viewModel.questionCount.animation(),
+               in: 1...30,
+               step: 5) {
+            Text(Texts.QuizGenerate.slider)
+        } minimumValueLabel: {
+            Text(viewModel.questionCountRange(for: .begin))
+        } maximumValueLabel: {
+            Text(viewModel.questionCountRange(for: .end))
+        }
+        .transition(.blurReplace)
+    }
+}
+
+#Preview {
+    CreateQuizControllersView()
+        .environmentObject(QuizViewModel())
+}

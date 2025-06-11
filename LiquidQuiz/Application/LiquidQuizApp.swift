@@ -12,6 +12,7 @@ struct LiquidQuizApp: App {
     var body: some Scene {
         WindowGroup {
             CreateQuizView()
+                .environmentObject(QuizViewModel())
         }
     }
 }

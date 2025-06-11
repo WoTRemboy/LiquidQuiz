@@ -18,9 +18,10 @@ struct Texts {
     
     enum Namespace {
         enum QuizGenerate {
-            static let clear = "clear"
-            static let random = "random"
-            static let generate = "generate"
+            static let clear = "QuizGenerateClear"
+            static let random = "QuizGenerateRandom"
+            static let generate = "QuizGenerateGenerate"
+            static let container = "QuizGenerateContainer"
         }
     }
 }

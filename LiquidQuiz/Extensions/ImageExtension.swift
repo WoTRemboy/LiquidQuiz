@@ -9,6 +9,9 @@ import SwiftUI
 
 extension Image {
     enum QuizGenerate {
-        static let clear = Image(systemName: "xmark")
+        static let clear = Image(systemName: "eraser")
+        static let random = Image(systemName: "dice")
+        static let count = Image(systemName: "square.grid.2x2")
+        static let difficulty = Image(systemName: "dial.medium")
     }
 }
