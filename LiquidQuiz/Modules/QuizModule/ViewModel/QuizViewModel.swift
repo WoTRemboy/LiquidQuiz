@@ -13,10 +13,13 @@ final class QuizViewModel: ObservableObject {
     
     @Published internal var quizTheme: String = String()
     @Published internal var questionCount: Double = 10.0
+    @Published internal var quizDifficulty: QuizDifficulty = .normal
+    
     @Published internal var isSliderExpanded: Bool = false
+    @Published internal var isDifficultyExpanded: Bool = false
         
     internal var isQuizThemeEmpty: Bool {
-        quizTheme.isEmpty
+        quizTheme.isEmpty || isDifficultyExpanded
     }
     
     internal var questionCountLabel: String {
@@ -42,5 +45,16 @@ final class QuizViewModel: ObservableObject {
     
     internal func isSliderExpandedToggle() {
         isSliderExpanded.toggle()
+        isDifficultyExpanded = false
+    }
+    
+    internal func isDifficultyExpandedToggle() {
+        isDifficultyExpanded.toggle()
+        isSliderExpanded = false
+    }
+    
+    internal func setQuizDifficulty(to difficulty: QuizDifficulty) {
+        quizDifficulty = difficulty
+        isDifficultyExpandedToggle()
     }
 }

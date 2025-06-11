@@ -10,7 +10,7 @@ import SwiftUI
 struct GlassUnionButtons: View {
     
     @EnvironmentObject private var viewModel: QuizViewModel
-    
+        
     private let namespace: Namespace.ID
     
     init(namespace: Namespace.ID) {
@@ -22,14 +22,6 @@ struct GlassUnionButtons: View {
             questionsCountView
             difficultyButton
         }
-        .glassEffectUnion(id: Texts.Namespace.QuizGenerate.container, namespace: namespace)
-    }
-    
-    private var difficultyButton: some View {
-        Image.QuizGenerate.difficulty
-            .font(.title2)
-            .padding()
-            .glassEffect(.regular.interactive())
     }
     
     private var questionsCountView: some View {
@@ -37,7 +29,7 @@ struct GlassUnionButtons: View {
             .font(.title2)
             .contentTransition(.numericText(value: viewModel.questionCount))
         
-            .padding(.leading)
+            .padding()
             .glassEffect(.regular.interactive())
             
             .onTapGesture {
@@ -53,6 +45,43 @@ struct GlassUnionButtons: View {
             Text(viewModel.questionCountLabel)
         } else {
             Image.QuizGenerate.count
+        }
+    }
+    
+    @ViewBuilder
+    private var difficultyButton: some View {
+        if !viewModel.isDifficultyExpanded {
+            viewModel.quizDifficulty.icon
+                .font(.title2)
+                .padding()
+                .glassEffect(.regular.interactive())
+            
+                .onTapGesture {
+                    withAnimation {
+                        viewModel.isDifficultyExpandedToggle()
+                    }
+                }
+        } else {
+            HStack {
+                menuFactory(cases: QuizDifficulty.allCases)
+            }
+            .glassEffectUnion(id: Texts.Namespace.QuizGenerate.container, namespace: namespace)
+        }
+    }
+    
+    @ViewBuilder
+    internal func menuFactory(cases: [QuizDifficulty]) -> some View {
+        ForEach(cases, id: \.self) { difficulty in
+            difficulty.icon
+                .font(.title2)
+                .padding()
+                .glassEffect(.regular.interactive())
+            
+                .onTapGesture {
+                    withAnimation {
+                        viewModel.setQuizDifficulty(to: difficulty)
+                    }
+                }
         }
     }
 }
