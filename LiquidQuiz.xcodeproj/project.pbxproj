@@ -10,6 +10,7 @@
 		63203FD12DF9825E0064488F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63203FCD2DF9825E0064488F /* Assets.xcassets */; };
 		63203FD32DF9825F0064488F /* LiquidQuizApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63203FCF2DF9825E0064488F /* LiquidQuizApp.swift */; };
 		6332A0062DF996480020252D /* CreateQuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6332A0052DF996480020252D /* CreateQuizView.swift */; };
+		63C70CAC2DF9F70B0081B4E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63C70CAB2DF9F70B0081B4E2 /* LaunchScreen.storyboard */; };
 		63D45A1C2DF9BC640065EC65 /* ShadowAnimatedGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D45A1B2DF9BC640065EC65 /* ShadowAnimatedGradient.swift */; };
 		63D45A1E2DF9D12C0065EC65 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D45A1D2DF9D12C0065EC65 /* ColorExtension.swift */; };
 		63D45A212DF9DDA60065EC65 /* QuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D45A202DF9DDA00065EC65 /* QuizViewModel.swift */; };
@@ -30,6 +31,7 @@
 		63203FCF2DF9825E0064488F /* LiquidQuizApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiquidQuizApp.swift; sourceTree = "<group>"; };
 		6320403C2DF985050064488F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		6332A0052DF996480020252D /* CreateQuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateQuizView.swift; sourceTree = "<group>"; };
+		63C70CAB2DF9F70B0081B4E2 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63D45A1B2DF9BC640065EC65 /* ShadowAnimatedGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowAnimatedGradient.swift; sourceTree = "<group>"; };
 		63D45A1D2DF9D12C0065EC65 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		63D45A202DF9DDA00065EC65 /* QuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewModel.swift; sourceTree = "<group>"; };
@@ -94,9 +96,8 @@
 		63203FD52DF983C90064488F /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				63D45A242DF9DFF80065EC65 /* Model */,
-				63D45A192DF9BC3F0065EC65 /* View */,
-				63D45A1F2DF9DD950065EC65 /* ViewModel */,
+				63C70CA92DF9F6E90081B4E2 /* SplashScreen */,
+				63C70CAA2DF9F6F10081B4E2 /* QuizModule */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -108,6 +109,24 @@
 				63DB097F2DF99D4B00A58493 /* LiquidAppIcon.icon */,
 			);
 			path = SupportFiles;
+			sourceTree = "<group>";
+		};
+		63C70CA92DF9F6E90081B4E2 /* SplashScreen */ = {
+			isa = PBXGroup;
+			children = (
+				63C70CAB2DF9F70B0081B4E2 /* LaunchScreen.storyboard */,
+			);
+			path = SplashScreen;
+			sourceTree = "<group>";
+		};
+		63C70CAA2DF9F6F10081B4E2 /* QuizModule */ = {
+			isa = PBXGroup;
+			children = (
+				63D45A242DF9DFF80065EC65 /* Model */,
+				63D45A192DF9BC3F0065EC65 /* View */,
+				63D45A1F2DF9DD950065EC65 /* ViewModel */,
+			);
+			path = QuizModule;
 			sourceTree = "<group>";
 		};
 		63D45A192DF9BC3F0065EC65 /* View */ = {
@@ -227,6 +246,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63C70CAC2DF9F70B0081B4E2 /* LaunchScreen.storyboard in Resources */,
 				63203FD12DF9825E0064488F /* Assets.xcassets in Resources */,
 				63DB09802DF99D4B00A58493 /* LiquidAppIcon.icon in Resources */,
 			);
@@ -396,6 +416,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -435,6 +456,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
