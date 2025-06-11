@@ -22,18 +22,25 @@ struct CreateQuizView: View {
                 .fontWeight(.semibold)
             themeContent
         }
+        .frame(maxHeight: .infinity)
+        
+        .safeAreaInset(edge: .bottom) {
+            generateButton
+                .padding(.horizontal, 30)
+                .padding(.vertical)
+        }
     }
     
     private var themeContent: some View {
         VStack(spacing: 20) {
             TextField(Texts.QuizGenerate.textField,
                       text: $quizTheme.animation())
-                .textFieldStyle(.roundedBorder)
+            .padding()
+            .glassEffect(.regular.interactive())
             
             quiestionCountSlider
             glassContent
                 .padding(.top, 20)
-            generateButton
         }
         .padding(.horizontal, 30)
     }
@@ -110,8 +117,10 @@ struct CreateQuizView: View {
         } label: {
             Text(Texts.QuizGenerate.generate)
                 .font(.body)
+                .frame(maxWidth: .infinity, maxHeight: 50)
         }
         .buttonStyle(.glass)
+        .background(ShadowAnimatedGradient())
     }
 }
 
