@@ -6,17 +6,23 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		63203FD12DF9825E0064488F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63203FCD2DF9825E0064488F /* Assets.xcassets */; };
+		63203FD32DF9825F0064488F /* LiquidQuizApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63203FCF2DF9825E0064488F /* LiquidQuizApp.swift */; };
+		6320403E2DF985800064488F /* CreateQuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6320403D2DF985800064488F /* CreateQuizView.swift */; };
+		6332A0062DF996480020252D /* CreateQuizView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6332A0052DF996480020252D /* CreateQuizView2.swift */; };
+		63DB09802DF99D4B00A58493 /* LiquidAppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 63DB097F2DF99D4B00A58493 /* LiquidAppIcon.icon */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		63203FBF2DF982520064488F /* LiquidQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiquidQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		63203FCD2DF9825E0064488F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		63203FCF2DF9825E0064488F /* LiquidQuizApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiquidQuizApp.swift; sourceTree = "<group>"; };
+		6320403C2DF985050064488F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		6320403D2DF985800064488F /* CreateQuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateQuizView.swift; sourceTree = "<group>"; };
+		6332A0052DF996480020252D /* CreateQuizView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateQuizView2.swift; sourceTree = "<group>"; };
+		63DB097F2DF99D4B00A58493 /* LiquidAppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = LiquidAppIcon.icon; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		63203FC12DF982520064488F /* LiquidQuiz */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = LiquidQuiz;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		63203FBC2DF982520064488F /* Frameworks */ = {
@@ -32,7 +38,7 @@
 		63203FB62DF982520064488F = {
 			isa = PBXGroup;
 			children = (
-				63203FC12DF982520064488F /* LiquidQuiz */,
+				63203FD02DF9825E0064488F /* LiquidQuiz */,
 				63203FC02DF982520064488F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,6 +49,43 @@
 				63203FBF2DF982520064488F /* LiquidQuiz.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		63203FD02DF9825E0064488F /* LiquidQuiz */ = {
+			isa = PBXGroup;
+			children = (
+				63203FD42DF983BF0064488F /* Application */,
+				63203FD52DF983C90064488F /* Modules */,
+				63203FD62DF983D20064488F /* SupportFiles */,
+				6320403C2DF985050064488F /* Info.plist */,
+			);
+			path = LiquidQuiz;
+			sourceTree = "<group>";
+		};
+		63203FD42DF983BF0064488F /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				63203FCF2DF9825E0064488F /* LiquidQuizApp.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		63203FD52DF983C90064488F /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				6320403D2DF985800064488F /* CreateQuizView.swift */,
+				6332A0052DF996480020252D /* CreateQuizView2.swift */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		63203FD62DF983D20064488F /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				63203FCD2DF9825E0064488F /* Assets.xcassets */,
+				63DB097F2DF99D4B00A58493 /* LiquidAppIcon.icon */,
+			);
+			path = SupportFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -59,9 +102,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				63203FC12DF982520064488F /* LiquidQuiz */,
 			);
 			name = LiquidQuiz;
 			packageProductDependencies = (
@@ -109,6 +149,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63203FD12DF9825E0064488F /* Assets.xcassets in Resources */,
+				63DB09802DF99D4B00A58493 /* LiquidAppIcon.icon in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +161,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63203FD32DF9825F0064488F /* LiquidQuizApp.swift in Sources */,
+				6320403E2DF985800064488F /* CreateQuizView.swift in Sources */,
+				6332A0062DF996480020252D /* CreateQuizView2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,62 +294,78 @@
 		63203FCB2DF982530064488F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = LiquidAppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NAJAJ652LV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LiquidQuiz/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Liquidia;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.trivia-games";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.avoqode.LiquidQuiz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		63203FCC2DF982530064488F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = LiquidAppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NAJAJ652LV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LiquidQuiz/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Liquidia;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.trivia-games";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.avoqode.LiquidQuiz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
