@@ -32,8 +32,12 @@ final class QuizViewModel: ObservableObject {
         }
     }
     
-    internal func setQuizTheme(_ theme: String = String()) {
-        self.quizTheme = theme
+    internal func setQuizTheme(_ theme: String = String(), random: Bool = false) {
+        if random, let randomTheme = MockTheme.allCases.randomElement() {
+            quizTheme = randomTheme.rawValue
+        } else {
+            quizTheme = theme
+        }
     }
     
     internal func isSliderExpandedToggle() {

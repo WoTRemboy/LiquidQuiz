@@ -49,6 +49,14 @@ struct GlassDynamicButtons: View {
         
             .glassEffect(.regular.interactive(), in: .circle)
             .glassEffectID(Texts.Namespace.QuizGenerate.random, in: namespace)
+        
+            .onTapGesture {
+                withAnimation {
+                    viewModel.setQuizTheme(random: true)
+                }
+                let impactMed = UIImpactFeedbackGenerator(style: .soft)
+                impactMed.impactOccurred()
+            }
     }
 }
 
