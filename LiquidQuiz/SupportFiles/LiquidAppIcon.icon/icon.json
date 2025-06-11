@@ -2,69 +2,98 @@
   "fill" : "system-light",
   "groups" : [
     {
-      "blur-material" : null,
       "layers" : [
         {
-          "blend-mode-specializations" : [
-            {
-              "value" : "normal"
-            },
-            {
-              "appearance" : "dark",
-              "value" : "normal"
-            }
-          ],
-          "fill-specializations" : [
-            {
-              "value" : {
-                "solid" : "extended-srgb:1.00000,0.58431,0.00000,1.00000"
-              }
-            },
-            {
-              "appearance" : "dark",
-              "value" : {
-                "solid" : "extended-srgb:1.00000,0.58431,0.00000,1.00000"
-              }
-            }
-          ],
-          "glass" : true,
-          "hidden" : false,
-          "image-name" : "2_Rectangle.svg",
-          "name" : "2_Rectangle",
+          "image-name" : "4_Layer.svg",
+          "name" : "4_Layer",
           "position" : {
             "scale" : 1,
             "translation-in-points" : [
-              101.961555439688,
-              -171.36824282113272
+              0,
+              -105
             ]
           }
         }
       ],
-      "lighting" : "individual",
-      "name" : "Second Layer",
       "shadow" : {
         "kind" : "neutral",
         "opacity" : 0.5
       },
-      "specular" : true,
       "translucency" : {
         "enabled" : true,
         "value" : 0.5
       }
     },
     {
-      "blur-material" : null,
       "layers" : [
         {
-          "blend-mode" : "normal",
-          "fill" : "none",
-          "glass" : true,
-          "hidden" : false,
-          "image-name" : "1_Fort.svg",
-          "name" : "1_Fort"
+          "image-name" : "3_Layer.svg",
+          "name" : "3_Layer",
+          "position" : {
+            "scale" : 1,
+            "translation-in-points" : [
+              0,
+              -62
+            ]
+          }
         }
       ],
-      "name" : "First Layer",
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.5
+      }
+    },
+    {
+      "layers" : [
+        {
+          "fill-specializations" : [
+            {
+              "appearance" : "tinted",
+              "value" : {
+                "solid" : "extended-srgb:0.00000,0.47843,1.00000,1.00000"
+              }
+            }
+          ],
+          "hidden" : false,
+          "image-name" : "2_Layer.svg",
+          "name" : "2_Layer",
+          "position" : {
+            "scale" : 1,
+            "translation-in-points" : [
+              0,
+              31
+            ]
+          }
+        }
+      ],
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.5
+      }
+    },
+    {
+      "layers" : [
+        {
+          "fill-specializations" : [
+            {
+              "appearance" : "tinted",
+              "value" : {
+                "solid" : "extended-gray:0.25000,1.00000"
+              }
+            }
+          ],
+          "image-name" : "1_Layer.svg",
+          "name" : "1_Layer"
+        }
+      ],
       "shadow" : {
         "kind" : "neutral",
         "opacity" : 0.5
