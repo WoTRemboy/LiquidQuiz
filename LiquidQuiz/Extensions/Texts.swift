@@ -14,6 +14,7 @@ struct Texts {
         static let random = "Suggest"
         static let generate = "Generate"
         static let slider = "Questions Count"
+        static let difficulty = "Difficulty"
     }
     
     enum Namespace {

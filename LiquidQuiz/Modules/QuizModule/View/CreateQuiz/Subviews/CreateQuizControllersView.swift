@@ -16,7 +16,10 @@ struct CreateQuizControllersView: View {
             textField
             
             if viewModel.isSliderExpanded {
-                quiestionCountSlider
+                questionCountSlider
+            }
+            if viewModel.isDifficultyExpanded {
+                difficultyPicker
             }
         }
     }
@@ -28,7 +31,7 @@ struct CreateQuizControllersView: View {
         .glassEffect(.regular.interactive())
     }
     
-    private var quiestionCountSlider: some View {
+    private var questionCountSlider: some View {
         Slider(value: $viewModel.questionCount.animation(),
                in: 1...30,
                step: 5) {
@@ -39,6 +42,29 @@ struct CreateQuizControllersView: View {
             Text(viewModel.questionCountRange(for: .end))
         }
         .transition(.blurReplace)
+    }
+    
+    private var difficultyPicker: some View {
+        Picker(Texts.QuizGenerate.difficulty,
+               selection: $viewModel.quizDifficulty.animation()) {
+            menuFactory(cases: QuizDifficulty.allCases)
+        }
+               .pickerStyle(.segmented)
+               .transition(.blurReplace)
+    }
+    
+    @ViewBuilder
+    internal func menuFactory(cases: [QuizDifficulty]) -> some View {
+        ForEach(cases, id: \.self) { difficulty in
+            Button {
+                viewModel.setQuizDifficulty(to: difficulty)
+            } label: {
+                HStack {
+                    difficulty.icon
+                    Text(difficulty.rawValue)
+                }
+            }
+        }
     }
 }
 

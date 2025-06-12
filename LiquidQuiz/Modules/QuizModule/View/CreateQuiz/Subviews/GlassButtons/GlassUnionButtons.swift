@@ -10,7 +10,7 @@ import SwiftUI
 struct GlassUnionButtons: View {
     
     @EnvironmentObject private var viewModel: QuizViewModel
-        
+    
     private let namespace: Namespace.ID
     
     init(namespace: Namespace.ID) {
@@ -31,7 +31,7 @@ struct GlassUnionButtons: View {
         
             .padding()
             .glassEffect(.regular.interactive())
-            
+        
             .onTapGesture {
                 withAnimation {
                     viewModel.isSliderExpandedToggle()
@@ -48,41 +48,17 @@ struct GlassUnionButtons: View {
         }
     }
     
-    @ViewBuilder
     private var difficultyButton: some View {
-        if !viewModel.isDifficultyExpanded {
-            viewModel.quizDifficulty.icon
-                .font(.title2)
-                .padding()
-                .glassEffect(.regular.interactive())
-            
-                .onTapGesture {
-                    withAnimation {
-                        viewModel.isDifficultyExpandedToggle()
-                    }
+        viewModel.quizDifficulty.icon
+            .font(.title2)
+            .padding()
+            .glassEffect(.regular.interactive())
+        
+            .onTapGesture {
+                withAnimation {
+                    viewModel.isDifficultyExpandedToggle()
                 }
-        } else {
-            menuFactory(cases: QuizDifficulty.allCases)
-                .glassEffectUnion(id: Texts.Namespace.QuizGenerate.container, namespace: namespace)
-        }
-    }
-    
-    @ViewBuilder
-    internal func menuFactory(cases: [QuizDifficulty]) -> some View {
-        HStack {
-            ForEach(cases, id: \.self) { difficulty in
-                difficulty.icon
-                    .font(.title2)
-                    .padding()
-                    .glassEffect(.regular.interactive())
-                
-                    .onTapGesture {
-                        withAnimation {
-                            viewModel.setQuizDifficulty(to: difficulty)
-                        }
-                    }
             }
-        }
     }
 }
 

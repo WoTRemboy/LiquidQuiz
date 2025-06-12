@@ -13,19 +13,21 @@ struct CreateQuizView: View {
     @Namespace private var namespace
     
     internal var body: some View {
-        VStack(spacing: 50) {
-            Text(Texts.QuizGenerate.title)
-                .font(.largeTitle)
-                .fontWeight(.semibold)
+        NavigationStack {
+            VStack(spacing: 50) {
+                Text(Texts.QuizGenerate.title)
+                    .font(.largeTitle)
+                    .fontWeight(.semibold)
+                
+                themeContent
+            }
+            .frame(maxHeight: .infinity)
             
-            themeContent
-        }
-        .frame(maxHeight: .infinity)
-        
-        .safeAreaInset(edge: .bottom) {
-            generateButton
-                .padding(.horizontal, 30)
-                .padding(.vertical)
+            .safeAreaInset(edge: .bottom) {
+                generateButton
+                    .padding(.horizontal, 30)
+                    .padding(.vertical)
+            }
         }
     }
     
@@ -39,9 +41,7 @@ struct CreateQuizView: View {
     }
     
     private var generateButton: some View {
-        Button {
-            // Generate Button Action
-        } label: {
+        NavigationLink(destination: QuizSelfView()) {
             Text(Texts.QuizGenerate.generate)
                 .font(.title2)
                 .frame(maxWidth: .infinity, maxHeight: 50)

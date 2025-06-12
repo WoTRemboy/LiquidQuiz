@@ -19,7 +19,7 @@ final class QuizViewModel: ObservableObject {
     @Published internal var isDifficultyExpanded: Bool = false
         
     internal var isQuizThemeEmpty: Bool {
-        quizTheme.isEmpty || isDifficultyExpanded
+        quizTheme.isEmpty
     }
     
     internal var questionCountLabel: String {
