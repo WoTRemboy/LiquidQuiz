@@ -9,10 +9,10 @@ import Foundation
 
 struct Texts {
     enum QuizGenerate {
-        static let title = "Generate"
+        static let title = "Quiz"
         static let textField = "ex. Countries"
         static let random = "Suggest"
-        static let generate = "Create"
+        static let generate = "Generate"
         static let slider = "Questions Count"
     }
     

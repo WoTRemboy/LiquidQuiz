@@ -62,26 +62,26 @@ struct GlassUnionButtons: View {
                     }
                 }
         } else {
-            HStack {
-                menuFactory(cases: QuizDifficulty.allCases)
-            }
-            .glassEffectUnion(id: Texts.Namespace.QuizGenerate.container, namespace: namespace)
+            menuFactory(cases: QuizDifficulty.allCases)
+                .glassEffectUnion(id: Texts.Namespace.QuizGenerate.container, namespace: namespace)
         }
     }
     
     @ViewBuilder
     internal func menuFactory(cases: [QuizDifficulty]) -> some View {
-        ForEach(cases, id: \.self) { difficulty in
-            difficulty.icon
-                .font(.title2)
-                .padding()
-                .glassEffect(.regular.interactive())
-            
-                .onTapGesture {
-                    withAnimation {
-                        viewModel.setQuizDifficulty(to: difficulty)
+        HStack {
+            ForEach(cases, id: \.self) { difficulty in
+                difficulty.icon
+                    .font(.title2)
+                    .padding()
+                    .glassEffect(.regular.interactive())
+                
+                    .onTapGesture {
+                        withAnimation {
+                            viewModel.setQuizDifficulty(to: difficulty)
+                        }
                     }
-                }
+            }
         }
     }
 }

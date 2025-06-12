@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24053.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -34,6 +35,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="kNn-ce-zSS" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="UKg-n4-VTC"/>
                             <constraint firstItem="kNn-ce-zSS" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="yd5-zM-hiO"/>
@@ -47,5 +49,8 @@
     </scenes>
     <resources>
         <image name="SplashScreenIcon" width="346" height="500"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
