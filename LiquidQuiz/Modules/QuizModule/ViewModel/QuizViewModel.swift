@@ -29,10 +29,10 @@ final class QuizViewModel: ObservableObject {
         question.selectedAnswer == nil
     }
     
-    internal func setSelectedAnswer(to question: QuizQuestion, answer: QuizOption) {
-        quiz.questions[quiz.currentQuestionIndex].selectedAnswer = answer
+    internal func setSelectedAnswer(answer: QuizOption) {
+        quiz.questions[quiz.currentQuestionIndex].setSelectedAnswer(answer)
         
-        if let selectedAnswer = question.selectedAnswer, selectedAnswer.isCorrect {
+        if let selectedAnswer = currentQuestion.selectedAnswer, selectedAnswer.isCorrect {
             increaseScore(in: currentQuestion.price)
         }
     }
@@ -42,6 +42,10 @@ final class QuizViewModel: ObservableObject {
         
         guard currentOption == selectedAnswer || currentOption.isCorrect else { return .gray.opacity(0.2) }
         return currentOption.isCorrect ? .green.opacity(0.3) : .red.opacity(0.3)
+    }
+    
+    internal func sensoryFeedback(currentOption: QuizOption) -> SensoryFeedback {
+        return currentOption.isCorrect ? .impact : .warning
     }
     
     internal func showExplanation(for question: QuizQuestion, option: QuizOption) -> Bool {
@@ -65,7 +69,9 @@ final class QuizViewModel: ObservableObject {
     
     internal var quizProgress: Double {
         guard totalQuestions > 0 else { return 0 }
-        return Double(quiz.currentQuestionIndex + 1) / Double(totalQuestions)
+        let answered = currentQuestion.selectedAnswer != nil ? 1 : 0
+        
+        return Double(quiz.currentQuestionIndex + answered) / Double(totalQuestions)
     }
     
     internal var nextQuestionColor: Color {

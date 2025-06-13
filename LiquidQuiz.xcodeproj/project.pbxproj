@@ -13,6 +13,7 @@
 		634AC53E2DFC21DC00C31DA0 /* QuizSelfBottomBarButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634AC53D2DFC21DC00C31DA0 /* QuizSelfBottomBarButtons.swift */; };
 		634AC5A52DFC2D6F00C31DA0 /* QuizSelfQuestionTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634AC5A42DFC2D6F00C31DA0 /* QuizSelfQuestionTitle.swift */; };
 		63688C452DFB692500EE06EB /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63688C442DFB692500EE06EB /* ProgressBarView.swift */; };
+		6372AEAE2DFCAF64001E2F68 /* QuizSelfResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6372AEAD2DFCAF64001E2F68 /* QuizSelfResultView.swift */; };
 		6374EF3B2DFC3A7600642D1A /* CreateQuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6374EF3A2DFC3A7000642D1A /* CreateQuizViewModel.swift */; };
 		63C70CAC2DF9F70B0081B4E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63C70CAB2DF9F70B0081B4E2 /* LaunchScreen.storyboard */; };
 		63C70D132DFA03B00081B4E2 /* QuizDifficultyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C70D122DFA03A80081B4E2 /* QuizDifficultyModel.swift */; };
@@ -45,6 +46,7 @@
 		634AC53D2DFC21DC00C31DA0 /* QuizSelfBottomBarButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizSelfBottomBarButtons.swift; sourceTree = "<group>"; };
 		634AC5A42DFC2D6F00C31DA0 /* QuizSelfQuestionTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizSelfQuestionTitle.swift; sourceTree = "<group>"; };
 		63688C442DFB692500EE06EB /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
+		6372AEAD2DFCAF64001E2F68 /* QuizSelfResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizSelfResultView.swift; sourceTree = "<group>"; };
 		6374EF3A2DFC3A7000642D1A /* CreateQuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateQuizViewModel.swift; sourceTree = "<group>"; };
 		63C70CAB2DF9F70B0081B4E2 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63C70D122DFA03A80081B4E2 /* QuizDifficultyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizDifficultyModel.swift; sourceTree = "<group>"; };
@@ -153,6 +155,24 @@
 			path = CommonElements;
 			sourceTree = "<group>";
 		};
+		6372AEAB2DFCAF46001E2F68 /* Quiz */ = {
+			isa = PBXGroup;
+			children = (
+				63C70D182DFA2B8C0081B4E2 /* QuizSelfView.swift */,
+				63F221832DFC6D8B00B86071 /* QuizSelfQuestionContent.swift */,
+				634AC53B2DFC215D00C31DA0 /* Subviews */,
+			);
+			path = Quiz;
+			sourceTree = "<group>";
+		};
+		6372AEAC2DFCAF53001E2F68 /* Results */ = {
+			isa = PBXGroup;
+			children = (
+				6372AEAD2DFCAF64001E2F68 /* QuizSelfResultView.swift */,
+			);
+			path = Results;
+			sourceTree = "<group>";
+		};
 		6374EF362DFC3A0900642D1A /* CreateQuizModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -210,9 +230,8 @@
 		63D45A192DF9BC3F0065EC65 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				63C70D182DFA2B8C0081B4E2 /* QuizSelfView.swift */,
-				63F221832DFC6D8B00B86071 /* QuizSelfQuestionContent.swift */,
-				634AC53B2DFC215D00C31DA0 /* Subviews */,
+				6372AEAB2DFCAF46001E2F68 /* Quiz */,
+				6372AEAC2DFCAF53001E2F68 /* Results */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -352,6 +371,7 @@
 				63688C452DFB692500EE06EB /* ProgressBarView.swift in Sources */,
 				63DB09832DF9A3B100A58493 /* Texts.swift in Sources */,
 				634AC5A52DFC2D6F00C31DA0 /* QuizSelfQuestionTitle.swift in Sources */,
+				6372AEAE2DFCAF64001E2F68 /* QuizSelfResultView.swift in Sources */,
 				63D45A1E2DF9D12C0065EC65 /* ColorExtension.swift in Sources */,
 				63D45A1C2DF9BC640065EC65 /* ShadowAnimatedGradient.swift in Sources */,
 				63D45A2D2DF9E5650065EC65 /* GlassDynamicButtons.swift in Sources */,

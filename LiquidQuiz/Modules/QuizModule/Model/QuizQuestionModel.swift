@@ -32,7 +32,9 @@ struct QuizQuestion: Identifiable, Codable {
         case question, format, options
         case price, hint, explanation
     }
-    
+}
+
+extension QuizQuestion {
     internal static var sampleData: [QuizQuestion] {
         let first = QuizQuestion(
             question: "Grandma knows lots of tales, so why don't you ask her to ___?",
@@ -59,7 +61,20 @@ struct QuizQuestion: Identifiable, Codable {
             price: 5,
             hint: "Place where you live.",
             explanation: "Your hometown.")
-        return [first, second]
+        
+        let third = QuizQuestion(
+            question: "Grandma knows lots of tales, so why don't you ask her to ___?",
+            format: "Fill in the black",
+            options: [
+                QuizOption(name: "tell you a story", isCorrect: true),
+                QuizOption(name: "read the menu", isCorrect: false),
+                QuizOption(name: "give you directions", isCorrect: false),
+                QuizOption(name: "do your homework", isCorrect: false)
+            ],
+            price: 3,
+            hint: "Who are you?",
+            explanation: "What's your name.")
+        
+        return [first, second, third]
     }
 }
-

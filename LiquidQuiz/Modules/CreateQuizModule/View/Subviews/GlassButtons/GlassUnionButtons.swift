@@ -37,6 +37,7 @@ struct GlassUnionButtons: View {
                     viewModel.isSliderExpandedToggle()
                 }
             }
+            .sensoryFeedback(.impact, trigger: viewModel.isSliderExpanded)
     }
     
     @ViewBuilder
@@ -59,6 +60,7 @@ struct GlassUnionButtons: View {
                     viewModel.isDifficultyExpandedToggle()
                 }
             }
+            .sensoryFeedback(.impact, trigger: viewModel.isDifficultyExpanded)
     }
 }
 

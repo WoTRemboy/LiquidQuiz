@@ -46,9 +46,12 @@ struct QuizSelfOptionView: View {
             .onTapGesture {
                 guard question.isSelectedAnswerEmpty else { return }
                 withAnimation(.spring(duration: 0.3)) {
-                    viewModel.setSelectedAnswer(to: question, answer: option)
+                    viewModel.setSelectedAnswer(answer: option)
                 }
             }
+            .sensoryFeedback(
+                viewModel.sensoryFeedback(currentOption: option),
+                trigger: question.selectedAnswer == option)
     }
     
     private var explanationView: some View {

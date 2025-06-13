@@ -57,7 +57,7 @@ struct QuizSelfView: View {
     }
     
     private var progressBar: some View {
-        ProgressBarView(current: 5, total: 10)
+        ProgressBarView(progress: viewModel.quizProgress)
             .frame(height: 20)
             .padding(.horizontal)
     }
