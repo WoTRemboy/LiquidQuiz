@@ -17,6 +17,14 @@ struct Texts {
         static let difficulty = "Difficulty"
     }
     
+    enum QuizSelf {
+        enum ConfirmDialog {
+            static let title = "Exit the quiz?"
+            static let message = "All progress will be lost."
+            static let confirm = "Confirm"
+        }
+    }
+    
     enum Namespace {
         enum QuizGenerate {
             static let clear = "QuizGenerateClear"

@@ -11,15 +11,28 @@ import Combine
 
 final class QuizViewModel: ObservableObject {
     
-    @Published internal var quizTheme: String = String()
-    @Published internal var questionCount: Double = 10.0
-    @Published internal var quizDifficulty: QuizDifficulty = .normal
+    // MARK: - Quiz Theme
     
-    @Published internal var isSliderExpanded: Bool = false
-    @Published internal var isDifficultyExpanded: Bool = false
-        
+    @Published internal var quizTheme: String = "Appartments"
+    
     internal var isQuizThemeEmpty: Bool {
         quizTheme.isEmpty
+    }
+    
+    internal func setQuizTheme(_ theme: String = String(), random: Bool = false) {
+        if random, let randomTheme = MockTheme.allCases.randomElement() {
+            quizTheme = randomTheme.rawValue
+        } else {
+            quizTheme = theme
+        }
+    }
+    
+    // MARK: - Questions Count
+    
+    @Published internal var questionCount: Double = 10.0
+    
+    internal var totalQuestions: Int {
+        quizQuestions.count
     }
     
     internal var questionCountLabel: String {
@@ -35,26 +48,56 @@ final class QuizViewModel: ObservableObject {
         }
     }
     
-    internal func setQuizTheme(_ theme: String = String(), random: Bool = false) {
-        if random, let randomTheme = MockTheme.allCases.randomElement() {
-            quizTheme = randomTheme.rawValue
-        } else {
-            quizTheme = theme
-        }
+    // MARK: - Quiz Difficulty
+    
+    @Published internal var quizDifficulty: QuizDifficulty = .normal
+    
+    internal func setQuizDifficulty(to difficulty: QuizDifficulty) {
+        quizDifficulty = difficulty
+        isDifficultyExpandedToggle()
     }
+    
+    // MARK: - Quiz Quiestions
+    
+    @Published internal var quizQuestions: [QuizQuestion] = QuizQuestion.sampleData
+    @Published internal var currentQuestionIndex: Int = 0
+    
+    internal var currentQuestionNumber: Int {
+        currentQuestionIndex + 1
+    }
+    
+    internal var quizProgress: Double {
+        guard totalQuestions > 0 else { return 0 }
+        return Double(currentQuestionIndex + 1) / Double(totalQuestions)
+    }
+    
+    // MARK: - Quiz Score
+    
+    @Published internal var quizScore: Int = 0
+    
+    // MARK: - Questions Count Slider Expanded
+    
+    @Published internal var isSliderExpanded: Bool = false
     
     internal func isSliderExpandedToggle() {
         isSliderExpanded.toggle()
         isDifficultyExpanded = false
     }
     
+    // MARK: - Difficulty Picker Expanded
+    
+    @Published internal var isDifficultyExpanded: Bool = false
+    
     internal func isDifficultyExpandedToggle() {
         isDifficultyExpanded.toggle()
         isSliderExpanded = false
     }
     
-    internal func setQuizDifficulty(to difficulty: QuizDifficulty) {
-        quizDifficulty = difficulty
-        isDifficultyExpandedToggle()
+    // MARK: - Quiz Reset Dialog
+    
+    @Published internal var isShowingResetDialog: Bool = false
+    
+    internal func isShowingResetDialogToggle() {
+        isShowingResetDialog.toggle()
     }
 }

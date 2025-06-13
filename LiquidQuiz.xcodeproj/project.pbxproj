@@ -10,6 +10,7 @@
 		63203FD12DF9825E0064488F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63203FCD2DF9825E0064488F /* Assets.xcassets */; };
 		63203FD32DF9825F0064488F /* LiquidQuizApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63203FCF2DF9825E0064488F /* LiquidQuizApp.swift */; };
 		6332A0062DF996480020252D /* CreateQuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6332A0052DF996480020252D /* CreateQuizView.swift */; };
+		634AC53E2DFC21DC00C31DA0 /* QuizSelfBottomBarButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634AC53D2DFC21DC00C31DA0 /* QuizSelfBottomBarButtons.swift */; };
 		63688C452DFB692500EE06EB /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63688C442DFB692500EE06EB /* ProgressBarView.swift */; };
 		63C70CAC2DF9F70B0081B4E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63C70CAB2DF9F70B0081B4E2 /* LaunchScreen.storyboard */; };
 		63C70D132DFA03B00081B4E2 /* QuizDifficultyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C70D122DFA03A80081B4E2 /* QuizDifficultyModel.swift */; };
@@ -35,6 +36,7 @@
 		63203FCF2DF9825E0064488F /* LiquidQuizApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiquidQuizApp.swift; sourceTree = "<group>"; };
 		6320403C2DF985050064488F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		6332A0052DF996480020252D /* CreateQuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateQuizView.swift; sourceTree = "<group>"; };
+		634AC53D2DFC21DC00C31DA0 /* QuizSelfBottomBarButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizSelfBottomBarButtons.swift; sourceTree = "<group>"; };
 		63688C442DFB692500EE06EB /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
 		63C70CAB2DF9F70B0081B4E2 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63C70D122DFA03A80081B4E2 /* QuizDifficultyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizDifficultyModel.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 			children = (
 				63203FD42DF983BF0064488F /* Application */,
 				63203FD52DF983C90064488F /* Modules */,
+				634AC53C2DFC219A00C31DA0 /* CommonElements */,
 				63DB09812DF9A38E00A58493 /* Extensions */,
 				63203FD62DF983D20064488F /* SupportFiles */,
 				6320403C2DF985050064488F /* Info.plist */,
@@ -122,8 +125,17 @@
 		634AC53B2DFC215D00C31DA0 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
+				634AC53D2DFC21DC00C31DA0 /* QuizSelfBottomBarButtons.swift */,
 			);
 			path = Subviews;
+			sourceTree = "<group>";
+		};
+		634AC53C2DFC219A00C31DA0 /* CommonElements */ = {
+			isa = PBXGroup;
+			children = (
+				63688C442DFB692500EE06EB /* ProgressBarView.swift */,
+			);
+			path = CommonElements;
 			sourceTree = "<group>";
 		};
 		63C70CA92DF9F6E90081B4E2 /* SplashScreen */ = {
@@ -156,9 +168,8 @@
 		63C70D152DFA29FD0081B4E2 /* QuizSelf */ = {
 			isa = PBXGroup;
 			children = (
-				634AC53B2DFC215D00C31DA0 /* Subviews */,
 				63C70D182DFA2B8C0081B4E2 /* QuizSelfView.swift */,
-				63688C442DFB692500EE06EB /* ProgressBarView.swift */,
+				634AC53B2DFC215D00C31DA0 /* Subviews */,
 			);
 			path = QuizSelf;
 			sourceTree = "<group>";
@@ -300,6 +311,7 @@
 				6332A0062DF996480020252D /* CreateQuizView.swift in Sources */,
 				63C70D132DFA03B00081B4E2 /* QuizDifficultyModel.swift in Sources */,
 				63C70D172DFA2A640081B4E2 /* QuizModel.swift in Sources */,
+				634AC53E2DFC21DC00C31DA0 /* QuizSelfBottomBarButtons.swift in Sources */,
 				63D45A212DF9DDA60065EC65 /* QuizViewModel.swift in Sources */,
 				63688C452DFB692500EE06EB /* ProgressBarView.swift in Sources */,
 				63DB09832DF9A3B100A58493 /* Texts.swift in Sources */,

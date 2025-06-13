@@ -20,4 +20,9 @@ extension Image {
             static let hard = Image(systemName: "dial.high")
         }
     }
+    
+    enum QuizSelf {
+        static let forward = Image(systemName: "arrow.forward")
+        static let close = Image(systemName: "xmark")
+    }
 }
