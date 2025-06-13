@@ -11,6 +11,23 @@ import Combine
 
 final class QuizViewModel: ObservableObject {
     
+    @Published internal var selectedAnswer: String = String()
+    
+    internal var isSelectedAnswerEmpty: Bool {
+        selectedAnswer.isEmpty
+    }
+    
+    internal func setSelectedAnswer(to answer: String) {
+        selectedAnswer = answer
+    }
+    
+    internal func optionColor(current: String, correct: String) -> Color {
+        guard !isSelectedAnswerEmpty else { return .clear }
+        
+        guard current == selectedAnswer || current == correct else { return .gray.opacity(0.2) }
+        return current == correct ? .green.opacity(0.3) : .red.opacity(0.3)
+    }
+    
     // MARK: - Quiz Theme
     
     @Published internal var quizTheme: String = "Appartments"
