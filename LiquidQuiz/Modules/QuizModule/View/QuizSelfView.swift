@@ -20,29 +20,39 @@ struct QuizSelfView: View {
     
     internal var body: some View {
         NavigationStack {
-            scrollViewContent
-                .safeAreaInset(edge: .top) {
-                    progressBar
-                        .padding(.vertical)
+            ZStack {
+                let questionID = viewModel.currentQuestion.id
+                scrollViewContent
+                    .id(questionID)
+                    .transition(.asymmetric(
+                        insertion: .move(edge: .trailing),
+                        removal: .move(edge: .leading)
+                    ))
+                    .animation(.default, value: questionID)
+            }
+            
+            .safeAreaInset(edge: .top) {
+                progressBar
+                    .padding(.vertical)
+            }
+            .safeAreaInset(edge: .bottom) {
+                QuizSelfBottomBarButtons(viewModel: viewModel) {
+                    dismiss()
                 }
-                .safeAreaInset(edge: .bottom) {
-                    QuizSelfBottomBarButtons(viewModel: viewModel) {
-                        dismiss()
-                    }
+            }
+            .toolbar {
+                ToolbarItem {
+                    scoreView
                 }
-                .toolbar {
-                    ToolbarItem {
-                        scoreView
-                    }
-                    ToolbarSpacer(.fixed)
-                    
-                    ToolbarItem {
-                        hintButton
-                    }
+                ToolbarSpacer(.fixed)
+                
+                ToolbarItem {
+                    hintButton
                 }
-                .navigationBarBackButtonHidden()
-                .navigationTitle(viewModel.quiz.name)
-                .toolbarTitleDisplayMode(.inline)
+            }
+            .navigationBarBackButtonHidden()
+            .navigationTitle(viewModel.quiz.name)
+            .toolbarTitleDisplayMode(.inline)
         }
     }
     
@@ -54,42 +64,15 @@ struct QuizSelfView: View {
     
     private var scrollViewContent: some View {
         ScrollView(.vertical, showsIndicators: false) {
-            VStack(spacing: 40) {
-                QuizSelfQuestionTitle(
-                    format: viewModel.currentQuestion.format,
-                    question: viewModel.currentQuestion.question)
-                
-                optionButtons
+            ForEach(viewModel.quiz.questions) { question in
+                if question.id == viewModel.currentQuestion.id {
+                    QuizSelfQuestionContent(question: question, viewModel: viewModel)
+                }
             }
             .padding(.horizontal)
         }
         .scrollBounceBehavior(.basedOnSize, axes: [.vertical])
-    }
-    
-    private var optionButtons: some View {
-        GlassEffectContainer {
-            optionsView
-        }
-    }
-    
-    private var optionsView: some View {
-        LazyVStack(spacing: 16) {
-            ForEach(viewModel.currentQuestion.options, id: \.id) { option in
-                Text(option.name)
-                    .font(.title3)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                
-                    .glassEffect(.regular.interactive().tint(viewModel.optionColor(currentOption: option)))
-                
-                    .onTapGesture {
-                        guard viewModel.isSelectedAnswerEmpty else { return }
-                        withAnimation(.spring(duration: 0.3)) {
-                            viewModel.setSelectedAnswer(to: option)
-                        }
-                    }
-            }
-        }
+        
     }
     
     private var scoreView: some View {

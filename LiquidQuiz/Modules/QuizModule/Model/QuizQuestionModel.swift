@@ -1,5 +1,5 @@
 //
-//  QuizQuestionsModel.swift
+//  QuizQuestionModel.swift
 //  LiquidQuiz
 //
 //  Created by Roman Tverdokhleb on 13/06/2025.
@@ -18,7 +18,15 @@ struct QuizQuestion: Identifiable, Codable {
     var hint: String
     var explanation: String
     
-    var tappedAnswer: String = ""
+    var selectedAnswer: QuizOption? = nil
+    
+    internal var isSelectedAnswerEmpty: Bool {
+        selectedAnswer == nil
+    }
+    
+    mutating internal func setSelectedAnswer(_ answer: QuizOption) {
+        self.selectedAnswer = answer
+    }
     
     enum CodingKeys: CodingKey {
         case question, format, options

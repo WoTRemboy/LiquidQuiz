@@ -36,5 +36,11 @@ struct Texts {
             static let generate = "QuizGenerateGenerate"
             static let container = "QuizGenerateContainer"
         }
+        
+        enum QuizSelf {
+            static let option = "QuizSelfOption"
+            static let explanation = "QuizSelfExplanation"
+            static let container = "QuizSelfContainer"
+        }
     }
 }

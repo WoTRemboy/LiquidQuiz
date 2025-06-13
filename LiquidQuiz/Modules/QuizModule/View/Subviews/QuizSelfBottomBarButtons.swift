@@ -79,14 +79,17 @@ struct QuizSelfBottomBarButtons: View {
     
     private var forwardButton: some View {
         Button {
-            // Forward Button Action
+            withAnimation {
+                viewModel.nextQuestion()
+            }
         } label: {
             Image.QuizSelf.forward
                 .font(.title2)
                 .fontWeight(.medium)
-                .foregroundStyle(Color.green)
+                .foregroundStyle(viewModel.nextQuestionColor)
                 .padding()
         }
+        .animation(.spring(duration: 0.3), value: viewModel.currentQuestion.selectedAnswer)
         .buttonStyle(.glass)
         .padding(.trailing)
     }

@@ -14,6 +14,12 @@ struct Quiz: Codable {
     var questions: [QuizQuestion]
     var timer: Int
     
+    var currentQuestionIndex: Int = 0
+    
+    mutating internal func increaseQuestionIndex() {
+        currentQuestionIndex += 1
+    }
+    
     enum CodingKeys: CodingKey {
         case name, difficulty
         case questions, timer

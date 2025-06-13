@@ -12,7 +12,7 @@ final class CreateQuizViewModel: ObservableObject {
     
     // MARK: - Quiz Theme
     
-    @Published internal var quizTheme: String = "Appartments"
+    @Published internal var quizTheme: String = String()
     
     internal var isQuizThemeEmpty: Bool {
         quizTheme.isEmpty
