@@ -9,14 +9,16 @@ import SwiftUI
 
 struct QuizSelfView: View {
     
-    @EnvironmentObject private var viewModel: QuizViewModel
+    @StateObject private var viewModel: QuizViewModel
     @Environment(\.dismiss) private var dismiss
     @Namespace private var namespace
-    
-    @State private var showHintPopover = false
-    @State private var showingResetDialog = false
-    
+        
     let mock = QuizQuestion.sampleData.first!
+    
+    init(quiz: [QuizQuestion]) {
+        let viewModel = QuizViewModel(quiz: quiz)
+        self._viewModel = StateObject(wrappedValue: viewModel)
+    }
     
     internal var body: some View {
         NavigationStack {
@@ -26,7 +28,7 @@ struct QuizSelfView: View {
                         .padding(.vertical)
                 }
                 .safeAreaInset(edge: .bottom) {
-                    QuizSelfBottomBarButtons() {
+                    QuizSelfBottomBarButtons(viewModel: viewModel) {
                         dismiss()
                     }
                 }
@@ -41,7 +43,7 @@ struct QuizSelfView: View {
                     }
                 }
                 .navigationBarBackButtonHidden()
-                .navigationTitle(viewModel.quizTheme)
+                .navigationTitle(Texts.QuizSelf.Toolbar.title)
                 .toolbarTitleDisplayMode(.inline)
         }
     }
@@ -93,7 +95,7 @@ struct QuizSelfView: View {
     }
     
     private var scoreView: some View {
-        Text("Score: \(viewModel.quizScore)")
+        Text("\(Texts.QuizSelf.Toolbar.score): \(viewModel.quizScore)")
             .contentTransition(.numericText(value: Double(viewModel.quizScore)))
             .padding(.horizontal)
             .frame(minWidth: 100, alignment: .center)
@@ -101,11 +103,11 @@ struct QuizSelfView: View {
     
     private var hintButton: some View {
         Button {
-            showHintPopover.toggle()
+            viewModel.isShowingHintPopoverToggle()
         } label: {
-            Image(systemName: "questionmark.circle")
+            Image.QuizSelf.hint
         }
-        .popover(isPresented: $showHintPopover) {
+        .popover(isPresented: $viewModel.isShowingHintPopover) {
             Text(mock.hint)
                 .padding()
                 .presentationCompactAdaptation(.popover)
@@ -117,6 +119,5 @@ struct QuizSelfView: View {
 }
 
 #Preview {
-    QuizSelfView()
-        .environmentObject(QuizViewModel())
+    QuizSelfView(quiz: QuizQuestion.sampleData)
 }

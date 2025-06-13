@@ -18,6 +18,10 @@ struct Texts {
     }
     
     enum QuizSelf {
+        enum Toolbar {
+            static let title = "Quiz Theme"
+            static let score = "Score"
+        }
         enum ConfirmDialog {
             static let title = "Exit the quiz?"
             static let message = "All progress will be lost."

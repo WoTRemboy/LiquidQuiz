@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GlassUnionButtons: View {
     
-    @EnvironmentObject private var viewModel: QuizViewModel
+    @EnvironmentObject private var viewModel: CreateQuizViewModel
     
     private let namespace: Namespace.ID
     
@@ -64,5 +64,5 @@ struct GlassUnionButtons: View {
 
 #Preview {
     GlassUnionButtons(namespace: Namespace().wrappedValue)
-        .environmentObject(QuizViewModel())
+        .environmentObject(CreateQuizViewModel())
 }

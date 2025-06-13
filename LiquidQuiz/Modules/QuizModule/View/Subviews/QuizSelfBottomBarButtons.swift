@@ -9,11 +9,12 @@ import SwiftUI
 
 struct QuizSelfBottomBarButtons: View {
     
-    @EnvironmentObject private var viewModel: QuizViewModel
+    @StateObject private var viewModel: QuizViewModel
     
     private let dismiss: () -> Void
     
-    init(dismiss: @escaping () -> Void) {
+    init(viewModel: QuizViewModel, dismiss: @escaping () -> Void) {
+        self._viewModel = StateObject(wrappedValue: viewModel)
         self.dismiss = dismiss
     }
     
@@ -92,6 +93,6 @@ struct QuizSelfBottomBarButtons: View {
 }
 
 #Preview {
-    QuizSelfBottomBarButtons() {}
-        .environmentObject(QuizViewModel())
+    let viewModel = QuizViewModel(quiz: QuizQuestion.sampleData)
+    return QuizSelfBottomBarButtons(viewModel: viewModel) {}
 }
