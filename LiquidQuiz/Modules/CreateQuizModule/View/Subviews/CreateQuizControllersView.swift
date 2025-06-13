@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CreateQuizControllersView: View {
     
-    @EnvironmentObject private var viewModel: QuizViewModel
+    @EnvironmentObject private var viewModel: CreateQuizViewModel
     
     internal var body: some View {
         VStack(spacing: 20) {
@@ -70,5 +70,5 @@ struct CreateQuizControllersView: View {
 
 #Preview {
     CreateQuizControllersView()
-        .environmentObject(QuizViewModel())
+        .environmentObject(CreateQuizViewModel())
 }
