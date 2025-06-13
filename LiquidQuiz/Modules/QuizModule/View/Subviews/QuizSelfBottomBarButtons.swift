@@ -93,6 +93,6 @@ struct QuizSelfBottomBarButtons: View {
 }
 
 #Preview {
-    let viewModel = QuizViewModel(quiz: QuizQuestion.sampleData)
+    let viewModel = QuizViewModel(quiz: Quiz.sampleData)
     return QuizSelfBottomBarButtons(viewModel: viewModel) {}
 }

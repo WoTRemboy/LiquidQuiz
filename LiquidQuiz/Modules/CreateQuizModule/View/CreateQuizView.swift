@@ -41,7 +41,7 @@ struct CreateQuizView: View {
     }
     
     private var generateButton: some View {
-        NavigationLink(destination: QuizSelfView(quiz: QuizQuestion.sampleData)) {
+        NavigationLink(destination: QuizSelfView(quiz: Quiz.sampleData)) {
             Text(Texts.QuizGenerate.generate)
                 .font(.title2)
                 .frame(maxWidth: .infinity, maxHeight: 50)

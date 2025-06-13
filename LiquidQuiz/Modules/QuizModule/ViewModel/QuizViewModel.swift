@@ -13,38 +13,41 @@ final class QuizViewModel: ObservableObject {
     
     // MARK: - Quiz Data
     
-    internal let quiz: [QuizQuestion]
+    internal let quiz: Quiz
     
-    init(quiz: [QuizQuestion]) {
+    init(quiz: Quiz) {
         self.quiz = quiz
+    }
+    
+    internal var currentQuestion: QuizQuestion {
+        quiz.questions[currentQuestionIndex]
     }
     
     // MARK: - Selected Answer
     
-    @Published internal var selectedAnswer: String = String()
+    @Published internal var selectedAnswer: QuizOption? = nil
     
     internal var isSelectedAnswerEmpty: Bool {
-        selectedAnswer.isEmpty
+        selectedAnswer == nil
     }
     
-    internal func setSelectedAnswer(to answer: String) {
+    internal func setSelectedAnswer(to answer: QuizOption) {
         selectedAnswer = answer
     }
     
-    internal func optionColor(current: String, correct: String) -> Color {
-        guard !isSelectedAnswerEmpty else { return .clear }
+    internal func optionColor(currentOption: QuizOption) -> Color {
+        guard let selectedAnswer else { return .clear }
         
-        guard current == selectedAnswer || current == correct else { return .gray.opacity(0.2) }
-        return current == correct ? .green.opacity(0.3) : .red.opacity(0.3)
+        guard currentOption == selectedAnswer || currentOption.isCorrect else { return .gray.opacity(0.2) }
+        return currentOption.isCorrect ? .green.opacity(0.3) : .red.opacity(0.3)
     }
     
     // MARK: - Quiz Quiestions
     
-    @Published internal var quizQuestions: [QuizQuestion] = QuizQuestion.sampleData
     @Published internal var currentQuestionIndex: Int = 0
     
     internal var totalQuestions: Int {
-        quizQuestions.count
+        quiz.questions.count
     }
     
     internal var currentQuestionNumber: Int {

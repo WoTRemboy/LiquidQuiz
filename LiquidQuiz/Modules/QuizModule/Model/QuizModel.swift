@@ -7,43 +7,22 @@
 
 import Foundation
 
-struct QuizQuestion: Identifiable, Codable {
+struct Quiz: Codable {
     var id = UUID()
-    var question: String
-    var format: String
-    
-    var options: [String]
-    var answer: String
-    var price: Int
-    
-    var hint: String
-    var explanation: String
-    
-    var tappedAnswer: String = ""
+    var name: String
+    var difficulty: QuizDifficulty
+    var questions: [QuizQuestion]
+    var timer: Int
     
     enum CodingKeys: CodingKey {
-        case question, format, options
-        case answer, price
-        case hint, explanation
+        case name, difficulty
+        case questions, timer
     }
     
-    internal static var sampleData: [QuizQuestion] {
-        let first = QuizQuestion(
-            question: "Grandma knows lots of tales, so why don't you ask her to ___?",
-            format: "Fill in the black",
-            options: ["tell you a story", "read the menu", "give you directions", "do your homework"],
-            answer: "tell you a story",
-            price: 3,
-            hint: "Who are you?",
-            explanation: "What's your name.")
-        let second = QuizQuestion(
-            question: "Where do you live?",
-            format: "Complete the sentence",
-            options: ["Moscow", "Saint Petersburg", "Yekaterinburg", "Nizhny Novgorod"],
-            answer: "Saint Petersburg",
-            price: 5,
-            hint: "Place where you live.",
-            explanation: "Your hometown.")
-        return [first, second]
+    static internal var sampleData: Quiz {
+        Quiz(name: "Sample Quiz",
+             difficulty: .easy,
+             questions: QuizQuestion.sampleData,
+             timer: 300)
     }
 }

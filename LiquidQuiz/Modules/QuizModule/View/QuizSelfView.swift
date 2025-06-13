@@ -12,10 +12,8 @@ struct QuizSelfView: View {
     @StateObject private var viewModel: QuizViewModel
     @Environment(\.dismiss) private var dismiss
     @Namespace private var namespace
-        
-    let mock = QuizQuestion.sampleData.first!
-    
-    init(quiz: [QuizQuestion]) {
+            
+    init(quiz: Quiz) {
         let viewModel = QuizViewModel(quiz: quiz)
         self._viewModel = StateObject(wrappedValue: viewModel)
     }
@@ -43,7 +41,7 @@ struct QuizSelfView: View {
                     }
                 }
                 .navigationBarBackButtonHidden()
-                .navigationTitle(Texts.QuizSelf.Toolbar.title)
+                .navigationTitle(viewModel.quiz.name)
                 .toolbarTitleDisplayMode(.inline)
         }
     }
@@ -58,8 +56,8 @@ struct QuizSelfView: View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(spacing: 40) {
                 QuizSelfQuestionTitle(
-                    format: mock.format,
-                    question: mock.question)
+                    format: viewModel.currentQuestion.format,
+                    question: viewModel.currentQuestion.question)
                 
                 optionButtons
             }
@@ -76,13 +74,13 @@ struct QuizSelfView: View {
     
     private var optionsView: some View {
         LazyVStack(spacing: 16) {
-            ForEach(mock.options, id: \.self) { option in
-                Text(option)
+            ForEach(viewModel.currentQuestion.options, id: \.id) { option in
+                Text(option.name)
                     .font(.title3)
                     .padding()
                     .frame(maxWidth: .infinity)
                 
-                    .glassEffect(.regular.interactive().tint(viewModel.optionColor(current: option, correct: mock.answer)))
+                    .glassEffect(.regular.interactive().tint(viewModel.optionColor(currentOption: option)))
                 
                     .onTapGesture {
                         guard viewModel.isSelectedAnswerEmpty else { return }
@@ -108,7 +106,7 @@ struct QuizSelfView: View {
             Image.QuizSelf.hint
         }
         .popover(isPresented: $viewModel.isShowingHintPopover) {
-            Text(mock.hint)
+            Text(viewModel.currentQuestion.hint)
                 .padding()
                 .presentationCompactAdaptation(.popover)
                 .lineLimit(0)
@@ -119,5 +117,5 @@ struct QuizSelfView: View {
 }
 
 #Preview {
-    QuizSelfView(quiz: QuizQuestion.sampleData)
+    QuizSelfView(quiz: Quiz.sampleData)
 }
