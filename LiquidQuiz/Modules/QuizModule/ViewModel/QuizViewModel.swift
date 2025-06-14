@@ -23,6 +23,10 @@ final class QuizViewModel: ObservableObject {
         quiz.questions[currentQuestionIndex]
     }
     
+    internal var quizCorrectAnswers: Int {
+        Int((Float(quiz.correctAnswers) / Float(totalQuestions)) * 100)
+    }
+    
     // MARK: - Selected Answer
         
     internal func isSelectedAnswerEmpty(for question: QuizQuestion) -> Bool {
@@ -34,6 +38,7 @@ final class QuizViewModel: ObservableObject {
         
         if let selectedAnswer = currentQuestion.selectedAnswer, selectedAnswer.isCorrect {
             increaseScore(in: currentQuestion.price)
+            quiz.increaseCorrectAnswers()
         }
     }
     
@@ -63,7 +68,7 @@ final class QuizViewModel: ObservableObject {
         quiz.questions.count
     }
     
-    private var isLastQuestion: Bool {
+    internal var isLastQuestion: Bool {
         currentQuestionIndex + 1 == totalQuestions
     }
     
@@ -93,6 +98,33 @@ final class QuizViewModel: ObservableObject {
     
     private func increaseScore(in value: Int) {
         quizScore += value
+    }
+    
+    // MARK: - Quiz Result Page Score
+    
+    @Published internal var timer: Timer? = nil
+    @Published internal var percent: Int = 0
+    
+    @Published internal var isShowingResultContent: Bool = false
+    
+    internal func scoreIncreasing() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.timer?.invalidate()
+            self.timer = Timer.scheduledTimer(withTimeInterval: 0.02, repeats: true) { timer in
+                
+                if self.percent < self.quizCorrectAnswers {
+                    withAnimation(.linear(duration: 0.02)) {
+                        self.percent += 1
+                    }
+                } else {
+                    timer.invalidate()
+                    self.timer = nil
+                    withAnimation(.spring(duration: 0.3)) {
+                        self.isShowingResultContent.toggle()
+                    }
+                }
+            }
+        }
     }
     
     // MARK: - Quiz Reset Dialog

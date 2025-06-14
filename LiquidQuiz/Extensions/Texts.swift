@@ -29,6 +29,10 @@ struct Texts {
         }
     }
     
+    enum QuizResults {
+        static let close = "Return"
+    }
+    
     enum Namespace {
         enum QuizGenerate {
             static let clear = "QuizGenerateClear"
@@ -41,6 +45,11 @@ struct Texts {
             static let option = "QuizSelfOption"
             static let explanation = "QuizSelfExplanation"
             static let container = "QuizSelfContainer"
+        }
+        
+        enum QuizResults {
+            static let score = "QuizResultsScore"
+            static let timer = "QuizResultsTimer"
         }
     }
 }

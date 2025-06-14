@@ -8,11 +8,60 @@
 import SwiftUI
 
 struct QuizSelfResultView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+
+    @StateObject private var viewModel: QuizViewModel
+    
+    @Environment(\.dismiss) private var dismiss
+    @Namespace private var namespace
+        
+    init(viewModel: QuizViewModel) {
+        self._viewModel = StateObject(wrappedValue: viewModel)
+    }
+    
+    internal var body: some View {
+        NavigationStack {
+            VStack {
+                percentScoreTimerView
+                if viewModel.isShowingResultContent {
+                    backButton
+                }
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+            
+            .padding(.horizontal)
+            .toolbarVisibility(.hidden, for: .navigationBar)
+        }
+    }
+    
+    private var percentScoreTimerView: some View {
+        VStack(spacing: 80) {
+            QuizSelfResultPercentView(viewModel: viewModel)
+            
+            if viewModel.isShowingResultContent {
+                QuizSelfTimerScoreView(namespace: namespace, viewModel: viewModel)
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+    }
+    
+    private var backButton: some View {
+        Button {
+            dismiss()
+        } label: {
+            Text(Texts.QuizResults.close)
+                .font(.title2)
+                .padding()
+                .frame(maxWidth: .infinity)
+        }
+        .buttonStyle(.glass)
+        .padding(.bottom)
+        .transition(.blurReplace)
     }
 }
 
 #Preview {
-    QuizSelfResultView()
+    let mock = Quiz.sampleData
+    let viewModel = QuizViewModel(quiz: mock)
+    
+    QuizSelfResultView(viewModel: viewModel)
 }

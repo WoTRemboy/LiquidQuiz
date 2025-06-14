@@ -20,6 +20,12 @@ struct Quiz: Codable {
         currentQuestionIndex += 1
     }
     
+    var correctAnswers: Int = 0
+    
+    mutating internal func increaseCorrectAnswers() {
+        correctAnswers += 1
+    }
+    
     enum CodingKeys: CodingKey {
         case name, difficulty
         case questions, timer

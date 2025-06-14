@@ -31,37 +31,17 @@ struct QuizSelfBottomBarButtons: View {
         HStack {
             closeButton
             timerView
-            forwardButton
+            if viewModel.isLastQuestion {
+                navigationButton
+            } else {
+                forwardButton
+            }
         }
     }
     
     private var closeButton: some View {
-        Button {
-            withAnimation {
-                viewModel.isShowingResetDialogToggle()
-            }
-        } label: {
-            Image.QuizSelf.close
-                .font(.title2)
-                .fontWeight(.medium)
-                .foregroundStyle(Color.red)
-                .padding()
-        }
-        .padding(.leading)
-        .buttonStyle(.glass)
-        
-        .confirmationDialog(
-            Texts.QuizSelf.ConfirmDialog.title,
-            isPresented: $viewModel.isShowingResetDialog.animation(),
-            titleVisibility: .visible
-        ) {
-            Button(role: .destructive) {
-                dismiss()
-            } label: {
-                Text(Texts.QuizSelf.ConfirmDialog.confirm)
-            }
-        } message: {
-            Text(Texts.QuizSelf.ConfirmDialog.message)
+        QuizSelfCloseButton(viewModel: viewModel) {
+            dismiss()
         }
     }
     
@@ -77,21 +57,34 @@ struct QuizSelfBottomBarButtons: View {
             .glassEffect(.regular.interactive())
     }
     
+    private var navigationButton: some View {
+        NavigationLink(destination: QuizSelfResultView(viewModel: viewModel)) {
+            forwardImage
+        }
+        .animation(.spring(duration: 0.3), value: viewModel.currentQuestion.selectedAnswer)
+        .buttonStyle(.glass)
+        .padding(.trailing)
+    }
+    
     private var forwardButton: some View {
         Button {
             withAnimation {
                 viewModel.nextQuestion()
             }
         } label: {
-            Image.QuizSelf.forward
-                .font(.title2)
-                .fontWeight(.medium)
-                .foregroundStyle(viewModel.nextQuestionColor)
-                .padding()
+            forwardImage
         }
         .animation(.spring(duration: 0.3), value: viewModel.currentQuestion.selectedAnswer)
         .buttonStyle(.glass)
         .padding(.trailing)
+    }
+    
+    private var forwardImage: some View {
+        Image.QuizSelf.forward
+            .font(.title2)
+            .fontWeight(.medium)
+            .foregroundStyle(viewModel.nextQuestionColor)
+            .padding()
     }
 }
 
