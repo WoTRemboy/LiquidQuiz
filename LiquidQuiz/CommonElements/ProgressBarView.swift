@@ -9,17 +9,12 @@ import SwiftUI
 
 struct ProgressBarView: View {
     
-    private let question: Int
-    private let total: Int
     private let progress: CGFloat
-    
     private let cornerRadius: CGFloat = 10
     private let offset: CGFloat = 8
     
-    init(current: Int, total: Int) {
-        self.question = current
-        self.total = total
-        self.progress = CGFloat(current) / CGFloat(total)
+    init(progress: Double) {
+        self.progress = CGFloat(progress)
     }
     
     internal var body: some View {
@@ -44,14 +39,22 @@ struct ProgressBarView: View {
     private func overlay(size: CGSize) -> some View {
         RoundedRectangle(cornerRadius: cornerRadius)
             .fill(.green)
-            .frame(width: progress * size.width - offset,
+            .frame(width: widthSetup(for: size),
                    height: size.height - offset)
             .padding(.horizontal, 4)
+    }
+    
+    private func widthSetup(for size: CGSize) -> CGFloat {
+        if progress > 0 {
+            return progress * size.width - offset
+        } else {
+            return 0
+        }
     }
 }
 
 #Preview {
-    ProgressBarView(current: 5, total: 10)
+    ProgressBarView(progress: 0.6)
         .frame(height: 20)
         .padding(.horizontal)
 }

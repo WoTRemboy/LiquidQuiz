@@ -29,12 +29,31 @@ struct Texts {
         }
     }
     
+    enum QuizResults {
+        static let close = "Return"
+    }
+    
+    enum Tabbar {
+        static let create = "Create"
+    }
+    
     enum Namespace {
         enum QuizGenerate {
             static let clear = "QuizGenerateClear"
             static let random = "QuizGenerateRandom"
             static let generate = "QuizGenerateGenerate"
             static let container = "QuizGenerateContainer"
+        }
+        
+        enum QuizSelf {
+            static let option = "QuizSelfOption"
+            static let explanation = "QuizSelfExplanation"
+            static let container = "QuizSelfContainer"
+        }
+        
+        enum QuizResults {
+            static let score = "QuizResultsScore"
+            static let timer = "QuizResultsTimer"
         }
     }
 }

@@ -26,4 +26,8 @@ extension Image {
         static let forward = Image(systemName: "arrow.forward")
         static let close = Image(systemName: "xmark")
     }
+    
+    enum Tabbar {
+        static let create = Image(systemName: "plus")
+    }
 }

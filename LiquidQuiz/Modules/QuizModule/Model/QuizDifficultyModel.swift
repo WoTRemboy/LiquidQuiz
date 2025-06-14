@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum QuizDifficulty: String, CaseIterable {
+enum QuizDifficulty: String, CaseIterable, Codable {
     case easy = "Easy"
     case normal = "Normal"
     case hard = "Hard"
