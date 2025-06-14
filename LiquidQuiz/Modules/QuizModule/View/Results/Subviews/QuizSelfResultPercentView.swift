@@ -20,7 +20,7 @@ struct QuizSelfResultPercentView: View {
     }
     
     private var percentLabel: some View {
-        Text("\(viewModel.percent)\(viewModel.isShowingResultContent ? "%" : "")")
+        Text("\(viewModel.correctAnswersPercent)\(viewModel.isShowingResultContent ? "%" : "")")
             .font(.system(size: 150))
             .fontWeight(.heavy)
         
@@ -29,14 +29,14 @@ struct QuizSelfResultPercentView: View {
             .frame(maxWidth: .infinity)
         
             .foregroundStyle(.secondary.opacity(0.5))
-            .contentTransition(.numericText(value: Double(viewModel.percent)))
+            .contentTransition(.numericText(value: Double(viewModel.correctAnswersPercent)))
         
             .onAppear {
                 viewModel.scoreIncreasing()
             }
             .onDisappear {
-                viewModel.timer?.invalidate()
-                viewModel.timer = nil
+                viewModel.percentCounterTimer?.invalidate()
+                viewModel.percentCounterTimer = nil
             }
     }
 }

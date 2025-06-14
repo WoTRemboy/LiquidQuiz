@@ -23,17 +23,23 @@ struct QuizSelfBottomBarButtons: View {
             }
             .padding(.bottom)
         }
+        .onAppear {
+            viewModel.startQuizTimer()
+        }
+        .onDisappear {
+            viewModel.stopQuizTimer()
+        }
+        .onChange(of: viewModel.isTimerFinished) { _, isFinished in
+            guard isFinished else { return }
+            appRouter.push(.quizResult(viewModel: viewModel), in: .create)
+        }
     }
     
     private var controllers: some View {
         HStack {
             closeButton
             timerView
-            if viewModel.isLastQuestion {
-                navigationButton
-            } else {
-                forwardButton
-            }
+            forwardButton
         }
     }
     
@@ -44,9 +50,12 @@ struct QuizSelfBottomBarButtons: View {
     }
     
     private var timerView: some View {
-        Text("10:00")
+        Text(viewModel.timeString)
             .font(.largeTitle)
             .fontWeight(.semibold)
+        
+            .animation(.default, value: viewModel.remainingTime)
+            .contentTransition(.numericText(countsDown: true))
         
             .padding(.horizontal)
             .frame(maxWidth: .infinity)
@@ -55,21 +64,12 @@ struct QuizSelfBottomBarButtons: View {
             .glassEffect(.regular.interactive())
     }
     
-    private var navigationButton: some View {
-        Button {
-            appRouter.push(.quizResult(viewModel: viewModel), in: .create)
-        } label: {
-            forwardImage
-        }
-        .animation(.spring(duration: 0.3), value: viewModel.currentQuestion.selectedAnswer)
-        .buttonStyle(.glass)
-        .padding(.trailing)
-    }
-    
     private var forwardButton: some View {
         Button {
             withAnimation {
-                viewModel.nextQuestion()
+                viewModel.nextQuestion() {
+                    appRouter.push(.quizResult(viewModel: viewModel), in: .create)
+                }
             }
         } label: {
             forwardImage

@@ -39,6 +39,6 @@ struct Quiz: Codable, Equatable, Hashable {
         Quiz(name: "Sample Quiz",
              difficulty: .easy,
              questions: QuizQuestion.sampleData,
-             timer: 300)
+             timer: 70)
     }
 }

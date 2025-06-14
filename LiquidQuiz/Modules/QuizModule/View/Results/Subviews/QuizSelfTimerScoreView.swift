@@ -36,7 +36,7 @@ struct QuizSelfTimerScoreView: View {
     }
     
     private var timerLabel: some View {
-        Text("10:00")
+        Text(viewModel.resultTimeString)
             .font(.title2)
             .padding()
             .glassEffect(.regular.interactive())

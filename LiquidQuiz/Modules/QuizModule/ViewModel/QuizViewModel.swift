@@ -17,6 +17,11 @@ final class QuizViewModel: ObservableObject {
     
     init(quiz: Quiz) {
         self.quiz = quiz
+        self.remainingTime = quiz.timer
+    }
+    
+    deinit {
+        stopQuizTimer()
     }
     
     internal var currentQuestion: QuizQuestion {
@@ -87,9 +92,55 @@ final class QuizViewModel: ObservableObject {
         }
     }
     
-    internal func nextQuestion() {
-        guard !isLastQuestion, currentQuestion.selectedAnswer != nil else { return }
-        quiz.increaseQuestionIndex()
+    internal func nextQuestion(action: () -> Void) {
+        guard currentQuestion.selectedAnswer != nil else { return }
+        if isLastQuestion {
+            action()
+        } else {
+            quiz.increaseQuestionIndex()
+        }
+    }
+    
+    // MARK: - Quiz Self Timer
+    
+    @Published internal var remainingTime: Int
+    @Published internal var isTimerFinished: Bool = false
+    private var countdownTimer: Timer?
+    
+    internal var timeString: String {
+        let minutes = remainingTime / 60
+        let seconds = remainingTime % 60
+        return String(format: "%02d:%02d", minutes, seconds)
+    }
+    
+    internal var resultTimeString: String {
+        let wasted = quiz.timer - remainingTime
+        let minutes = wasted / 60
+        let seconds = wasted % 60
+        return String(format: "%02d:%02d", minutes, seconds)
+    }
+    
+    internal func startQuizTimer() {
+        stopQuizTimer()
+        countdownTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in
+            guard let self = self else {
+                timer.invalidate()
+                return
+            }
+            if self.remainingTime > 0 {
+                self.remainingTime -= 1
+            } else {
+                self.isTimerFinished = true
+                timer.invalidate()
+                self.countdownTimer = nil
+            }
+        }
+    }
+    
+    internal func stopQuizTimer() {
+        countdownTimer?.invalidate()
+        countdownTimer = nil
+        isTimerFinished = false
     }
     
     // MARK: - Quiz Score
@@ -102,27 +153,27 @@ final class QuizViewModel: ObservableObject {
     
     // MARK: - Quiz Result Page Score
     
-    @Published internal var timer: Timer? = nil
-    @Published internal var percent: Int = 0
+    @Published internal var percentCounterTimer: Timer? = nil
+    @Published internal var correctAnswersPercent: Int = 0
     
     @Published internal var isShowingResultContent: Bool = false
     
     internal func scoreIncreasing() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { 
-            self.timer?.invalidate()
-            self.timer = Timer.scheduledTimer(withTimeInterval: 0.02, repeats: true) { [weak self] timer in
+            self.percentCounterTimer?.invalidate()
+            self.percentCounterTimer = Timer.scheduledTimer(withTimeInterval: 0.02, repeats: true) { [weak self] timer in
                 guard let self = self else {
                     timer.invalidate()
                     return
                 }
                 
-                if self.percent < self.quizCorrectAnswers {
+                if self.correctAnswersPercent < self.quizCorrectAnswers {
                     withAnimation(.linear(duration: 0.02)) {
-                        self.percent += 1
+                        self.correctAnswersPercent += 1
                     }
                 } else {
                     timer.invalidate()
-                    self.timer = nil
+                    self.percentCounterTimer = nil
                     withAnimation(.spring(duration: 0.3)) {
                         self.isShowingResultContent.toggle()
                     }
