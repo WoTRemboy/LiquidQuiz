@@ -10,7 +10,6 @@ import SwiftUI
 struct QuizSelfView: View {
     
     @StateObject private var viewModel: QuizViewModel
-    @Environment(\.dismiss) private var dismiss
     @Namespace private var namespace
             
     init(quiz: Quiz) {
@@ -19,41 +18,37 @@ struct QuizSelfView: View {
     }
     
     internal var body: some View {
-        NavigationStack {
-            ZStack {
-                let questionID = viewModel.currentQuestion.id
-                scrollViewContent
-                    .id(questionID)
-                    .transition(.asymmetric(
-                        insertion: .move(edge: .trailing),
-                        removal: .move(edge: .leading)
-                    ))
-                    .animation(.default, value: questionID)
-            }
-            
-            .safeAreaInset(edge: .top) {
-                progressBar
-                    .padding(.vertical)
-            }
-            .safeAreaInset(edge: .bottom) {
-                QuizSelfBottomBarButtons(viewModel: viewModel) {
-                    dismiss()
-                }
-            }
-            .toolbar {
-                ToolbarItem {
-                    scoreView
-                }
-                ToolbarSpacer(.fixed)
-                
-                ToolbarItem {
-                    hintButton
-                }
-            }
-            .navigationBarBackButtonHidden()
-            .navigationTitle(viewModel.quiz.name)
-            .toolbarTitleDisplayMode(.inline)
+        ZStack {
+            let questionID = viewModel.currentQuestion.id
+            scrollViewContent
+                .id(questionID)
+                .transition(.asymmetric(
+                    insertion: .move(edge: .trailing),
+                    removal: .move(edge: .leading)
+                ))
+                .animation(.default, value: questionID)
         }
+        
+        .safeAreaInset(edge: .top) {
+            progressBar
+                .padding(.vertical)
+        }
+        .safeAreaInset(edge: .bottom) {
+            QuizSelfBottomBarButtons(viewModel: viewModel)
+        }
+        .toolbar {
+            ToolbarItem {
+                scoreView
+            }
+            ToolbarSpacer(.fixed)
+            
+            ToolbarItem {
+                hintButton
+            }
+        }
+        .navigationBarBackButtonHidden()
+        .navigationTitle(viewModel.quiz.name)
+        .toolbarTitleDisplayMode(.inline)
     }
     
     private var progressBar: some View {
@@ -95,10 +90,9 @@ struct QuizSelfView: View {
                 .lineLimit(0)
         }
     }
-    
-    
 }
 
 #Preview {
     QuizSelfView(quiz: Quiz.sampleData)
+        .environmentObject(AppRouter())
 }

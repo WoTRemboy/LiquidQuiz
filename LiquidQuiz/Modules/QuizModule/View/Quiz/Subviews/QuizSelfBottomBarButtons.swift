@@ -10,12 +10,10 @@ import SwiftUI
 struct QuizSelfBottomBarButtons: View {
     
     @StateObject private var viewModel: QuizViewModel
-    
-    private let dismiss: () -> Void
-    
-    init(viewModel: QuizViewModel, dismiss: @escaping () -> Void) {
+    @EnvironmentObject private var appRouter: AppRouter
+        
+    init(viewModel: QuizViewModel) {
         self._viewModel = StateObject(wrappedValue: viewModel)
-        self.dismiss = dismiss
     }
     
     internal var body: some View {
@@ -41,7 +39,7 @@ struct QuizSelfBottomBarButtons: View {
     
     private var closeButton: some View {
         QuizSelfCloseButton(viewModel: viewModel) {
-            dismiss()
+            appRouter.pop(in: .create)
         }
     }
     
@@ -58,7 +56,9 @@ struct QuizSelfBottomBarButtons: View {
     }
     
     private var navigationButton: some View {
-        NavigationLink(destination: QuizSelfResultView(viewModel: viewModel)) {
+        Button {
+            appRouter.push(.quizResult(viewModel: viewModel), in: .create)
+        } label: {
             forwardImage
         }
         .animation(.spring(duration: 0.3), value: viewModel.currentQuestion.selectedAnswer)
@@ -90,5 +90,6 @@ struct QuizSelfBottomBarButtons: View {
 
 #Preview {
     let viewModel = QuizViewModel(quiz: Quiz.sampleData)
-    return QuizSelfBottomBarButtons(viewModel: viewModel) {}
+    return QuizSelfBottomBarButtons(viewModel: viewModel)
+        .environmentObject(AppRouter())
 }

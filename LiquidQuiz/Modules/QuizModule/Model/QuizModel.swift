@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Quiz: Codable {
+struct Quiz: Codable, Equatable, Hashable {
     var id = UUID()
     var name: String
     var difficulty: QuizDifficulty
@@ -29,6 +29,10 @@ struct Quiz: Codable {
     enum CodingKeys: CodingKey {
         case name, difficulty
         case questions, timer
+    }
+    
+    static func == (lhs: Quiz, rhs: Quiz) -> Bool {
+        lhs.id == rhs.id
     }
     
     static internal var sampleData: Quiz {

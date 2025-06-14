@@ -15,6 +15,10 @@
 		634B81B92DFD693300DA9436 /* QuizSelfCloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634B81B82DFD693300DA9436 /* QuizSelfCloseButton.swift */; };
 		634B81BC2DFD6CA700DA9436 /* QuizSelfTimerScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634B81BB2DFD6CA700DA9436 /* QuizSelfTimerScoreView.swift */; };
 		634B81BE2DFD713800DA9436 /* QuizSelfResultPercentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634B81BD2DFD713800DA9436 /* QuizSelfResultPercentView.swift */; };
+		634B81C12DFD75BD00DA9436 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634B81C02DFD75BB00DA9436 /* AppRouter.swift */; };
+		634B81C32DFD78E500DA9436 /* DestinationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634B81C22DFD78E500DA9436 /* DestinationFactory.swift */; };
+		634B81C72DFD797000DA9436 /* CreateTabDestinationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634B81C62DFD796800DA9436 /* CreateTabDestinationFactory.swift */; };
+		634B81C92DFD7C8100DA9436 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634B81C82DFD7C8100DA9436 /* ContentView.swift */; };
 		63688C452DFB692500EE06EB /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63688C442DFB692500EE06EB /* ProgressBarView.swift */; };
 		6372AEAE2DFCAF64001E2F68 /* QuizSelfResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6372AEAD2DFCAF64001E2F68 /* QuizSelfResultView.swift */; };
 		6374EF3B2DFC3A7600642D1A /* CreateQuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6374EF3A2DFC3A7000642D1A /* CreateQuizViewModel.swift */; };
@@ -51,6 +55,10 @@
 		634B81B82DFD693300DA9436 /* QuizSelfCloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizSelfCloseButton.swift; sourceTree = "<group>"; };
 		634B81BB2DFD6CA700DA9436 /* QuizSelfTimerScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizSelfTimerScoreView.swift; sourceTree = "<group>"; };
 		634B81BD2DFD713800DA9436 /* QuizSelfResultPercentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizSelfResultPercentView.swift; sourceTree = "<group>"; };
+		634B81C02DFD75BB00DA9436 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
+		634B81C22DFD78E500DA9436 /* DestinationFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationFactory.swift; sourceTree = "<group>"; };
+		634B81C62DFD796800DA9436 /* CreateTabDestinationFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTabDestinationFactory.swift; sourceTree = "<group>"; };
+		634B81C82DFD7C8100DA9436 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		63688C442DFB692500EE06EB /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
 		6372AEAD2DFCAF64001E2F68 /* QuizSelfResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizSelfResultView.swift; sourceTree = "<group>"; };
 		6374EF3A2DFC3A7000642D1A /* CreateQuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateQuizViewModel.swift; sourceTree = "<group>"; };
@@ -107,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				63203FD42DF983BF0064488F /* Application */,
+				634B81BF2DFD75AF00DA9436 /* Router */,
 				63203FD52DF983C90064488F /* Modules */,
 				634AC53C2DFC219A00C31DA0 /* CommonElements */,
 				63DB09812DF9A38E00A58493 /* Extensions */,
@@ -169,6 +178,25 @@
 				634B81BB2DFD6CA700DA9436 /* QuizSelfTimerScoreView.swift */,
 			);
 			path = Subviews;
+			sourceTree = "<group>";
+		};
+		634B81BF2DFD75AF00DA9436 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				634B81C02DFD75BB00DA9436 /* AppRouter.swift */,
+				634B81C82DFD7C8100DA9436 /* ContentView.swift */,
+				634B81C22DFD78E500DA9436 /* DestinationFactory.swift */,
+				634B81C42DFD794900DA9436 /* DestinationFactories */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		634B81C42DFD794900DA9436 /* DestinationFactories */ = {
+			isa = PBXGroup;
+			children = (
+				634B81C62DFD796800DA9436 /* CreateTabDestinationFactory.swift */,
+			);
+			path = DestinationFactories;
 			sourceTree = "<group>";
 		};
 		6372AEAB2DFCAF46001E2F68 /* Quiz */ = {
@@ -378,6 +406,7 @@
 			files = (
 				63F221182DFC447600B86071 /* QuizQuestionModel.swift in Sources */,
 				63203FD32DF9825F0064488F /* LiquidQuizApp.swift in Sources */,
+				634B81C92DFD7C8100DA9436 /* ContentView.swift in Sources */,
 				63D969942DF9E942008DE1F8 /* RandomThemeModel.swift in Sources */,
 				6332A0062DF996480020252D /* CreateQuizView.swift in Sources */,
 				634B81BC2DFD6CA700DA9436 /* QuizSelfTimerScoreView.swift in Sources */,
@@ -389,6 +418,7 @@
 				63D45A212DF9DDA60065EC65 /* QuizViewModel.swift in Sources */,
 				63688C452DFB692500EE06EB /* ProgressBarView.swift in Sources */,
 				63DB09832DF9A3B100A58493 /* Texts.swift in Sources */,
+				634B81C32DFD78E500DA9436 /* DestinationFactory.swift in Sources */,
 				634AC5A52DFC2D6F00C31DA0 /* QuizSelfQuestionTitle.swift in Sources */,
 				6372AEAE2DFCAF64001E2F68 /* QuizSelfResultView.swift in Sources */,
 				63D45A1E2DF9D12C0065EC65 /* ColorExtension.swift in Sources */,
@@ -401,8 +431,10 @@
 				63F2211A2DFC473A00B86071 /* QuizOptionModel.swift in Sources */,
 				63D45A2B2DF9E4B70065EC65 /* GlassUnionButtons.swift in Sources */,
 				63F2211D2DFC4A5800B86071 /* QuizSelfOptionView.swift in Sources */,
+				634B81C72DFD797000DA9436 /* CreateTabDestinationFactory.swift in Sources */,
 				63DB09852DF9A6CA00A58493 /* ImageExtension.swift in Sources */,
 				63D45A262DF9E0EF0065EC65 /* CreateQuizControllersView.swift in Sources */,
+				634B81C12DFD75BD00DA9436 /* AppRouter.swift in Sources */,
 				63D45A232DF9DFF30065EC65 /* CountRangeModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,8 +10,8 @@ import SwiftUI
 struct QuizSelfResultView: View {
 
     @StateObject private var viewModel: QuizViewModel
+    @EnvironmentObject private var appRouter: AppRouter
     
-    @Environment(\.dismiss) private var dismiss
     @Namespace private var namespace
         
     init(viewModel: QuizViewModel) {
@@ -19,18 +19,16 @@ struct QuizSelfResultView: View {
     }
     
     internal var body: some View {
-        NavigationStack {
-            VStack {
-                percentScoreTimerView
-                if viewModel.isShowingResultContent {
-                    backButton
-                }
+        VStack {
+            percentScoreTimerView
+            if viewModel.isShowingResultContent {
+                backButton
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
-            
-            .padding(.horizontal)
-            .toolbarVisibility(.hidden, for: .navigationBar)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+        
+        .padding(.horizontal)
+        .toolbarVisibility(.hidden, for: .navigationBar)
     }
     
     private var percentScoreTimerView: some View {
@@ -46,7 +44,7 @@ struct QuizSelfResultView: View {
     
     private var backButton: some View {
         Button {
-            dismiss()
+            appRouter.popToRoot(in: .create)
         } label: {
             Text(Texts.QuizResults.close)
                 .font(.title2)

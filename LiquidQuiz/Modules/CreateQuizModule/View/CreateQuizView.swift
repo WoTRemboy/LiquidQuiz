@@ -10,24 +10,23 @@ import SwiftUI
 struct CreateQuizView: View {
     
     @EnvironmentObject private var viewModel: QuizViewModel
+    @EnvironmentObject private var appRouter: AppRouter
     @Namespace private var namespace
     
     internal var body: some View {
-        NavigationStack {
-            VStack(spacing: 50) {
-                Text(Texts.QuizGenerate.title)
-                    .font(.largeTitle)
-                    .fontWeight(.semibold)
-                
-                themeContent
-            }
-            .frame(maxHeight: .infinity)
+        VStack(spacing: 50) {
+            Text(Texts.QuizGenerate.title)
+                .font(.largeTitle)
+                .fontWeight(.semibold)
             
-            .safeAreaInset(edge: .bottom) {
-                generateButton
-                    .padding(.horizontal, 30)
-                    .padding(.vertical)
-            }
+            themeContent
+        }
+        .frame(maxHeight: .infinity)
+        
+        .safeAreaInset(edge: .bottom) {
+            generateButton
+                .padding(.horizontal, 30)
+                .padding(.vertical)
         }
     }
     
@@ -41,7 +40,9 @@ struct CreateQuizView: View {
     }
     
     private var generateButton: some View {
-        NavigationLink(destination: QuizSelfView(quiz: Quiz.sampleData)) {
+        Button {
+            appRouter.push(.quizSelf(quiz: Quiz.sampleData), in: .create)
+        } label: {
             Text(Texts.QuizGenerate.generate)
                 .font(.title2)
                 .frame(maxWidth: .infinity, maxHeight: 50)
@@ -54,4 +55,5 @@ struct CreateQuizView: View {
 #Preview {
     CreateQuizView()
         .environmentObject(CreateQuizViewModel())
+        .environmentObject(AppRouter())
 }

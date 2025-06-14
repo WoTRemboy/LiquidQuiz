@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct QuizOption: Codable, Equatable {
+struct QuizOption: Codable, Equatable, Hashable {
     var id = UUID()
     var name: String
     var isCorrect: Bool

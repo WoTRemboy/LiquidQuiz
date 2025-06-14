@@ -59,8 +59,9 @@ struct QuizSelfOptionView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding()
         
-            .glassEffect(.regular.tint(.orange.opacity(0.3)))
+            .glassEffect(.regular.tint(.orange.opacity(0.3)),in: .rect(cornerRadius: 10))
             .glassEffectID(Texts.Namespace.QuizSelf.explanation, in: namespace)
+            .padding(.horizontal)
     }
 }
 

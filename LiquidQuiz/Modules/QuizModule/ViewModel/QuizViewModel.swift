@@ -108,9 +108,13 @@ final class QuizViewModel: ObservableObject {
     @Published internal var isShowingResultContent: Bool = false
     
     internal func scoreIncreasing() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { 
             self.timer?.invalidate()
-            self.timer = Timer.scheduledTimer(withTimeInterval: 0.02, repeats: true) { timer in
+            self.timer = Timer.scheduledTimer(withTimeInterval: 0.02, repeats: true) { [weak self] timer in
+                guard let self = self else {
+                    timer.invalidate()
+                    return
+                }
                 
                 if self.percent < self.quizCorrectAnswers {
                     withAnimation(.linear(duration: 0.02)) {
@@ -143,3 +147,14 @@ final class QuizViewModel: ObservableObject {
         isShowingHintPopover.toggle()
     }
 }
+
+extension QuizViewModel: Equatable, Hashable {
+    static func == (lhs: QuizViewModel, rhs: QuizViewModel) -> Bool {
+        lhs === rhs
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(ObjectIdentifier(self))
+    }
+}
+

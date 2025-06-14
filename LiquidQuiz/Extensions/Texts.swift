@@ -33,6 +33,10 @@ struct Texts {
         static let close = "Return"
     }
     
+    enum Tabbar {
+        static let create = "Create"
+    }
+    
     enum Namespace {
         enum QuizGenerate {
             static let clear = "QuizGenerateClear"
