@@ -22,7 +22,12 @@ extension Image {
     }
     
     enum QuizSelf {
+        static let hint = Image(systemName: "questionmark.circle")
         static let forward = Image(systemName: "arrow.forward")
         static let close = Image(systemName: "xmark")
+    }
+    
+    enum Tabbar {
+        static let create = Image(systemName: "plus")
     }
 }

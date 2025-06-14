@@ -18,11 +18,23 @@ struct Texts {
     }
     
     enum QuizSelf {
+        enum Toolbar {
+            static let title = "Quiz Theme"
+            static let score = "Score"
+        }
         enum ConfirmDialog {
             static let title = "Exit the quiz?"
             static let message = "All progress will be lost."
             static let confirm = "Confirm"
         }
+    }
+    
+    enum QuizResults {
+        static let close = "Return"
+    }
+    
+    enum Tabbar {
+        static let create = "Create"
     }
     
     enum Namespace {
@@ -31,6 +43,17 @@ struct Texts {
             static let random = "QuizGenerateRandom"
             static let generate = "QuizGenerateGenerate"
             static let container = "QuizGenerateContainer"
+        }
+        
+        enum QuizSelf {
+            static let option = "QuizSelfOption"
+            static let explanation = "QuizSelfExplanation"
+            static let container = "QuizSelfContainer"
+        }
+        
+        enum QuizResults {
+            static let score = "QuizResultsScore"
+            static let timer = "QuizResultsTimer"
         }
     }
 }

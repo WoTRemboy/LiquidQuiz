@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GlassUnionButtons: View {
     
-    @EnvironmentObject private var viewModel: QuizViewModel
+    @EnvironmentObject private var viewModel: CreateQuizViewModel
     
     private let namespace: Namespace.ID
     
@@ -37,6 +37,7 @@ struct GlassUnionButtons: View {
                     viewModel.isSliderExpandedToggle()
                 }
             }
+            .sensoryFeedback(.impact, trigger: viewModel.isSliderExpanded)
     }
     
     @ViewBuilder
@@ -59,10 +60,11 @@ struct GlassUnionButtons: View {
                     viewModel.isDifficultyExpandedToggle()
                 }
             }
+            .sensoryFeedback(.impact, trigger: viewModel.isDifficultyExpanded)
     }
 }
 
 #Preview {
     GlassUnionButtons(namespace: Namespace().wrappedValue)
-        .environmentObject(QuizViewModel())
+        .environmentObject(CreateQuizViewModel())
 }
