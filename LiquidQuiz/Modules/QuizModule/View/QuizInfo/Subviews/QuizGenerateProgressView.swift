@@ -10,26 +10,26 @@ import SwiftUI
 struct QuizGenerateProgressView: View {
     
     @State private var isExpanded: Bool = false
+    @Binding private var manager: QuizGenerationManager?
     
     private let title: String
     private let namespace: Namespace.ID
     
-    init(title: String, namespace: Namespace.ID) {
+    init(title: String, namespace: Namespace.ID, manager: Binding<QuizGenerationManager?>) {
         self.title = title
         self.namespace = namespace
+        self._manager = manager
     }
     
     internal var body: some View {
-        renderProgressStack
-    }
-    
-    private var renderProgressStack: some View {
         GlassEffectContainer {
             VStack {
-                generateProgressView(type: .quizInfo)
-                    .onAppear {
-                        expandedToggle()
-                    }
+                if manager?.quiz == nil {
+                    generateProgressView(type: .quizInfo)
+                        .onAppear {
+                            expandedToggle()
+                        }
+                }
                 if isExpanded {
                     generateProgressView(type: .questions)
                 }
@@ -39,10 +39,11 @@ struct QuizGenerateProgressView: View {
         .padding(.horizontal)
     }
     
+    @ViewBuilder
     private func generateProgressView(type: QuizGeneration) -> some View {
         HStack {
             type.image
-            Text("Generating \(title) \(type.rawValue)...")
+            Text("\(Texts.QuizGenerate.generating) \(title) \(type.rawValue)...")
         }
         .font(.body)
         .padding()
@@ -56,7 +57,7 @@ struct QuizGenerateProgressView: View {
     }
     
     private func expandedToggle() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
             withAnimation(.snappy) {
                 isExpanded.toggle()
             }
@@ -65,5 +66,9 @@ struct QuizGenerateProgressView: View {
 }
 
 #Preview {
-    QuizGenerateProgressView(title: "Towns", namespace: Namespace().wrappedValue)
+    QuizGenerateProgressView(
+        title: "Towns",
+        namespace: Namespace().wrappedValue,
+        manager: .constant(QuizGenerationManager())
+    )
 }

@@ -15,6 +15,7 @@ struct Texts {
         static let generate = "Generate"
         static let slider = "Questions Count"
         static let difficulty = "Difficulty"
+        static let generating = "Generating"
     }
     
     enum QuizSelf {
@@ -43,6 +44,11 @@ struct Texts {
             static let random = "QuizGenerateRandom"
             static let generate = "QuizGenerateGenerate"
             static let container = "QuizGenerateContainer"
+            
+            static let description = "QuizGenerateDescription"
+            static let count = "QuizGenerateCount"
+            static let difficulty = "QuizGenerateDifficulty"
+            static let timer = "QuizGenerateTimer"
         }
         
         enum QuizSelf {

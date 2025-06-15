@@ -12,8 +12,11 @@ import FoundationModels
 struct Quiz: Codable, Equatable, Hashable {
     var id = UUID()
     
-    @Guide(description: "A specific test topic in 1-2 words.")
+    @Guide(description: "A specific test topic exactly in 1-2 words.")
     var name: String
+    
+    @Guide(description: "A short description of the test in 2-3 sentences. Explain what the test is about, which topics it covers, and how it can be useful for the participant.")
+    var description: String
     
     var difficulty: Quiz.Difficulty
     var questions: [QuizQuestion]
@@ -34,18 +37,16 @@ struct Quiz: Codable, Equatable, Hashable {
     }
     
     enum CodingKeys: CodingKey {
-        case name, difficulty
+        case name, description, difficulty
         case questions, timer
     }
     
-//    static func == (lhs: Quiz, rhs: Quiz) -> Bool {
-//        lhs.id == rhs.id
-//    }
-    
     static internal var sampleData: Quiz {
         Quiz(name: "Sample Quiz",
+             description: "A short description of the test in 2-3 sentences. Explain what the test is about, which topics it covers, and how it can be useful for the participant.",
              difficulty: .easy,
              questions: QuizQuestion.sampleData,
              timer: 70)
     }
 }
+

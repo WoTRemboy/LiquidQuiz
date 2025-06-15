@@ -27,16 +27,19 @@ struct QuizInfoView: View {
     internal var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             if let quiz = generateManager?.quiz {
+                QuizGenerateInfoView(quiz: quiz, namespace: namespace)
+            }
+            
+            if let questions = generateManager?.quiz?.questions {
                 
             } else {
-                QuizGenerateProgressView(title: title, namespace: namespace)
+                QuizGenerateProgressView(title: title, namespace: namespace, manager: $generateManager)
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .navigationTitle(title)
-        .toolbarTitleDisplayMode(.inlineLarge)
         .navigationBarBackButtonHidden()
         .animation(.easeInOut, value: requestedQuiz)
+        .animation(.easeInOut, value: generateManager?.quiz)
         
         .scrollBounceBehavior(.basedOnSize, axes: [.vertical])
         .safeAreaInset(edge: .bottom) {
@@ -64,7 +67,7 @@ struct QuizInfoView: View {
     func requestItinerary() async throws {
         requestedQuiz = true
         do {
-            try await generateManager?.generateQuiz(for: topic, count: 10, difficulty: .hard)
+            try await generateManager?.generateQuiz(for: topic, count: count, difficulty: difficulty)
         } catch {
             print(error.localizedDescription)
 //            generateManager?.error = error
