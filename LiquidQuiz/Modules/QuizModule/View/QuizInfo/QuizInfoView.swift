@@ -9,7 +9,7 @@ import SwiftUI
 import FoundationModels
 
 struct QuizInfoView: View {
-    @State private var requestedQuiz: Bool = false
+    @State private var isResponding: Bool = false
     @State private var generateManager: QuizGenerationManager?
     
     @Namespace private var namespace
@@ -31,17 +31,34 @@ struct QuizInfoView: View {
             }
             
             if let questions = generateManager?.quiz?.questions {
-                
-            } else {
-                QuizGenerateProgressView(title: title, namespace: namespace, manager: $generateManager)
+                segmentLabel
+                ForEach(questions) { question in
+                    LazyVStack {
+                        QuizGenerateQuestionView(
+                            question: question,
+                            namespace: namespace)
+                    }
+                }
             }
+            
+            QuizGenerateProgressView(
+                title: title,
+                namespace: namespace,
+                manager: $generateManager,
+                isResponding: $isResponding)
+            .padding(.top, 10)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .scrollBounceBehavior(.basedOnSize, axes: [.vertical])
+        
+        .navigationTitle(title)
+        .toolbarTitleDisplayMode(.inlineLarge)
         .navigationBarBackButtonHidden()
-        .animation(.easeInOut, value: requestedQuiz)
+        
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        
+        .animation(.easeInOut, value: isResponding)
         .animation(.easeInOut, value: generateManager?.quiz)
         
-        .scrollBounceBehavior(.basedOnSize, axes: [.vertical])
         .safeAreaInset(edge: .bottom) {
             Button {
                 Task {
@@ -50,27 +67,36 @@ struct QuizInfoView: View {
             } label: {
                 Text("Begin")
             }
-            .disabled(requestedQuiz)
+            .disabled(isResponding)
         }
         .task {
             generateManager = QuizGenerationManager()
         }
     }
     
+    private var segmentLabel: some View {
+        Text(Texts.QuizGenerate.roadmap)
+            .font(.title)
+            .fontWeight(.bold)
+        
+            .padding([.horizontal])
+            .frame(maxWidth: .infinity, alignment: .leading)
+    }
+    
     private var title: String {
         if let quiz = generateManager?.quiz, let title = quiz.name {
             return title
         }
-        return topic
+        return String()
     }
     
-    func requestItinerary() async throws {
-        requestedQuiz = true
+    private func requestItinerary() async throws {
+        isResponding = true
         do {
             try await generateManager?.generateQuiz(for: topic, count: count, difficulty: difficulty)
+            isResponding = false
         } catch {
             print(error.localizedDescription)
-//            generateManager?.error = error
         }
     }
 }

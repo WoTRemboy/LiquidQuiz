@@ -33,7 +33,7 @@ final class QuizGenerationManager {
         let stream = session.streamResponse(generating: Quiz.self) {
             """
             Generate a quiz where the topic is \(name). 
-            - Include exactly \(count) questions.
+            - Include exactly \(count) questions. Not less, not more.
             - Start diffculty is \(difficulty.rawValue).
             - Keep everything in the same language as the topic.
             """

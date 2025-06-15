@@ -10,27 +10,29 @@ import SwiftUI
 struct QuizGenerateProgressView: View {
     
     @State private var isExpanded: Bool = false
+    @Binding private var isResponding: Bool
     @Binding private var manager: QuizGenerationManager?
     
     private let title: String
     private let namespace: Namespace.ID
     
-    init(title: String, namespace: Namespace.ID, manager: Binding<QuizGenerationManager?>) {
+    init(title: String, namespace: Namespace.ID, manager: Binding<QuizGenerationManager?>, isResponding: Binding<Bool>) {
         self.title = title
         self.namespace = namespace
         self._manager = manager
+        self._isResponding = isResponding
     }
     
     internal var body: some View {
         GlassEffectContainer {
             VStack {
-                if manager?.quiz == nil {
+                if manager?.quiz?.difficulty == nil {
                     generateProgressView(type: .quizInfo)
                         .onAppear {
                             expandedToggle()
                         }
                 }
-                if isExpanded {
+                if isExpanded, isResponding {
                     generateProgressView(type: .questions)
                 }
             }
@@ -69,6 +71,7 @@ struct QuizGenerateProgressView: View {
     QuizGenerateProgressView(
         title: "Towns",
         namespace: Namespace().wrappedValue,
-        manager: .constant(QuizGenerationManager())
+        manager: .constant(QuizGenerationManager()),
+        isResponding: .constant(true)
     )
 }

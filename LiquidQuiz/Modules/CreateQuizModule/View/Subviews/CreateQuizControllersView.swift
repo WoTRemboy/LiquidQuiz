@@ -33,8 +33,8 @@ struct CreateQuizControllersView: View {
     
     private var questionCountSlider: some View {
         Slider(value: $viewModel.questionCount.animation(),
-               in: 1...30,
-               step: 5) {
+               in: 1...6,
+               step: 1) {
             Text(Texts.QuizGenerate.slider)
         } minimumValueLabel: {
             Text(viewModel.questionCountRange(for: .begin))

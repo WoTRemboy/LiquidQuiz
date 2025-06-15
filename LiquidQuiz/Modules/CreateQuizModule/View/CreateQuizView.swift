@@ -43,7 +43,7 @@ struct CreateQuizView: View {
         Button {
             appRouter.push(.quizInfo(
                 topic: viewModel.quizTopic,
-                count: viewModel.totalQuestions,
+                count: Int(viewModel.questionCount),
                 difficulty: viewModel.quizDifficulty),
                            in: .create)
         } label: {

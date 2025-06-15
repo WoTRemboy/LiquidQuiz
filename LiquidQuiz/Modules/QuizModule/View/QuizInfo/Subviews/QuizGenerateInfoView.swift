@@ -21,9 +21,6 @@ struct QuizGenerateInfoView: View {
     internal var body: some View {
         GlassEffectContainer {
             VStack(spacing: 20) {
-                if let title = quiz.name {
-                    sectionLabel(content: title)
-                }
                 if let description = quiz.description {
                     descriptionLabel(content: description)
                 }

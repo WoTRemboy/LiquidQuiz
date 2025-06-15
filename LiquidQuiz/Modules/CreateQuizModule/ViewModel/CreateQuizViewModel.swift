@@ -29,7 +29,7 @@ final class CreateQuizViewModel: ObservableObject {
     // MARK: - Questions Count
     
     @Published internal var quizQuestions: [QuizQuestion] = QuizQuestion.sampleData
-    @Published internal var questionCount: Double = 10.0
+    @Published internal var questionCount: Double = 3.0
     
     internal var totalQuestions: Int {
         quizQuestions.count

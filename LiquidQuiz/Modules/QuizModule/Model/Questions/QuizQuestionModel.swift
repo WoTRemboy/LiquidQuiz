@@ -18,6 +18,9 @@ struct QuizQuestion: Identifiable, Codable, Hashable {
     @Guide(description: "A question about an interesting fact that corresponds to the test topic.")
     var question: String
     
+    @Guide(description: "A short clarification of the question exactly in 1-3 words. Not a question.")
+    var title: String
+    
     @Guide(description: "Possible answers to a question where there is only one correct answer.", .count(2...4))
     var options: [QuizOption]
     
@@ -41,7 +44,8 @@ struct QuizQuestion: Identifiable, Codable, Hashable {
     }
     
     enum CodingKeys: CodingKey {
-        case question, format, options
+        case question, format
+        case title, options
         case price, hint, explanation
     }
 }
@@ -51,6 +55,7 @@ extension QuizQuestion {
         let first = QuizQuestion(
             format: "Fill in the black",
             question: "Grandma knows lots of tales, so why don't you ask her to ___?",
+            title: "Tell a story",
             options: [
                 QuizOption(name: "tell you a story", isCorrect: true),
                 QuizOption(name: "read the menu", isCorrect: false),
@@ -64,6 +69,7 @@ extension QuizQuestion {
         let second = QuizQuestion(
             format: "Complete the sentence",
             question: "Where do you live?",
+            title: "Place",
             options: [
                 QuizOption(name: "Moscow", isCorrect: false),
                 QuizOption(name: "Saint Petersburg", isCorrect: true),
@@ -77,6 +83,7 @@ extension QuizQuestion {
         let third = QuizQuestion(
             format: "Fill in the black",
             question: "Grandma knows lots of tales, so why don't you ask her to ___?",
+            title: "Tell a story",
             options: [
                 QuizOption(name: "tell you a story", isCorrect: true),
                 QuizOption(name: "read the menu", isCorrect: false),
