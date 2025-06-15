@@ -6,16 +6,28 @@
 //
 
 import Foundation
+import FoundationModels
 
+@Generable
 struct QuizQuestion: Identifiable, Codable, Hashable {
     var id = UUID()
-    var question: String
+    
+    @Guide(description: "The format of the question that corresponds to the test topic.", .anyOf(QuizQuestion.Format.allCases.map(\.rawValue)))
     var format: String
     
+    @Guide(description: "A question about an interesting fact that corresponds to the test topic.")
+    var question: String
+    
+    @Guide(description: "Possible answers to a question where there is only one correct answer.", .count(2...4))
     var options: [QuizOption]
+    
+    @Guide(description: "A reward for correct answer. The more difficult the question, the higher the value.", .range(10...100))
     var price: Int
     
+    @Guide(description: "A short, concise hint for the answer, no more than 200 characters.")
     var hint: String
+    
+    @Guide(description: "A short explanation of the correct answer to the question.")
     var explanation: String
     
     var selectedAnswer: QuizOption? = nil
@@ -37,8 +49,8 @@ struct QuizQuestion: Identifiable, Codable, Hashable {
 extension QuizQuestion {
     internal static var sampleData: [QuizQuestion] {
         let first = QuizQuestion(
-            question: "Grandma knows lots of tales, so why don't you ask her to ___?",
             format: "Fill in the black",
+            question: "Grandma knows lots of tales, so why don't you ask her to ___?",
             options: [
                 QuizOption(name: "tell you a story", isCorrect: true),
                 QuizOption(name: "read the menu", isCorrect: false),
@@ -50,8 +62,8 @@ extension QuizQuestion {
             explanation: "What's your name.")
         
         let second = QuizQuestion(
-            question: "Where do you live?",
             format: "Complete the sentence",
+            question: "Where do you live?",
             options: [
                 QuizOption(name: "Moscow", isCorrect: false),
                 QuizOption(name: "Saint Petersburg", isCorrect: true),
@@ -63,8 +75,8 @@ extension QuizQuestion {
             explanation: "Your hometown.")
         
         let third = QuizQuestion(
-            question: "Grandma knows lots of tales, so why don't you ask her to ___?",
             format: "Fill in the black",
+            question: "Grandma knows lots of tales, so why don't you ask her to ___?",
             options: [
                 QuizOption(name: "tell you a story", isCorrect: true),
                 QuizOption(name: "read the menu", isCorrect: false),

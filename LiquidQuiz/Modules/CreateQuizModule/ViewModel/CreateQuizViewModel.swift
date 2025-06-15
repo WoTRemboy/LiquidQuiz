@@ -50,9 +50,9 @@ final class CreateQuizViewModel: ObservableObject {
     
     // MARK: - Quiz Difficulty
     
-    @Published internal var quizDifficulty: QuizDifficulty = .normal
+    @Published internal var quizDifficulty: Quiz.Difficulty = .normal
     
-    internal func setQuizDifficulty(to difficulty: QuizDifficulty) {
+    internal func setQuizDifficulty(to difficulty: Quiz.Difficulty) {
         quizDifficulty = difficulty
         isDifficultyExpandedToggle()
     }

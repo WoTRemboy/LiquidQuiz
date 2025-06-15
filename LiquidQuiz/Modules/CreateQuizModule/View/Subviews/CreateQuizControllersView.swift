@@ -47,14 +47,14 @@ struct CreateQuizControllersView: View {
     private var difficultyPicker: some View {
         Picker(Texts.QuizGenerate.difficulty,
                selection: $viewModel.quizDifficulty.animation()) {
-            menuFactory(cases: QuizDifficulty.allCases)
+            menuFactory(cases: Quiz.Difficulty.allCases)
         }
                .pickerStyle(.segmented)
                .transition(.blurReplace)
     }
     
     @ViewBuilder
-    internal func menuFactory(cases: [QuizDifficulty]) -> some View {
+    internal func menuFactory(cases: [Quiz.Difficulty]) -> some View {
         ForEach(cases, id: \.self) { difficulty in
             Button {
                 viewModel.setQuizDifficulty(to: difficulty)
