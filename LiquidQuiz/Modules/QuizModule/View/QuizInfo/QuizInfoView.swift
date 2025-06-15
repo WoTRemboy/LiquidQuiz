@@ -11,66 +11,34 @@ import FoundationModels
 struct QuizInfoView: View {
     @State private var requestedQuiz: Bool = false
     @State private var generateManager: QuizGenerationManager?
+    
+    @Namespace private var namespace
+    
+    private let topic: String
+    private let count: Int
+    private let difficulty: Quiz.Difficulty
+    
+    init(topic: String, count: Int, difficulty: Quiz.Difficulty) {
+        self.topic = topic
+        self.count = count
+        self.difficulty = difficulty
+    }
         
-    var body: some View {
-        ScrollView {
+    internal var body: some View {
+        ScrollView(.vertical, showsIndicators: false) {
             if let quiz = generateManager?.quiz {
-                VStack {
-                    if let name = quiz.name {
-                        Text(name)
-                            .contentTransition(.opacity)
-                    }
-                    
-                    if let dif = quiz.difficulty {
-                        Text(dif.rawValue)
-                            .contentTransition(.opacity)
-                    }
-                    if let timer = quiz.timer {
-                        Text(String(timer))
-                            .contentTransition(.opacity)
-                    }
-                    
-                    if let questions = quiz.questions {
-                        ForEach(questions) { quiestion in
-                            if let format = quiestion.format {
-                                Text(format)
-                            }
-                            
-                            if let quest = quiestion.question {
-                                Text(quest)
-                            }
-                            
-                            if let price = quiestion.price {
-                                Text(String(price))
-                            }
-                            if let options = quiestion.options {
-                                ForEach(options, id: \.id) { option in
-                                    if let name = option.name {
-                                        Text(name)
-                                    }
-                                    
-                                    if let correct = option.isCorrect {
-                                        Text(String(correct))
-                                    }
-                                    
-                                }
-                            }
-                            
-                            if let explanation = quiestion.explanation {
-                                Text(explanation)
-                            }
-                            if let hint = quiestion.hint {
-                                Text(hint)
-                            }
-                            
-                        }
-                    }
-                    
-                }
-                .animation(.easeInOut, value: quiz)
+                
+            } else {
+                QuizGenerateProgressView(title: title, namespace: namespace)
             }
-            
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .navigationTitle(title)
+        .toolbarTitleDisplayMode(.inlineLarge)
+        .navigationBarBackButtonHidden()
+        .animation(.easeInOut, value: requestedQuiz)
+        
+        .scrollBounceBehavior(.basedOnSize, axes: [.vertical])
         .safeAreaInset(edge: .bottom) {
             Button {
                 Task {
@@ -86,10 +54,17 @@ struct QuizInfoView: View {
         }
     }
     
+    private var title: String {
+        if let quiz = generateManager?.quiz, let title = quiz.name {
+            return title
+        }
+        return topic
+    }
+    
     func requestItinerary() async throws {
         requestedQuiz = true
         do {
-            try await generateManager?.generateQuiz(for: "Towns", count: 10, difficulty: .hard)
+            try await generateManager?.generateQuiz(for: topic, count: 10, difficulty: .hard)
         } catch {
             print(error.localizedDescription)
 //            generateManager?.error = error
@@ -98,5 +73,5 @@ struct QuizInfoView: View {
 }
 
 #Preview {
-    QuizInfoView()
+    QuizInfoView(topic: "Towns", count: 3, difficulty: .easy)
 }

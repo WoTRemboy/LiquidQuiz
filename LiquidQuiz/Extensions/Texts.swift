@@ -19,7 +19,7 @@ struct Texts {
     
     enum QuizSelf {
         enum Toolbar {
-            static let title = "Quiz Theme"
+            static let title = "Quiz Topic"
             static let score = "Score"
         }
         enum ConfirmDialog {

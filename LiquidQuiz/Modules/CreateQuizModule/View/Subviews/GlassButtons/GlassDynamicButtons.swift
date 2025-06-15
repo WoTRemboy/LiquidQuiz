@@ -19,7 +19,7 @@ struct GlassDynamicButtons: View {
     
     internal var body: some View {
         HStack {
-            if !viewModel.isQuizThemeEmpty {
+            if !viewModel.isQuizTopicEmpty {
                 clearButtonView
             }
             randomButton
@@ -37,7 +37,7 @@ struct GlassDynamicButtons: View {
         
             .onTapGesture {
                 withAnimation {
-                    viewModel.setQuizTheme()
+                    viewModel.setQuizTopic()
                 }
             }
     }
@@ -52,7 +52,7 @@ struct GlassDynamicButtons: View {
         
             .onTapGesture {
                 withAnimation {
-                    viewModel.setQuizTheme(random: true)
+                    viewModel.setQuizTopic(random: true)
                 }
                 let impactMed = UIImpactFeedbackGenerator(style: .soft)
                 impactMed.impactOccurred()

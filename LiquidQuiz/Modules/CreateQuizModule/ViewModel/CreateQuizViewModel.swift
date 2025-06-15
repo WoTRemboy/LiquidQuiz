@@ -10,19 +10,19 @@ import Combine
 
 final class CreateQuizViewModel: ObservableObject {
     
-    // MARK: - Quiz Theme
+    // MARK: - Quiz Topic
     
-    @Published internal var quizTheme: String = String()
+    @Published internal var quizTopic: String = String()
     
-    internal var isQuizThemeEmpty: Bool {
-        quizTheme.isEmpty
+    internal var isQuizTopicEmpty: Bool {
+        quizTopic.isEmpty
     }
     
-    internal func setQuizTheme(_ theme: String = String(), random: Bool = false) {
-        if random, let randomTheme = MockTheme.allCases.randomElement() {
-            quizTheme = randomTheme.rawValue
+    internal func setQuizTopic(_ topic: String = String(), random: Bool = false) {
+        if random, let randomTopic = MockTopic.allCases.randomElement() {
+            quizTopic = randomTopic.rawValue
         } else {
-            quizTheme = theme
+            quizTopic = topic
         }
     }
     

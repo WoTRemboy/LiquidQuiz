@@ -19,6 +19,11 @@ extension Image {
             static let normal = Image(systemName: "dial.medium")
             static let hard = Image(systemName: "dial.high")
         }
+        
+        enum Progress {
+            static let info = Image(systemName: "sparkle.magnifyingglass")
+            static let questions = Image(systemName: "text.magnifyingglass")
+        }
     }
     
     enum QuizSelf {

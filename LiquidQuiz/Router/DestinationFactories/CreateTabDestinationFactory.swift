@@ -14,8 +14,8 @@ struct CreateTabDestinationFactory {
         case .create:
             CreateQuizView()
             
-        case .quizInfo:
-            QuizInfoView()
+        case .quizInfo(let topic, let count, let difficulty):
+            QuizInfoView(topic: topic, count: count, difficulty: difficulty)
                 .environmentObject(appRouter)
             
         case .quizSelf(let quiz):

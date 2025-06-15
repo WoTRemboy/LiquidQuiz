@@ -26,7 +26,7 @@ struct CreateQuizControllersView: View {
     
     private var textField: some View {
         TextField(Texts.QuizGenerate.textField,
-                  text: $viewModel.quizTheme.animation())
+                  text: $viewModel.quizTopic.animation())
         .padding()
         .glassEffect(.regular.interactive())
     }

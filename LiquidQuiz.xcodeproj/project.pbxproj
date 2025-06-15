@@ -29,6 +29,8 @@
 		63D141D82DFED7470009D7A4 /* QuizQuestionFormatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D141D72DFED73C0009D7A4 /* QuizQuestionFormatModel.swift */; };
 		63D142172DFEDC940009D7A4 /* QuizGenerationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D142162DFEDC8A0009D7A4 /* QuizGenerationManager.swift */; };
 		63D142192DFEE3FA0009D7A4 /* QuizInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D142182DFEE3FA0009D7A4 /* QuizInfoView.swift */; };
+		63D1421D2DFF1E6E0009D7A4 /* QuizGenerateProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D1421C2DFF1E6E0009D7A4 /* QuizGenerateProgressView.swift */; };
+		63D1421F2DFF1EFE0009D7A4 /* QuizGenerationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D1421E2DFF1EF90009D7A4 /* QuizGenerationModel.swift */; };
 		63D45A1C2DF9BC640065EC65 /* ShadowAnimatedGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D45A1B2DF9BC640065EC65 /* ShadowAnimatedGradient.swift */; };
 		63D45A1E2DF9D12C0065EC65 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D45A1D2DF9D12C0065EC65 /* ColorExtension.swift */; };
 		63D45A212DF9DDA60065EC65 /* QuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D45A202DF9DDA00065EC65 /* QuizViewModel.swift */; };
@@ -37,7 +39,7 @@
 		63D45A282DF9E26F0065EC65 /* GlassContainerButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D45A272DF9E26F0065EC65 /* GlassContainerButtons.swift */; };
 		63D45A2B2DF9E4B70065EC65 /* GlassUnionButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D45A2A2DF9E4B70065EC65 /* GlassUnionButtons.swift */; };
 		63D45A2D2DF9E5650065EC65 /* GlassDynamicButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D45A2C2DF9E5650065EC65 /* GlassDynamicButtons.swift */; };
-		63D969942DF9E942008DE1F8 /* RandomThemeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D969932DF9E93D008DE1F8 /* RandomThemeModel.swift */; };
+		63D969942DF9E942008DE1F8 /* RandomTopicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D969932DF9E93D008DE1F8 /* RandomTopicModel.swift */; };
 		63DB09802DF99D4B00A58493 /* LiquidAppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 63DB097F2DF99D4B00A58493 /* LiquidAppIcon.icon */; };
 		63DB09832DF9A3B100A58493 /* Texts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DB09822DF9A3AD00A58493 /* Texts.swift */; };
 		63DB09852DF9A6CA00A58493 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DB09842DF9A6AA00A58493 /* ImageExtension.swift */; };
@@ -72,6 +74,8 @@
 		63D141D72DFED73C0009D7A4 /* QuizQuestionFormatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizQuestionFormatModel.swift; sourceTree = "<group>"; };
 		63D142162DFEDC8A0009D7A4 /* QuizGenerationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizGenerationManager.swift; sourceTree = "<group>"; };
 		63D142182DFEE3FA0009D7A4 /* QuizInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizInfoView.swift; sourceTree = "<group>"; };
+		63D1421C2DFF1E6E0009D7A4 /* QuizGenerateProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizGenerateProgressView.swift; sourceTree = "<group>"; };
+		63D1421E2DFF1EF90009D7A4 /* QuizGenerationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizGenerationModel.swift; sourceTree = "<group>"; };
 		63D45A1B2DF9BC640065EC65 /* ShadowAnimatedGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowAnimatedGradient.swift; sourceTree = "<group>"; };
 		63D45A1D2DF9D12C0065EC65 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		63D45A202DF9DDA00065EC65 /* QuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewModel.swift; sourceTree = "<group>"; };
@@ -80,7 +84,7 @@
 		63D45A272DF9E26F0065EC65 /* GlassContainerButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassContainerButtons.swift; sourceTree = "<group>"; };
 		63D45A2A2DF9E4B70065EC65 /* GlassUnionButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassUnionButtons.swift; sourceTree = "<group>"; };
 		63D45A2C2DF9E5650065EC65 /* GlassDynamicButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassDynamicButtons.swift; sourceTree = "<group>"; };
-		63D969932DF9E93D008DE1F8 /* RandomThemeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomThemeModel.swift; sourceTree = "<group>"; };
+		63D969932DF9E93D008DE1F8 /* RandomTopicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomTopicModel.swift; sourceTree = "<group>"; };
 		63DB097F2DF99D4B00A58493 /* LiquidAppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = LiquidAppIcon.icon; sourceTree = "<group>"; };
 		63DB09822DF9A3AD00A58493 /* Texts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Texts.swift; sourceTree = "<group>"; };
 		63DB09842DF9A6AA00A58493 /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
@@ -246,7 +250,7 @@
 		6374EF372DFC3A1F00642D1A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				63D969932DF9E93D008DE1F8 /* RandomThemeModel.swift */,
+				63D969932DF9E93D008DE1F8 /* RandomTopicModel.swift */,
 				63D45A222DF9DFE90065EC65 /* CountRangeModel.swift */,
 			);
 			path = Model;
@@ -292,6 +296,7 @@
 			children = (
 				63C70D162DFA2A620081B4E2 /* QuizModel.swift */,
 				63C70D122DFA03A80081B4E2 /* QuizDifficultyModel.swift */,
+				63D1421E2DFF1EF90009D7A4 /* QuizGenerationModel.swift */,
 			);
 			path = Quiz;
 			sourceTree = "<group>";
@@ -318,6 +323,7 @@
 		63D1421B2DFF109D0009D7A4 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
+				63D1421C2DFF1E6E0009D7A4 /* QuizGenerateProgressView.swift */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -456,13 +462,14 @@
 				63F221182DFC447600B86071 /* QuizQuestionModel.swift in Sources */,
 				63203FD32DF9825F0064488F /* LiquidQuizApp.swift in Sources */,
 				634B81C92DFD7C8100DA9436 /* ContentView.swift in Sources */,
-				63D969942DF9E942008DE1F8 /* RandomThemeModel.swift in Sources */,
+				63D969942DF9E942008DE1F8 /* RandomTopicModel.swift in Sources */,
 				6332A0062DF996480020252D /* CreateQuizView.swift in Sources */,
 				634B81BC2DFD6CA700DA9436 /* QuizSelfTimerScoreView.swift in Sources */,
 				63C70D132DFA03B00081B4E2 /* QuizDifficultyModel.swift in Sources */,
 				63C70D172DFA2A640081B4E2 /* QuizModel.swift in Sources */,
 				63F221842DFC6D8B00B86071 /* QuizSelfQuestionContent.swift in Sources */,
 				634B81BE2DFD713800DA9436 /* QuizSelfResultPercentView.swift in Sources */,
+				63D1421F2DFF1EFE0009D7A4 /* QuizGenerationModel.swift in Sources */,
 				634AC53E2DFC21DC00C31DA0 /* QuizSelfBottomBarButtons.swift in Sources */,
 				63D45A212DF9DDA60065EC65 /* QuizViewModel.swift in Sources */,
 				63688C452DFB692500EE06EB /* ProgressBarView.swift in Sources */,
@@ -478,6 +485,7 @@
 				63D45A282DF9E26F0065EC65 /* GlassContainerButtons.swift in Sources */,
 				63C70D192DFA2B8C0081B4E2 /* QuizSelfView.swift in Sources */,
 				63F2211A2DFC473A00B86071 /* QuizOptionModel.swift in Sources */,
+				63D1421D2DFF1E6E0009D7A4 /* QuizGenerateProgressView.swift in Sources */,
 				63D45A2B2DF9E4B70065EC65 /* GlassUnionButtons.swift in Sources */,
 				63D142172DFEDC940009D7A4 /* QuizGenerationManager.swift in Sources */,
 				63F2211D2DFC4A5800B86071 /* QuizSelfOptionView.swift in Sources */,
@@ -640,7 +648,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.avoqode.LiquidQuiz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -681,7 +689,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.avoqode.LiquidQuiz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
