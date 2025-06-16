@@ -15,11 +15,22 @@ struct Texts {
         static let generate = "Generate"
         static let slider = "Questions Count"
         static let difficulty = "Difficulty"
+        
+        static let roadmap = "Roadmap"
+        static let price = "Price"
+        static let generating = "Generating"
+        static let begin = "Begin"
+        
+        enum GenerateErrorAlert {
+            static let title = "Error"
+            static let message = "The Quiz could not be generated. Please try again."
+            static let button = "Return"
+        }
     }
     
     enum QuizSelf {
         enum Toolbar {
-            static let title = "Quiz Theme"
+            static let title = "Quiz Topic"
             static let score = "Score"
         }
         enum ConfirmDialog {
@@ -43,6 +54,19 @@ struct Texts {
             static let random = "QuizGenerateRandom"
             static let generate = "QuizGenerateGenerate"
             static let container = "QuizGenerateContainer"
+            
+            static let description = "QuizGenerateDescription"
+            static let count = "QuizGenerateCount"
+            static let difficulty = "QuizGenerateDifficulty"
+            static let timer = "QuizGenerateTimer"
+            static let titlePrice = "QuizGenerateTitlePrice"
+            
+            static let titleFormat = "QuizGenerateTitleFormat"
+            static let questionPrice = "QuizGenerateQuestionPrice"
+            
+            static let backButton = "QuizGenerateBackButton"
+            static let regenerateButton = "QuizGenerateRegenerateButton"
+            static let beginButton = "QuizGenerateBeginButton"
         }
         
         enum QuizSelf {
