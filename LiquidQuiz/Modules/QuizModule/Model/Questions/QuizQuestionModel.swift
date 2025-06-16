@@ -21,7 +21,7 @@ struct QuizQuestion: Identifiable, Codable, Hashable {
     @Guide(description: "A short based idea or fact of the question exactly in 1-2 words. Not a question or answer format.")
     var title: String
     
-    @Guide(description: "Possible different answers to a question where there is only one correct answer. No multiple selection or answers. A quiz answer option must be 100% correct.", .count(2...4))
+    @Guide(description: "Possible different answers to a question where there is only one correct answer. The answer must be 100% correct to the question. No multiple selection or answers.", .count(2...4))
     var options: [QuizOption]
     
     @Guide(description: "A reward for correct answer. The more difficult the question, the higher the value.", .range(10...100))

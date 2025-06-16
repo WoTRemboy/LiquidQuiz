@@ -11,8 +11,11 @@ import FoundationModels
 struct QuizInfoView: View {
     @EnvironmentObject private var appRouter: AppRouter
     
-    @State private var isResponding: Bool = false
+    @State private var isResponding: Bool = true
+    @State private var showErrorAlert: Bool = false
+    
     @State private var generateManager: QuizGenerationManager?
+    @State private var generationTask: Task<Void, Never>? = nil
     
     @Namespace private var namespace
     
@@ -63,12 +66,24 @@ struct QuizInfoView: View {
         .safeAreaInset(edge: .bottom) {
             bottomButtonView
         }
+        
+        .onDisappear {
+            generationTask?.cancel()
+        }
+        .alert(Texts.QuizGenerate.GenerateErrorAlert.title, isPresented: $showErrorAlert, actions: {
+            Button(Texts.QuizGenerate.GenerateErrorAlert.button, role: .cancel) {
+                appRouter.pop(in: .create)
+            }
+        }, message: {
+            Text(Texts.QuizGenerate.GenerateErrorAlert.message)
+        })
+        
         .task {
             generateManager = QuizGenerationManager()
             generateManager?.prewarm()
             
             try? await Task.sleep(nanoseconds: 500_000_000)
-            Task {
+            generationTask = Task {
                 try? await requestItinerary()
             }
         }
@@ -88,13 +103,13 @@ struct QuizInfoView: View {
             guard let quiz = generateManager?.convertQuiz() else { return }
             appRouter.push(.quizSelf(quiz: quiz), in: .create)
         } regenerate: {
-            Task {
+            generationTask?.cancel()
+            generationTask = Task {
                 do {
                     try await requestItinerary()
                 } catch {
                     print(error)
                 }
-                
             }
         } dismiss: {
             appRouter.pop(in: .create)
@@ -103,8 +118,8 @@ struct QuizInfoView: View {
     }
     
     private var title: String {
-        if let quiz = generateManager?.quiz, let title = quiz.name {
-            return title
+        if let quiz = generateManager?.quiz, let origTitle = quiz.name {
+            return origTitle.replacingOccurrences(of: "Quiz", with: "").trimmingCharacters(in: .whitespacesAndNewlines)
         }
         return String()
     }
@@ -115,6 +130,7 @@ struct QuizInfoView: View {
             try await generateManager?.generateQuiz(for: topic, count: count, difficulty: difficulty)
             isResponding = false
         } catch {
+            showErrorAlert = true
             print(error)
         }
     }

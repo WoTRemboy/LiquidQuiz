@@ -47,6 +47,7 @@ struct QuizGenerationButtonsView: View {
                 .fontWeight(.medium)
                 .foregroundStyle(Color.red)
                 .padding()
+                .frame(height: 60)
         }
         .buttonStyle(.glass)
         .glassEffectID(Texts.Namespace.QuizGenerate.backButton, in: namespace)
@@ -61,6 +62,7 @@ struct QuizGenerationButtonsView: View {
                 .fontWeight(.medium)
                 .foregroundStyle(Color.orange)
                 .padding()
+                .frame(height: 60)
         }
         .buttonStyle(.glass)
         .glassEffectID(Texts.Namespace.QuizGenerate.regenerateButton, in: namespace)
@@ -73,7 +75,7 @@ struct QuizGenerationButtonsView: View {
             Text(Texts.QuizGenerate.begin)
                 .font(.title2)
                 .padding()
-                .frame(maxWidth: .infinity)
+                .frame(maxWidth: .infinity, maxHeight: 60)
         }
         .buttonStyle(.glass)
         .glassEffectID(Texts.Namespace.QuizGenerate.beginButton, in: namespace)

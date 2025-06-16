@@ -20,6 +20,12 @@ struct Texts {
         static let price = "Price"
         static let generating = "Generating"
         static let begin = "Begin"
+        
+        enum GenerateErrorAlert {
+            static let title = "Error"
+            static let message = "The Quiz could not be generated. Please try again."
+            static let button = "Return"
+        }
     }
     
     enum QuizSelf {
