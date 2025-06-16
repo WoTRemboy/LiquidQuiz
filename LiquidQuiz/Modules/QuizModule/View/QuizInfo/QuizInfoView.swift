@@ -9,6 +9,8 @@ import SwiftUI
 import FoundationModels
 
 struct QuizInfoView: View {
+    @EnvironmentObject private var appRouter: AppRouter
+    
     @State private var isResponding: Bool = false
     @State private var generateManager: QuizGenerationManager?
     
@@ -28,19 +30,18 @@ struct QuizInfoView: View {
         ScrollView(.vertical, showsIndicators: false) {
             if let quiz = generateManager?.quiz {
                 QuizGenerateInfoView(quiz: quiz, namespace: namespace)
-            }
-            
-            if let questions = generateManager?.quiz?.questions {
-                segmentLabel
-                ForEach(questions) { question in
-                    LazyVStack {
-                        QuizGenerateQuestionView(
-                            question: question,
-                            namespace: namespace)
+                
+                if let questions = quiz.questions {
+                    segmentLabel
+                    ForEach(questions) { question in
+                        LazyVStack {
+                            QuizGenerateQuestionView(
+                                question: question,
+                                namespace: namespace)
+                        }
                     }
                 }
             }
-            
             QuizGenerateProgressView(
                 title: title,
                 namespace: namespace,
@@ -60,17 +61,16 @@ struct QuizInfoView: View {
         .animation(.easeInOut, value: generateManager?.quiz)
         
         .safeAreaInset(edge: .bottom) {
-            Button {
-                Task {
-                    try? await requestItinerary()
-                }
-            } label: {
-                Text("Begin")
-            }
-            .disabled(isResponding)
+            bottomButtonView
         }
         .task {
             generateManager = QuizGenerationManager()
+            generateManager?.prewarm()
+            
+            try? await Task.sleep(nanoseconds: 500_000_000)
+            Task {
+                try? await requestItinerary()
+            }
         }
     }
     
@@ -81,6 +81,20 @@ struct QuizInfoView: View {
         
             .padding([.horizontal])
             .frame(maxWidth: .infinity, alignment: .leading)
+    }
+    
+    private var bottomButtonView: some View {
+        QuizGenerationButtonsView(namespace: namespace, isResponsing: $isResponding) {
+            guard let quiz = generateManager?.convertQuiz() else { return }
+            appRouter.push(.quizSelf(quiz: quiz), in: .create)
+        } regenerate: {
+            Task {
+                try? await requestItinerary()
+            }
+        } dismiss: {
+            appRouter.pop(in: .create)
+        }
+        .padding(.horizontal)
     }
     
     private var title: String {
@@ -103,4 +117,5 @@ struct QuizInfoView: View {
 
 #Preview {
     QuizInfoView(topic: "Towns", count: 3, difficulty: .easy)
+        .environmentObject(AppRouter())
 }

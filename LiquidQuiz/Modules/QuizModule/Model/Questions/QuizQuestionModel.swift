@@ -18,7 +18,7 @@ struct QuizQuestion: Identifiable, Codable, Hashable {
     @Guide(description: "A question about an interesting fact that corresponds to the test topic.")
     var question: String
     
-    @Guide(description: "A short clarification of the question exactly in 1-3 words. Not a question.")
+    @Guide(description: "A short based idea or fact of the question exactly in 1-3 words. Not a question or answer format.")
     var title: String
     
     @Guide(description: "Possible answers to a question where there is only one correct answer.", .count(2...4))

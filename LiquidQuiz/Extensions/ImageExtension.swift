@@ -14,6 +14,9 @@ extension Image {
         static let count = Image(systemName: "square.grid.2x2")
         static let difficulty = Image(systemName: "dial.medium")
         
+        static let back = Image(systemName: "xmark")
+        static let regenerate = Image(systemName: "arrow.clockwise")
+        
         enum Difficulty {
             static let easy = Image(systemName: "dial.low")
             static let normal = Image(systemName: "dial.medium")

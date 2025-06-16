@@ -45,7 +45,7 @@ struct QuizGenerateProgressView: View {
     private func generateProgressView(type: QuizGeneration) -> some View {
         HStack {
             type.image
-            Text("\(Texts.QuizGenerate.generating) \(title) \(type.rawValue)...")
+            Text("\(Texts.QuizGenerate.generating) \(titleContent) \(type.rawValue)...")
         }
         .font(.body)
         .padding()
@@ -64,6 +64,10 @@ struct QuizGenerateProgressView: View {
                 isExpanded.toggle()
             }
         }
+    }
+    
+    private var titleContent: String {
+        title.isEmpty ? Texts.QuizGenerate.title : title
     }
 }
 

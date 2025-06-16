@@ -32,6 +32,7 @@ struct GlassDynamicButtons: View {
             .foregroundStyle(Color.red)
         
             .padding()
+            .frame(width: 60, height: 60)
             .glassEffect(.regular.interactive())
             .glassEffectID(Texts.Namespace.QuizGenerate.clear, in: namespace)
         
@@ -46,6 +47,7 @@ struct GlassDynamicButtons: View {
         Image.QuizGenerate.random
             .font(.title2)
             .padding()
+            .frame(width: 60, height: 60)
         
             .glassEffect(.regular.interactive(), in: .circle)
             .glassEffectID(Texts.Namespace.QuizGenerate.random, in: namespace)

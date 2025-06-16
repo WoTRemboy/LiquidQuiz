@@ -19,6 +19,7 @@ struct Texts {
         static let roadmap = "Roadmap"
         static let price = "Price"
         static let generating = "Generating"
+        static let begin = "Begin"
     }
     
     enum QuizSelf {
@@ -56,6 +57,10 @@ struct Texts {
             
             static let titleFormat = "QuizGenerateTitleFormat"
             static let questionPrice = "QuizGenerateQuestionPrice"
+            
+            static let backButton = "QuizGenerateBackButton"
+            static let regenerateButton = "QuizGenerateRegenerateButton"
+            static let beginButton = "QuizGenerateBeginButton"
         }
         
         enum QuizSelf {

@@ -52,6 +52,7 @@ struct CreateQuizView: View {
                 .frame(maxWidth: .infinity, maxHeight: 50)
         }
         .buttonStyle(.glass)
+        .disabled(viewModel.isQuizTopicEmpty)
         .background(ShadowAnimatedGradient())
     }
 }

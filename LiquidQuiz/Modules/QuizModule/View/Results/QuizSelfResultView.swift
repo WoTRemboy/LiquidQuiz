@@ -27,7 +27,7 @@ struct QuizSelfResultView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
         
-        .padding(.horizontal)
+        .padding(.horizontal, 30)
         .toolbarVisibility(.hidden, for: .navigationBar)
     }
     
@@ -49,7 +49,7 @@ struct QuizSelfResultView: View {
             Text(Texts.QuizResults.close)
                 .font(.title2)
                 .padding()
-                .frame(maxWidth: .infinity)
+                .frame(maxWidth: .infinity, maxHeight: 50)
         }
         .buttonStyle(.glass)
         .padding(.bottom)

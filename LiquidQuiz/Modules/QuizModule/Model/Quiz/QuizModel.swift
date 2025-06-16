@@ -12,7 +12,7 @@ import FoundationModels
 struct Quiz: Codable, Equatable, Hashable {
     var id = UUID()
     
-    @Guide(description: "A specific test topic exactly in 1-2 words. No quiz word allowed.")
+    @Guide(description: "A specific test topic exactly in 1-2 words. The word quiz is prohibited. Only theme or topic.")
     var name: String
     
     @Guide(description: "A short description of the test in 2-3 sentences. Explain what the test is about, which topics it covers, and how it can be useful for the participant.")
@@ -21,7 +21,7 @@ struct Quiz: Codable, Equatable, Hashable {
     var difficulty: Quiz.Difficulty
     var questions: [QuizQuestion]
     
-    @Guide(description: "Duration of the test in seconds", .range(15...90))
+    @Guide(description: "Duration of the test in seconds", .range(30...90))
     var timer: Int
     
     var currentQuestionIndex: Int = 0

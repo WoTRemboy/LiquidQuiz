@@ -13,7 +13,7 @@ import FoundationModels
 final class QuizGenerationManager {
     private(set) var quiz: Quiz.PartiallyGenerated?
     private let session: LanguageModelSession
-        
+    
     init() {
         self.session = LanguageModelSession {
             "Your job is to create a comprehensive single-choice quiz on the given topic."
@@ -41,6 +41,52 @@ final class QuizGenerationManager {
         for try await partialQuiz in stream {
             quiz = partialQuiz
         }
+    }
+    
+    internal func convertQuiz() -> Quiz? {
+        guard let partialQuiz = quiz,
+              let name = partialQuiz.name,
+              let description = partialQuiz.description,
+              let difficulty = partialQuiz.difficulty,
+              let questions = partialQuiz.questions,
+              let timer = partialQuiz.timer
+        else { return nil }
+        
+        let fullQuestions: [QuizQuestion] = questions.compactMap { pq in
+            guard let options: [QuizOption] = pq.options?.compactMap({ opt in
+                guard let name = opt.name, let isCorrect = opt.isCorrect else { return nil }
+                return QuizOption(name: name, isCorrect: isCorrect)
+            }),
+                  let format = pq.format,
+                  let question = pq.question,
+                  let title = pq.title,
+                  let price = pq.price,
+                  let hint = pq.hint,
+                  let explanation = pq.explanation else { return nil }
+            
+            return QuizQuestion(
+                format: format,
+                question: question,
+                title: title,
+                options: options,
+                price: price,
+                hint: hint,
+                explanation: explanation,
+                selectedAnswer: nil
+            )
+        }
+        let convertedQuiz = Quiz(
+            name: name,
+            description: description,
+            difficulty: difficulty,
+            questions: fullQuestions,
+            timer: timer
+        )
+        return convertedQuiz
+    }
+    
+    internal func prewarm() {
+        session.prewarm()
     }
     
 }

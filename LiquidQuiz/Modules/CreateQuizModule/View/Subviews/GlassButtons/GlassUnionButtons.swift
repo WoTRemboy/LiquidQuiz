@@ -30,6 +30,7 @@ struct GlassUnionButtons: View {
             .contentTransition(.numericText(value: viewModel.questionCount))
         
             .padding()
+            .frame(width: 60, height: 60)
             .glassEffect(.regular.interactive())
         
             .onTapGesture {
@@ -53,6 +54,7 @@ struct GlassUnionButtons: View {
         viewModel.quizDifficulty.icon
             .font(.title2)
             .padding()
+            .frame(width: 60, height: 60)
             .glassEffect(.regular.interactive())
         
             .onTapGesture {
