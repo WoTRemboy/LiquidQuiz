@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CreateQuizView: View {
     
-    @EnvironmentObject private var viewModel: QuizViewModel
+    @EnvironmentObject private var viewModel: CreateQuizViewModel
     @EnvironmentObject private var appRouter: AppRouter
     @Namespace private var namespace
     
@@ -19,7 +19,7 @@ struct CreateQuizView: View {
                 .font(.largeTitle)
                 .fontWeight(.semibold)
             
-            themeContent
+            topicContent
         }
         .frame(maxHeight: .infinity)
         
@@ -30,7 +30,7 @@ struct CreateQuizView: View {
         }
     }
     
-    private var themeContent: some View {
+    private var topicContent: some View {
         VStack(spacing: 20) {
             CreateQuizControllersView()
             GlassContainerButtons(namespace: namespace)
@@ -41,13 +41,18 @@ struct CreateQuizView: View {
     
     private var generateButton: some View {
         Button {
-            appRouter.push(.quizSelf(quiz: Quiz.sampleData), in: .create)
+            appRouter.push(.quizInfo(
+                topic: viewModel.quizTopic,
+                count: Int(viewModel.questionCount),
+                difficulty: viewModel.quizDifficulty),
+                           in: .create)
         } label: {
             Text(Texts.QuizGenerate.generate)
                 .font(.title2)
                 .frame(maxWidth: .infinity, maxHeight: 50)
         }
         .buttonStyle(.glass)
+        .disabled(viewModel.isQuizTopicEmpty)
         .background(ShadowAnimatedGradient())
     }
 }

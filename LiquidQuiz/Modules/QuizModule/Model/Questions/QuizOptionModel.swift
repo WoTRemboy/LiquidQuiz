@@ -6,7 +6,9 @@
 //
 
 import Foundation
+import FoundationModels
 
+@Generable
 struct QuizOption: Codable, Equatable, Hashable {
     var id = UUID()
     var name: String

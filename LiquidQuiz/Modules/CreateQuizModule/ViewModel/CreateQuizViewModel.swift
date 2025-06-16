@@ -10,26 +10,26 @@ import Combine
 
 final class CreateQuizViewModel: ObservableObject {
     
-    // MARK: - Quiz Theme
+    // MARK: - Quiz Topic
     
-    @Published internal var quizTheme: String = String()
+    @Published internal var quizTopic: String = String()
     
-    internal var isQuizThemeEmpty: Bool {
-        quizTheme.isEmpty
+    internal var isQuizTopicEmpty: Bool {
+        quizTopic.isEmpty
     }
     
-    internal func setQuizTheme(_ theme: String = String(), random: Bool = false) {
-        if random, let randomTheme = MockTheme.allCases.randomElement() {
-            quizTheme = randomTheme.rawValue
+    internal func setQuizTopic(_ topic: String = String(), random: Bool = false) {
+        if random, let randomTopic = MockTopic.allCases.randomElement() {
+            quizTopic = randomTopic.rawValue
         } else {
-            quizTheme = theme
+            quizTopic = topic
         }
     }
     
     // MARK: - Questions Count
     
     @Published internal var quizQuestions: [QuizQuestion] = QuizQuestion.sampleData
-    @Published internal var questionCount: Double = 10.0
+    @Published internal var questionCount: Double = 3.0
     
     internal var totalQuestions: Int {
         quizQuestions.count
@@ -50,9 +50,9 @@ final class CreateQuizViewModel: ObservableObject {
     
     // MARK: - Quiz Difficulty
     
-    @Published internal var quizDifficulty: QuizDifficulty = .normal
+    @Published internal var quizDifficulty: Quiz.Difficulty = .normal
     
-    internal func setQuizDifficulty(to difficulty: QuizDifficulty) {
+    internal func setQuizDifficulty(to difficulty: Quiz.Difficulty) {
         quizDifficulty = difficulty
         isDifficultyExpandedToggle()
     }

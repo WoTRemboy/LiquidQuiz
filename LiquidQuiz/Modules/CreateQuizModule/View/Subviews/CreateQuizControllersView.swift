@@ -26,15 +26,15 @@ struct CreateQuizControllersView: View {
     
     private var textField: some View {
         TextField(Texts.QuizGenerate.textField,
-                  text: $viewModel.quizTheme.animation())
+                  text: $viewModel.quizTopic.animation())
         .padding()
         .glassEffect(.regular.interactive())
     }
     
     private var questionCountSlider: some View {
         Slider(value: $viewModel.questionCount.animation(),
-               in: 1...30,
-               step: 5) {
+               in: 1...6,
+               step: 1) {
             Text(Texts.QuizGenerate.slider)
         } minimumValueLabel: {
             Text(viewModel.questionCountRange(for: .begin))
@@ -47,14 +47,14 @@ struct CreateQuizControllersView: View {
     private var difficultyPicker: some View {
         Picker(Texts.QuizGenerate.difficulty,
                selection: $viewModel.quizDifficulty.animation()) {
-            menuFactory(cases: QuizDifficulty.allCases)
+            menuFactory(cases: Quiz.Difficulty.allCases)
         }
                .pickerStyle(.segmented)
                .transition(.blurReplace)
     }
     
     @ViewBuilder
-    internal func menuFactory(cases: [QuizDifficulty]) -> some View {
+    internal func menuFactory(cases: [Quiz.Difficulty]) -> some View {
         ForEach(cases, id: \.self) { difficulty in
             Button {
                 viewModel.setQuizDifficulty(to: difficulty)

@@ -21,7 +21,6 @@ struct ContentView: View {
         TabView(selection: $appRouter.selectedTab) {
             NavigationStack(path: bindingForTab(.create)) {
                 CreateQuizView()
-                    .environmentObject(CreateQuizViewModel())
                     .environmentObject(appRouter)
                 
                     .navigationDestination(for: AppRouter.Route.self) { route in

@@ -32,7 +32,8 @@ final class AppRouter: ObservableObject {
     }
     
     enum Route: Hashable {
-        case create, quizInfo
+        case create
+        case quizInfo(topic: String, count: Int, difficulty: Quiz.Difficulty)
         case quizSelf(quiz: Quiz)
         case quizResult(viewModel: QuizViewModel)
     }

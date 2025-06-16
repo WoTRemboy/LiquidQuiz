@@ -1,11 +1,11 @@
 //
-//  RandomThemeModel.swift
+//  RandomTopicModel.swift
 //  LiquidQuiz
 //
 //  Created by Roman Tverdokhleb on 11/06/2025.
 //
 
-enum MockTheme: String, CaseIterable {
+enum MockTopic: String, CaseIterable {
     case history = "History"
     case science = "Science"
     case nature = "Nature"
