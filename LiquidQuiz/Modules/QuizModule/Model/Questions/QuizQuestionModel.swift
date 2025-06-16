@@ -18,16 +18,16 @@ struct QuizQuestion: Identifiable, Codable, Hashable {
     @Guide(description: "A question about an interesting fact that corresponds to the test topic.")
     var question: String
     
-    @Guide(description: "A short based idea or fact of the question exactly in 1-3 words. Not a question or answer format.")
+    @Guide(description: "A short based idea or fact of the question exactly in 1-2 words. Not a question or answer format.")
     var title: String
     
-    @Guide(description: "Possible answers to a question where there is only one correct answer.", .count(2...4))
+    @Guide(description: "Possible different answers to a question where there is only one correct answer. No multiple selection or answers. A quiz answer option must be 100% correct.", .count(2...4))
     var options: [QuizOption]
     
     @Guide(description: "A reward for correct answer. The more difficult the question, the higher the value.", .range(10...100))
     var price: Int
     
-    @Guide(description: "A short, concise hint for the answer, no more than 200 characters.")
+    @Guide(description: "A short, concise hint for the answer, no more than 3 words.")
     var hint: String
     
     @Guide(description: "A short explanation of the correct answer to the question.")

@@ -61,7 +61,7 @@ struct QuizGenerateProgressView: View {
     private func expandedToggle() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
             withAnimation(.snappy) {
-                isExpanded.toggle()
+                isExpanded = true
             }
         }
     }

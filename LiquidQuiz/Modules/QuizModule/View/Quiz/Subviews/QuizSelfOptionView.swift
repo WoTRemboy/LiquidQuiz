@@ -38,6 +38,7 @@ struct QuizSelfOptionView: View {
             .padding()
             .frame(maxWidth: .infinity)
             .contentShape(.capsule)
+            .multilineTextAlignment(.center)
         
             .glassEffect(.regular.interactive().tint(viewModel.optionColor(question: question, currentOption: option)))
             .glassEffectID(Texts.Namespace.QuizSelf.option, in: namespace)

@@ -62,6 +62,7 @@ struct QuizGenerateQuestionView: View {
                 .font(.caption)
         }
         .padding(.trailing)
+        .transition(.blurReplace)
         .glassEffect(.regular)
         .glassEffectID(Texts.Namespace.QuizGenerate.questionPrice, in: namespace)
     }

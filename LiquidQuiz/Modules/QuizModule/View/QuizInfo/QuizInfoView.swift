@@ -89,12 +89,17 @@ struct QuizInfoView: View {
             appRouter.push(.quizSelf(quiz: quiz), in: .create)
         } regenerate: {
             Task {
-                try? await requestItinerary()
+                do {
+                    try await requestItinerary()
+                } catch {
+                    print(error)
+                }
+                
             }
         } dismiss: {
             appRouter.pop(in: .create)
         }
-        .padding(.horizontal)
+        .padding()
     }
     
     private var title: String {
@@ -110,7 +115,7 @@ struct QuizInfoView: View {
             try await generateManager?.generateQuiz(for: topic, count: count, difficulty: difficulty)
             isResponding = false
         } catch {
-            print(error.localizedDescription)
+            print(error)
         }
     }
 }
