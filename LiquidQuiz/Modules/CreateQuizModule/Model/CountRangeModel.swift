@@ -7,5 +7,5 @@
 
 enum CountRange: Double {
     case begin = 1.0
-    case end = 6.0
+    case end = 5.0
 }

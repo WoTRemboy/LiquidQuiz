@@ -21,7 +21,7 @@ struct Quiz: Codable, Equatable, Hashable {
     var difficulty: Quiz.Difficulty
     var questions: [QuizQuestion]
     
-    @Guide(description: "Duration of the test in seconds", .range(30...90))
+    @Guide(description: "Duration of the test in seconds. It MUST BE generated", .range(30...90))
     var timer: Int
     
     var currentQuestionIndex: Int = 0
