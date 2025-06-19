@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import FoundationModels
 
 final class CreateQuizViewModel: ObservableObject {
     
@@ -73,5 +74,48 @@ final class CreateQuizViewModel: ObservableObject {
     internal func isDifficultyExpandedToggle() {
         isDifficultyExpanded.toggle()
         isSliderExpanded = false
+    }
+    
+    // MARK: - Model Status Check
+    
+    private let model = SystemLanguageModel.default
+    
+    @Published internal var isErrorAlertShown: Bool = false
+    @Published internal var errorAlertContent: (title: String, content: String) = (String(), String())
+
+    internal func checkModelStatus(access: @escaping () -> Void) {
+        switch model.availability {
+        case .available:
+            access()
+        case .unavailable(.appleIntelligenceNotEnabled):
+            errorAlertSetup(for: .notEnabled)
+        case .unavailable(.modelNotReady):
+            errorAlertSetup(for: .notReady)
+        default:
+            errorAlertSetup(for: .notEligible)
+        }
+    }
+    
+    private func errorAlertSetup(for type: AIModelStatus) {
+        errorAlertContent.title = type.rawValue
+        errorAlertContent.content = type.message
+        isErrorAlertShown.toggle()
+    }
+    
+    private enum AIModelStatus: String {
+        case notEnabled = "AI Not Enabled"
+        case notReady = "Model Not Ready"
+        case notEligible = "Device Not Eligible"
+        
+        var message: String {
+            switch self {
+            case .notEnabled:
+                Texts.QuizGenerate.ModelStatusAlert.NotEnabled.message
+            case .notReady:
+                Texts.QuizGenerate.ModelStatusAlert.NotReady.message
+            case .notEligible:
+                Texts.QuizGenerate.ModelStatusAlert.NotEligible.message
+            }
+        }
     }
 }

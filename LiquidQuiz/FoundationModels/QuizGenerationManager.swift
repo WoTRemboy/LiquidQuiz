@@ -100,5 +100,4 @@ final class QuizGenerationManager {
     internal func prewarm() {
         session.prewarm()
     }
-    
 }
