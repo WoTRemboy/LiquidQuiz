@@ -21,6 +21,9 @@ Watch a [Demo](https://drive.google.com/drive/folders/1tFTSSXiGWhrctvX1X1N4dMh4_
 - Browse received quizzes and view quiz details
 - Each quiz includes a timer, description, and set of dynamic questions
 
+<img src="https://github.com/user-attachments/assets/ed6ed4c4-5f16-48c6-97d0-0b985996c23e" alt="Main Page" width="200" height="435">
+<img src="https://github.com/user-attachments/assets/90664da4-8406-4372-8ffc-fa48f80f4b6f" alt="Quiz Info" width="200" height="435">
+
 ### Quiz Taking Experience
 - Answer single or multiple-choice questions
 - Timer, progress bar, and score display during the quiz
@@ -28,9 +31,14 @@ Watch a [Demo](https://drive.google.com/drive/folders/1tFTSSXiGWhrctvX1X1N4dMh4_
 - Seamless navigation between questions with animated transitions
 - Immediate feedback on selected answers, with color-coded correctness
 
+<img src="https://github.com/user-attachments/assets/2306ae5e-5f36-4e27-9dc0-ac5f06250e1f" alt="Wrong Answer" width="200" height="435">
+<img src="https://github.com/user-attachments/assets/065cb231-85d2-41cb-b6f2-607cd7f4b894" alt="Correct Answer" width="200" height="435">
+
 ### Results & Review
 - Score and time statistics per quiz attempt
 - Animated result reveal and percent progress
+
+<img src="https://github.com/user-attachments/assets/917c8193-d2be-4a50-92f4-3c26fe3a7afa" alt="Results Page" width="200" height="435">
 
 ### Modern UI & Navigation
 - Built entirely with SwiftUI for smooth transitions and layouts
@@ -73,3 +81,11 @@ Example:
 internal func isShowingHintPopoverToggle() {
     isShowingHintPopover.toggle()
 }
+```
+
+<h2 id="requirements">Requirements ✅</h2>
+
+- Xcode 26.0+
+- Swift 5.9+
+- iOS 26.0+
+- Apple Intelligence Enabled
