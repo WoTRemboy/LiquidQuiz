@@ -21,6 +21,7 @@ Watch a [Demo](https://drive.google.com/drive/folders/1tFTSSXiGWhrctvX1X1N4dMh4_
 - Browse received quizzes and view quiz details
 - Each quiz includes a timer, description, and set of dynamic questions
 
+<img src="https://github.com/user-attachments/assets/50cfc95e-f8e0-4ed4-b46e-55d7b38029f7" alt="Quiz Generation Demo" width="200" height="435">
 <img src="https://github.com/user-attachments/assets/ed6ed4c4-5f16-48c6-97d0-0b985996c23e" alt="Main Page" width="200" height="435">
 <img src="https://github.com/user-attachments/assets/90664da4-8406-4372-8ffc-fa48f80f4b6f" alt="Quiz Info" width="200" height="435">
 
