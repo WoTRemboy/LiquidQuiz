@@ -22,7 +22,7 @@ struct Texts {
         static let begin = "Begin"
         
         enum GenerateErrorAlert {
-            static let title = "Error"
+            static let title = "Retry in 10 seconds"
             static let message = "The Quiz could not be generated. Please try again."
             static let button = "Return"
         }
