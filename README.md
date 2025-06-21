@@ -10,8 +10,6 @@ Watch a [Demo](https://drive.google.com/drive/folders/1tFTSSXiGWhrctvX1X1N4dMh4_
 - [Features](#features)
 - [Technologies](#technologies)
 - [Architecture](#architecture)
-- [Testing](#testing)
-- [Documentation](#documentation)
 - [Requirements](#requirements)
 
 <h2 id="features">Features ⚒️</h2>
@@ -32,6 +30,7 @@ Watch a [Demo](https://drive.google.com/drive/folders/1tFTSSXiGWhrctvX1X1N4dMh4_
 - Seamless navigation between questions with animated transitions
 - Immediate feedback on selected answers, with color-coded correctness
 
+<img src="https://github.com/user-attachments/assets/9b98a9a3-682e-4419-b01e-61229695f085" alt="Quiz Taking Demo" width="200" height="435">
 <img src="https://github.com/user-attachments/assets/2306ae5e-5f36-4e27-9dc0-ac5f06250e1f" alt="Wrong Answer" width="200" height="435">
 <img src="https://github.com/user-attachments/assets/065cb231-85d2-41cb-b6f2-607cd7f4b894" alt="Correct Answer" width="200" height="435">
 
@@ -39,12 +38,12 @@ Watch a [Demo](https://drive.google.com/drive/folders/1tFTSSXiGWhrctvX1X1N4dMh4_
 - Score and time statistics per quiz attempt
 - Animated result reveal and percent progress
 
+<img src="https://github.com/user-attachments/assets/fc805568-3bb2-441d-a354-748b6a4b410d" alt="Results Page Demo" width="200" height="435">
 <img src="https://github.com/user-attachments/assets/917c8193-d2be-4a50-92f4-3c26fe3a7afa" alt="Results Page" width="200" height="435">
 
 ### Modern UI & Navigation
-- Built entirely with SwiftUI for smooth transitions and layouts
+- Liquid Glass design and dynamic visual feedback
 - Single-tab navigation with custom router
-- Glass effect and dynamic visual feedback
 - Full support for system dark mode
 
 <h2 id="technologies">Technologies 💻</h2>
@@ -62,27 +61,6 @@ The app embraces the MVVM (Model-View-ViewModel) pattern:
 - **ViewModel**: `QuizViewModel` manages quiz logic, progress, timer, and score updates
 - **View**: SwiftUI views such as `QuizSelfView`, `ProgressBarView`, and more render the UI and bind to view models
 - **Router**: `AppRouter` handles navigation and path management
-
-<h2 id="testing">Testing 🧪</h2>
-
-The project is structured for easy extensibility with unit tests. Suggested tests:
-- **Quiz Logic**: Validate question selection, scoring, and timer
-- **ViewModel**: Test state updates for answer selection and progression
-
-<h2 id="documentation">Documentation 📚</h2>
-
-All significant classes, methods, and properties use Apple's DocC format for in-source documentation.
-- **Description**: Explains type or method purpose
-- **Parameters**: Each parameter and its role
-- **Returns**: What is returned and when
-
-Example:
-```swift
-/// Toggles the display of the hint popover for the current question.
-internal func isShowingHintPopoverToggle() {
-    isShowingHintPopover.toggle()
-}
-```
 
 <h2 id="requirements">Requirements ✅</h2>
 
