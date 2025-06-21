@@ -28,6 +28,15 @@ struct CreateQuizView: View {
                 .padding(.horizontal, 30)
                 .padding(.vertical)
         }
+        
+        .alert(viewModel.errorAlertContent.title, isPresented: $viewModel.isErrorAlertShown, actions: {
+            Button(Texts.QuizGenerate.ModelStatusAlert.demo, role: .confirm) {
+                appRouter.push(.quizSelf(quiz: Quiz.sampleData), in: .create)
+            }
+            Button(Texts.QuizGenerate.ModelStatusAlert.cancel, role: .cancel) {}
+        }, message: {
+            Text(viewModel.errorAlertContent.content)
+        })
     }
     
     private var topicContent: some View {
@@ -41,11 +50,13 @@ struct CreateQuizView: View {
     
     private var generateButton: some View {
         Button {
-            appRouter.push(.quizInfo(
-                topic: viewModel.quizTopic,
-                count: Int(viewModel.questionCount),
-                difficulty: viewModel.quizDifficulty),
-                           in: .create)
+            viewModel.checkModelStatus {
+                appRouter.push(.quizInfo(
+                    topic: viewModel.quizTopic,
+                    count: Int(viewModel.questionCount),
+                    difficulty: viewModel.quizDifficulty),
+                               in: .create)
+            }
         } label: {
             Text(Texts.QuizGenerate.generate)
                 .font(.title2)

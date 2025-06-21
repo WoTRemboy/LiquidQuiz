@@ -12,6 +12,7 @@ struct QuizInfoView: View {
     @EnvironmentObject private var appRouter: AppRouter
     
     @State private var isResponding: Bool = true
+    @State private var isGenerated: Bool = false
     @State private var showErrorAlert: Bool = false
     
     @State private var generateManager: QuizGenerationManager?
@@ -72,19 +73,21 @@ struct QuizInfoView: View {
         }
         .alert(Texts.QuizGenerate.GenerateErrorAlert.title, isPresented: $showErrorAlert, actions: {
             Button(Texts.QuizGenerate.GenerateErrorAlert.button, role: .cancel) {
-                appRouter.pop(in: .create)
+                appRouter.popToRoot(in: .create)
             }
         }, message: {
             Text(Texts.QuizGenerate.GenerateErrorAlert.message)
         })
         
         .task {
-            generateManager = QuizGenerationManager()
-            generateManager?.prewarm()
-            
-            try? await Task.sleep(nanoseconds: 500_000_000)
-            generationTask = Task {
-                try? await requestItinerary()
+            if !isGenerated {
+                generateManager = QuizGenerationManager()
+                generateManager?.prewarm()
+                
+                try? await Task.sleep(nanoseconds: 500_000_000)
+                generationTask = Task {
+                    try? await requestItinerary()
+                }
             }
         }
     }
@@ -100,7 +103,10 @@ struct QuizInfoView: View {
     
     private var bottomButtonView: some View {
         QuizGenerationButtonsView(namespace: namespace, isResponsing: $isResponding) {
-            guard let quiz = generateManager?.convertQuiz() else { return }
+            guard let quiz = generateManager?.convertQuiz() else {
+                showErrorAlert.toggle()
+                return
+            }
             appRouter.push(.quizSelf(quiz: quiz), in: .create)
         } regenerate: {
             generationTask?.cancel()
@@ -129,6 +135,7 @@ struct QuizInfoView: View {
         do {
             try await generateManager?.generateQuiz(for: topic, count: count, difficulty: difficulty)
             isResponding = false
+            isGenerated = true
         } catch {
             showErrorAlert = true
             print(error)

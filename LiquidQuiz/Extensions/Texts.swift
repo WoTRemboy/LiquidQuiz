@@ -22,9 +22,29 @@ struct Texts {
         static let begin = "Begin"
         
         enum GenerateErrorAlert {
-            static let title = "Error"
+            static let title = "Retry in 10 seconds"
             static let message = "The Quiz could not be generated. Please try again."
             static let button = "Return"
+        }
+        
+        enum ModelStatusAlert {
+            static let demo = "Demo"
+            static let cancel = "OK"
+            
+            enum NotEnabled {
+                static let title = "AI Not Enabled"
+                static let message = "Apple Intelligence is turned off. Enable it in Settings."
+            }
+            
+            enum NotReady {
+                static let title = "Model Not Ready"
+                static let message = "Try again later."
+            }
+            
+            enum NotEligible {
+                static let title = "Device Not Eligible"
+                static let message = "Apple Intelligence is not supported on this Device. Try a demo quiz instead."
+            }
         }
     }
     
