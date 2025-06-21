@@ -43,7 +43,7 @@ struct Texts {
             
             enum NotEligible {
                 static let title = "Device Not Eligible"
-                static let message = "Apple Intelligence is not supported on this Device. Try a mock quiz instead."
+                static let message = "Apple Intelligence is not supported on this Device. Try a demo quiz instead."
             }
         }
     }

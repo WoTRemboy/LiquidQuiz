@@ -21,7 +21,7 @@ struct Quiz: Codable, Equatable, Hashable {
     var difficulty: Quiz.Difficulty
     var questions: [QuizQuestion]
     
-    @Guide(description: "Duration of the test in seconds. It MUST BE generated", .range(30...90))
+    @Guide(description: "Duration of the test in seconds based on difficulty and questions count. It MUST BE generated", .range(30...300))
     var timer: Int
     
     var currentQuestionIndex: Int = 0
@@ -42,11 +42,13 @@ struct Quiz: Codable, Equatable, Hashable {
     }
     
     static internal var sampleData: Quiz {
-        Quiz(name: "Sample Quiz",
-             description: "A short description of the test in 2-3 sentences. Explain what the test is about, which topics it covers, and how it can be useful for the participant.",
-             difficulty: .easy,
-             questions: QuizQuestion.sampleData,
-             timer: 70)
+        Quiz(
+            name: "Space Exploration",
+            description: "Test your knowledge about the wonders of space exploration. This quiz covers iconic astronauts, historic missions, celestial objects, and facts about our universe. Great for anyone curious about outer space!",
+            difficulty: .normal,
+            questions: QuizQuestion.sampleData,
+            timer: 120
+        )
     }
 }
 
