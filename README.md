@@ -3,28 +3,29 @@
   <h1>Liquidia: AI Glass Quiz</h1>
 </div>
 
-**Liquidia** is a Swift-based iOS app for creating and playing quizzes. It features dynamic quiz generation, engaging UI, hints, progress tracking, and result breakdowns—all in a modern, smooth user experience.
+**Liquidia** is a Swift-based iOS app for creating and playing quizzes. It features dynamic quiz generation, engaging UI, hints, progress tracking, and result — all in a modern, smooth user experience.
 Watch a [Demo](https://drive.google.com/file/d/1nlFE98Kz_IPkBwxZyQe5cSJcQU4Y-B_L/view?usp=sharing). Find in [TestFlight](https://testflight.apple.com/join/Q9NC7mxU).
 
 ## Table of Contents 📋
 - [Features](#features)
 - [Technologies](#technologies)
 - [Architecture](#architecture)
+- [Testing](#testing)
 - [Requirements](#requirements)
 
 <h2 id="features">Features ⚒️</h2>
 
 ### Quiz Creation & Selection
 - Create new quizzes with customizable topics and difficulty
-- Browse received quizzes and view quiz details
-- Each quiz includes a timer, description, and set of dynamic questions
+- Browse quiz details
+- Each quiz includes a timer, description, and set of questions
 
 <img src="https://github.com/user-attachments/assets/50cfc95e-f8e0-4ed4-b46e-55d7b38029f7" alt="Quiz Generation Demo" width="200" height="435">
 <img src="https://github.com/user-attachments/assets/ed6ed4c4-5f16-48c6-97d0-0b985996c23e" alt="Main Page" width="200" height="435">
 <img src="https://github.com/user-attachments/assets/90664da4-8406-4372-8ffc-fa48f80f4b6f" alt="Quiz Info" width="200" height="435">
 
 ### Quiz Taking Experience
-- Answer single or multiple-choice questions
+- Answer single-choice questions
 - Timer, progress bar, and score display during the quiz
 - Hints available for each question
 - Seamless navigation between questions with animated transitions
@@ -48,19 +49,33 @@ Watch a [Demo](https://drive.google.com/file/d/1nlFE98Kz_IPkBwxZyQe5cSJcQU4Y-B_L
 
 <h2 id="technologies">Technologies 💻</h2>
 
-- **Swift 5.9+**: The primary language for all app logic
 - **SwiftUI**: Declarative UI for all screens and navigation
+- **Liquid Glass**: Modern design & UI framework (WWDC'25)
 - **Combine**: Reactive programming for state management and event handling
 - **MVVM + Router architecture**: Separation of data, view logic, and UI
-- **Foundation**: Codable for quiz data, timer logic, etc.
+- **Foundation Models**: Apple Intelligence framework for generation purposes
 
 <h2 id="architecture">Architecture 🏗️</h2>
 
 The app embraces the MVVM (Model-View-ViewModel) pattern:
 - **Model**: `Quiz`, `QuizQuestion`, and related structs handle quiz data, scoring, and state
-- **ViewModel**: `QuizViewModel` manages quiz logic, progress, timer, and score updates
+- **ViewModel**: `QuizViewModel`, and more manages quiz logic, progress, timer, and score updates
 - **View**: SwiftUI views such as `QuizSelfView`, `ProgressBarView`, and more render the UI and bind to view models
 - **Router**: `AppRouter` handles navigation and path management
+
+<h2 id="testing">Testing 🧪</h2>
+
+The project is structured with unit Swift tests.
+
+Example:
+```swift
+/// Tests pushing a route onto a navigation stack and then popping it.
+@Test("Initial state is correct")
+func testInitialState() {
+  let router = AppRouter()
+  #expect(router.selectedTab == .create, "Selected tab should default to .create.")
+}
+```
 
 <h2 id="requirements">Requirements ✅</h2>
 
