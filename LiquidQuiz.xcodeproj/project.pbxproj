@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		631D38502E082C5700988989 /* AppRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631D384F2E082C5700988989 /* AppRouterTests.swift */; };
 		63203FD12DF9825E0064488F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63203FCD2DF9825E0064488F /* Assets.xcassets */; };
 		63203FD32DF9825F0064488F /* LiquidQuizApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63203FCF2DF9825E0064488F /* LiquidQuizApp.swift */; };
 		6332A0062DF996480020252D /* CreateQuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6332A0052DF996480020252D /* CreateQuizView.swift */; };
@@ -52,7 +53,19 @@
 		63F221842DFC6D8B00B86071 /* QuizSelfQuestionContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F221832DFC6D8B00B86071 /* QuizSelfQuestionContent.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		631D38452E082B9700988989 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63203FB72DF982520064488F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 63203FBE2DF982520064488F;
+			remoteInfo = LiquidQuiz;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		631D38412E082B9700988989 /* LiquidQuizTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LiquidQuizTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		631D384F2E082C5700988989 /* AppRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouterTests.swift; sourceTree = "<group>"; };
 		63203FBF2DF982520064488F /* LiquidQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiquidQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63203FCD2DF9825E0064488F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63203FCF2DF9825E0064488F /* LiquidQuizApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiquidQuizApp.swift; sourceTree = "<group>"; };
@@ -101,6 +114,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		631D383E2E082B9700988989 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		63203FBC2DF982520064488F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -119,10 +139,19 @@
 			path = FoundationModels;
 			sourceTree = "<group>";
 		};
+		631D384B2E082B9E00988989 /* LiquidQuizTests */ = {
+			isa = PBXGroup;
+			children = (
+				631D384F2E082C5700988989 /* AppRouterTests.swift */,
+			);
+			path = LiquidQuizTests;
+			sourceTree = "<group>";
+		};
 		63203FB62DF982520064488F = {
 			isa = PBXGroup;
 			children = (
 				63203FD02DF9825E0064488F /* LiquidQuiz */,
+				631D384B2E082B9E00988989 /* LiquidQuizTests */,
 				63203FC02DF982520064488F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -131,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				63203FBF2DF982520064488F /* LiquidQuiz.app */,
+				631D38412E082B9700988989 /* LiquidQuizTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -397,6 +427,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		631D38402E082B9700988989 /* LiquidQuizTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 631D38492E082B9700988989 /* Build configuration list for PBXNativeTarget "LiquidQuizTests" */;
+			buildPhases = (
+				631D383D2E082B9700988989 /* Sources */,
+				631D383E2E082B9700988989 /* Frameworks */,
+				631D383F2E082B9700988989 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				631D38462E082B9700988989 /* PBXTargetDependency */,
+			);
+			name = LiquidQuizTests;
+			packageProductDependencies = (
+			);
+			productName = LiquidQuizTests;
+			productReference = 631D38412E082B9700988989 /* LiquidQuizTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		63203FBE2DF982520064488F /* LiquidQuiz */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 63203FCA2DF982530064488F /* Build configuration list for PBXNativeTarget "LiquidQuiz" */;
@@ -426,6 +476,10 @@
 				LastSwiftUpdateCheck = 2600;
 				LastUpgradeCheck = 2600;
 				TargetAttributes = {
+					631D38402E082B9700988989 = {
+						CreatedOnToolsVersion = 26.0;
+						TestTargetID = 63203FBE2DF982520064488F;
+					};
 					63203FBE2DF982520064488F = {
 						CreatedOnToolsVersion = 26.0;
 					};
@@ -446,11 +500,19 @@
 			projectRoot = "";
 			targets = (
 				63203FBE2DF982520064488F /* LiquidQuiz */,
+				631D38402E082B9700988989 /* LiquidQuizTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		631D383F2E082B9700988989 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		63203FBD2DF982520064488F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -464,6 +526,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		631D383D2E082B9700988989 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				631D38502E082C5700988989 /* AppRouterTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		63203FBB2DF982520064488F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -513,7 +583,55 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		631D38462E082B9700988989 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 63203FBE2DF982520064488F /* LiquidQuiz */;
+			targetProxy = 631D38452E082B9700988989 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		631D38472E082B9700988989 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NAJAJ652LV;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.avoqode.LiquidQuizTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LiquidQuiz.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LiquidQuiz";
+			};
+			name = Debug;
+		};
+		631D38482E082B9700988989 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NAJAJ652LV;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.avoqode.LiquidQuizTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LiquidQuiz.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LiquidQuiz";
+			};
+			name = Release;
+		};
 		63203FC82DF982530064488F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -720,6 +838,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		631D38492E082B9700988989 /* Build configuration list for PBXNativeTarget "LiquidQuizTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				631D38472E082B9700988989 /* Debug */,
+				631D38482E082B9700988989 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		63203FBA2DF982520064488F /* Build configuration list for PBXProject "LiquidQuiz" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
