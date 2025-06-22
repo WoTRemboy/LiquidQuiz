@@ -4,7 +4,7 @@
 </div>
 
 **Liquidia** is a Swift-based iOS app for creating and playing quizzes. It features dynamic quiz generation, engaging UI, hints, progress tracking, and result breakdowns—all in a modern, smooth user experience.
-Watch a [Demo](https://drive.google.com/drive/folders/1tFTSSXiGWhrctvX1X1N4dMh4_jPgj-K1?usp=sharing). Find in [TestFlight](https://testflight.apple.com/join/Q9NC7mxU).
+Watch a [Demo](https://drive.google.com/file/d/1nlFE98Kz_IPkBwxZyQe5cSJcQU4Y-B_L/view?usp=sharing). Find in [TestFlight](https://testflight.apple.com/join/Q9NC7mxU).
 
 ## Table of Contents 📋
 - [Features](#features)
