@@ -45,7 +45,7 @@ final class QuizGenerationManager {
     }
     
     private func newSessionSetup(previousSession: LanguageModelSession) -> LanguageModelSession {
-        let allEntries = previousSession.transcript.entries
+        let allEntries = previousSession.transcript
         var condensedEntries = [Transcript.Entry]()
         if let firstEntry = allEntries.first {
             condensedEntries.append(firstEntry)
