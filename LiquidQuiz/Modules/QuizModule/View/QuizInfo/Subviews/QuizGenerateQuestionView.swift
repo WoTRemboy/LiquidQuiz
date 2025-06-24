@@ -18,16 +18,15 @@ struct QuizGenerateQuestionView: View {
     }
     
     internal var body: some View {
-        GlassEffectContainer {
-            HStack {
-                titleFormatView
-                if let price = question.price {
-                    questionPrice(price: price)
-                }
+        HStack {
+            titleFormatView
+            if let price = question.price {
+                questionPrice(price: price)
             }
-            .glassEffectUnion(id: Texts.Namespace.QuizGenerate.titlePrice, namespace: namespace)
-            .frame(height: 80)
         }
+        .frame(maxHeight: 80)
+        .glassEffect(.regular, in: .rect(cornerRadius: 10))
+        .glassEffectID(Texts.Namespace.QuizGenerate.titleFormat, in: namespace)
         
         .padding(.horizontal)
     }
@@ -45,10 +44,9 @@ struct QuizGenerateQuestionView: View {
                     .lineLimit(1)
             }
         }
+        .contentTransition(.opacity)
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)
-        .glassEffect(.regular, in: .rect(cornerRadius: 10))
-        .glassEffectID(Texts.Namespace.QuizGenerate.titleFormat, in: namespace)
     }
     
     @ViewBuilder
@@ -63,8 +61,10 @@ struct QuizGenerateQuestionView: View {
         }
         .padding(.trailing)
         .transition(.blurReplace)
-        .glassEffect(.regular)
-        .glassEffectID(Texts.Namespace.QuizGenerate.questionPrice, in: namespace)
+        .animation(.easeInOut, value: question)
+        
+//        .glassEffect(.regular)
+//        .glassEffectID(Texts.Namespace.QuizGenerate.questionPrice, in: namespace)
     }
 }
 
