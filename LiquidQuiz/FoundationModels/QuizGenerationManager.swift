@@ -30,7 +30,7 @@ final class QuizGenerationManager {
     }
     
     internal func generateQuiz(for name: String, count: Int, difficulty: Quiz.Difficulty) async throws {
-        session = newSessionSetup(previousSession: session)
+//        session = newSessionSetup(previousSession: session)
         let stream = session.streamResponse(generating: Quiz.self) {
             """
             Generate a quiz where the topic is \(name). 
@@ -44,16 +44,16 @@ final class QuizGenerationManager {
         }
     }
     
-    private func newSessionSetup(previousSession: LanguageModelSession) -> LanguageModelSession {
-        let allEntries = previousSession.transcript
-        var condensedEntries = [Transcript.Entry]()
-        if let firstEntry = allEntries.first {
-            condensedEntries.append(firstEntry)
-        }
-        
-        let condensedTranscript = Transcript(entries: condensedEntries)
-        return LanguageModelSession(transcript: condensedTranscript)
-    }
+//    private func newSessionSetup(previousSession: LanguageModelSession) -> LanguageModelSession {
+//        let allEntries = previousSession.transcript
+//        var condensedEntries = [Transcript.Entry]()
+//        if let firstEntry = allEntries.first {
+//            condensedEntries.append(firstEntry)
+//        }
+//        
+//        let condensedTranscript = Transcript(entries: condensedEntries)
+//        return LanguageModelSession(transcript: condensedTranscript)
+//    }
     
     internal func convertQuiz() -> Quiz? {
         guard let partialQuiz = quiz,
