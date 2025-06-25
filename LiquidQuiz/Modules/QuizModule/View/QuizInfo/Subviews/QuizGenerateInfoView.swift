@@ -19,13 +19,11 @@ struct QuizGenerateInfoView: View {
     }
     
     internal var body: some View {
-        GlassEffectContainer {
-            VStack(spacing: 20) {
-                if let description = quiz.description {
-                    descriptionLabel(content: description)
-                }
-                detailsStack
+        VStack(spacing: 20) {
+            if let description = quiz.description {
+                descriptionLabel(content: description)
             }
+            detailsStack
         }
         .animation(.easeInOut, value: quiz)
         .padding(.horizontal)
@@ -55,15 +53,17 @@ struct QuizGenerateInfoView: View {
     }
     
     private var detailsStack: some View {
-        HStack {
-            if let count = quiz.questions?.count {
-                countView(content: count)
-            }
-            if let difficulty = quiz.difficulty {
-                difficultyView(content: difficulty)
-            }
-            if !timeString.isEmpty {
-                timerView
+        GlassEffectContainer {
+            HStack {
+                if let count = quiz.questions?.count {
+                    countView(content: count)
+                }
+                if let difficulty = quiz.difficulty {
+                    difficultyView(content: difficulty)
+                }
+                if !timeString.isEmpty {
+                    timerView
+                }
             }
         }
     }
