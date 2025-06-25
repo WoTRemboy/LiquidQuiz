@@ -22,14 +22,15 @@ struct QuizSelfOptionView: View {
     }
     
     internal var body: some View {
-        VStack(spacing: 5) {
-            optionButton
-            
-            if viewModel.showExplanation(for: question, option: option) {
-                explanationView
+        GlassEffectContainer {
+            VStack(spacing: 5) {
+                optionButton
+                
+                if viewModel.showExplanation(for: question, option: option) {
+                    explanationView
+                }
             }
         }
-        .glassEffectUnion(id: Texts.Namespace.QuizSelf.container, namespace: namespace)
     }
     
     private var optionButton: some View {

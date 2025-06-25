@@ -25,7 +25,7 @@ struct GlassUnionButtons: View {
     }
     
     private var questionsCountView: some View {
-        questionCountContent
+        Image.QuizGenerate.count
             .font(.title2)
             .contentTransition(.numericText(value: viewModel.questionCount))
         
@@ -41,14 +41,14 @@ struct GlassUnionButtons: View {
             .sensoryFeedback(.impact, trigger: viewModel.isSliderExpanded)
     }
     
-    @ViewBuilder
-    private var questionCountContent: some View {
-        if viewModel.isSliderExpanded {
-            Text(viewModel.questionCountLabel)
-        } else {
-            Image.QuizGenerate.count
-        }
-    }
+//    @ViewBuilder
+//    private var questionCountContent: some View {
+//        if viewModel.isSliderExpanded {
+//            Text(viewModel.questionCountLabel)
+//        } else {
+//            Image.QuizGenerate.count
+//        }
+//    }
     
     private var difficultyButton: some View {
         viewModel.quizDifficulty.icon
