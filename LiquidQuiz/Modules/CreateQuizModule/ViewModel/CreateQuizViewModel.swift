@@ -7,7 +7,10 @@
 
 import SwiftUI
 import Combine
+import OSLog
 import FoundationModels
+
+private let logger = Logger(subsystem: "com.liquidquiz.createquiz", category: "CreateQuizViewModel")
 
 final class CreateQuizViewModel: ObservableObject {
     
@@ -100,6 +103,7 @@ final class CreateQuizViewModel: ObservableObject {
         errorAlertContent.title = type.rawValue
         errorAlertContent.content = type.message
         isErrorAlertShown.toggle()
+        logger.warning("Model is not available: \(type.rawValue)")
     }
     
     private enum AIModelStatus: String {

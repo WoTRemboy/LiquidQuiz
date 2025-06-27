@@ -6,7 +6,10 @@
 //
 
 import SwiftUI
+import OSLog
 import FoundationModels
+
+private let logger = Logger(subsystem: "com.liquidquiz.quiz", category: "QuizInfoView")
 
 struct QuizInfoView: View {
     @EnvironmentObject private var appRouter: AppRouter
@@ -84,9 +87,13 @@ struct QuizInfoView: View {
                 generateManager = QuizGenerationManager()
                 generateManager?.prewarm()
                 
-                try? await Task.sleep(nanoseconds: 500_000_000)
+                do {
+                    try await Task.sleep(nanoseconds: 500_000_000)
+                } catch {
+                    logger.error("Timer Sleep setup error: \(error.localizedDescription)")
+                }
                 generationTask = Task {
-                    try? await requestItinerary()
+                    await requestItinerary()
                 }
             }
         }
@@ -105,17 +112,15 @@ struct QuizInfoView: View {
         QuizGenerationButtonsView(namespace: namespace, isResponsing: $isResponding) {
             guard let quiz = generateManager?.convertQuiz() else {
                 showErrorAlert.toggle()
+                logger.error("Partially Generated Quiz convertation failed")
                 return
             }
             appRouter.push(.quizSelf(quiz: quiz), in: .create)
         } regenerate: {
             generationTask?.cancel()
+            logger.info("Quiz is regenerating...")
             generationTask = Task {
-                do {
-                    try await requestItinerary()
-                } catch {
-                    print(error)
-                }
+                await requestItinerary()
             }
         } dismiss: {
             appRouter.pop(in: .create)
@@ -130,15 +135,16 @@ struct QuizInfoView: View {
         return String()
     }
     
-    private func requestItinerary() async throws {
+    private func requestItinerary() async {
         isResponding = true
         do {
             try await generateManager?.generateQuiz(for: topic, count: count, difficulty: difficulty)
             isResponding = false
             isGenerated = true
+            logger.info("Quiz generated successfully")
         } catch {
             showErrorAlert = true
-            print(error)
+            logger.error("Generate Quiz error: \(error.localizedDescription)")
         }
     }
 }

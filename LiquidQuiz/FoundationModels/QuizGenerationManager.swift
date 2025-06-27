@@ -5,8 +5,11 @@
 //  Created by Roman Tverdokhleb on 15/06/2025.
 //
 
+import OSLog
 import Observation
 import FoundationModels
+
+private let logger = Logger(subsystem: "com.liquidquiz.quiz", category: "QuizGenerationManager")
 
 @Observable
 @MainActor
@@ -16,6 +19,7 @@ final class QuizGenerationManager {
     
     init() {
         self.session = QuizGenerationManager.sessionSetup()
+        logger.info("Quiz Generation Session created")
     }
     
     internal func generateQuiz(for name: String, count: Int, difficulty: Quiz.Difficulty) async throws {
@@ -103,5 +107,6 @@ final class QuizGenerationManager {
     
     internal func prewarm() {
         session.prewarm()
+        logger.info("Model has been prewarmed")
     }
 }
