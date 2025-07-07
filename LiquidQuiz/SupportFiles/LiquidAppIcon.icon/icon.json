@@ -5,7 +5,7 @@
       "layers" : [
         {
           "image-name" : "4_Layer.svg",
-          "name" : "4_Layer",
+          "name" : "Light",
           "position" : {
             "scale" : 0.9,
             "translation-in-points" : [
@@ -15,6 +15,7 @@
           }
         }
       ],
+      "name" : "4_Layer",
       "shadow" : {
         "kind" : "neutral",
         "opacity" : 0.5
@@ -28,7 +29,7 @@
       "layers" : [
         {
           "image-name" : "3_Layer.svg",
-          "name" : "3_Layer",
+          "name" : "1_Halo",
           "position" : {
             "scale" : 0.9,
             "translation-in-points" : [
@@ -38,6 +39,7 @@
           }
         }
       ],
+      "name" : "3_Layer",
       "shadow" : {
         "kind" : "neutral",
         "opacity" : 0.5
@@ -60,7 +62,7 @@
           ],
           "hidden" : false,
           "image-name" : "2_Layer.svg",
-          "name" : "2_Layer",
+          "name" : "2_Halo",
           "position" : {
             "scale" : 0.9,
             "translation-in-points" : [
@@ -70,6 +72,7 @@
           }
         }
       ],
+      "name" : "2_Layer",
       "shadow" : {
         "kind" : "neutral",
         "opacity" : 0.5
@@ -91,7 +94,7 @@
             }
           ],
           "image-name" : "1_Layer.svg",
-          "name" : "1_Layer",
+          "name" : "Body",
           "position" : {
             "scale" : 0.9,
             "translation-in-points" : [
@@ -101,6 +104,7 @@
           }
         }
       ],
+      "name" : "1_Layer",
       "shadow" : {
         "kind" : "neutral",
         "opacity" : 0.5
