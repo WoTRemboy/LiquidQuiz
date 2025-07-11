@@ -37,5 +37,6 @@ extension Image {
     
     enum Tabbar {
         static let create = Image(systemName: "plus")
+        static let sets = Image(systemName: "folder")
     }
 }

@@ -28,7 +28,6 @@ struct ContentView: View {
                     }
             }
             .tag(AppRouter.Tab.create)
-            .toolbarVisibility(.hidden, for: .tabBar)
         }
     }
 }

@@ -13,6 +13,8 @@ extension AppRouter.Route {
         switch tab {
         case .create:
             CreateTabDestinationFactory.view(for: self, appRouter: appRouter)
+        case .sets:
+            Text("Sets Page")
         }
     }
 }

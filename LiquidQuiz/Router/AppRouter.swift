@@ -15,11 +15,14 @@ final class AppRouter: ObservableObject {
     
     enum Tab: CaseIterable, Hashable {
         case create
+        case sets
         
         internal var icon: Image {
             switch self {
             case .create:
                 Image.Tabbar.create
+            case .sets:
+                Image.Tabbar.sets
             }
         }
         
@@ -27,6 +30,8 @@ final class AppRouter: ObservableObject {
             switch self {
             case .create:
                 Texts.Tabbar.create
+            case .sets:
+                Texts.Tabbar.sets
             }
         }
     }
