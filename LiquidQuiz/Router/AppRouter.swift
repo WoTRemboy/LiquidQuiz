@@ -15,11 +15,14 @@ final class AppRouter: ObservableObject {
     
     enum Tab: CaseIterable, Hashable {
         case create
+        case sets
         
         internal var icon: Image {
             switch self {
             case .create:
                 Image.Tabbar.create
+            case .sets:
+                Image.Tabbar.sets
             }
         }
         
@@ -27,6 +30,8 @@ final class AppRouter: ObservableObject {
             switch self {
             case .create:
                 Texts.Tabbar.create
+            case .sets:
+                Texts.Tabbar.sets
             }
         }
     }
@@ -36,6 +41,8 @@ final class AppRouter: ObservableObject {
         case quizInfo(topic: String, count: Int, difficulty: Quiz.Difficulty)
         case quizSelf(quiz: Quiz)
         case quizResult(viewModel: QuizViewModel)
+        
+        case sets
     }
     
     internal func push(_ route: Route, in tab: Tab) {

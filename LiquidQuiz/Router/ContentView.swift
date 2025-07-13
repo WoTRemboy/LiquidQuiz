@@ -22,13 +22,34 @@ struct ContentView: View {
             NavigationStack(path: bindingForTab(.create)) {
                 CreateQuizView()
                     .environmentObject(appRouter)
-                
                     .navigationDestination(for: AppRouter.Route.self) { route in
                         route.destinationView(in: .create, appRouter: appRouter)
                     }
             }
+            .tabItem {
+                Label {
+                    Text(Texts.Tabbar.create)
+                } icon: {
+                    Image.Tabbar.create
+                }
+            }
             .tag(AppRouter.Tab.create)
-            .toolbarVisibility(.hidden, for: .tabBar)
+            
+            NavigationStack(path: bindingForTab(.sets)) {
+                Text("Sets Tab")
+                    .environmentObject(appRouter)
+                    .navigationDestination(for: AppRouter.Route.self) { route in
+                        route.destinationView(in: .sets, appRouter: appRouter)
+                    }
+            }
+            .tabItem {
+                Label {
+                    Text(Texts.Tabbar.sets)
+                } icon: {
+                    Image.Tabbar.sets
+                }
+            }
+            .tag(AppRouter.Tab.sets)
         }
     }
 }

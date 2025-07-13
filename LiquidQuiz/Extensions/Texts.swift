@@ -66,6 +66,7 @@ struct Texts {
     
     enum Tabbar {
         static let create = "Create"
+        static let sets = "Sets"
     }
     
     enum Namespace {

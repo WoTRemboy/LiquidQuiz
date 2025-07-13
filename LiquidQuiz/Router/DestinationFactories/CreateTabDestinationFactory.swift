@@ -25,6 +25,9 @@ struct CreateTabDestinationFactory {
         case .quizResult(let viewModel):
             QuizSelfResultView(viewModel: viewModel)
                 .environmentObject(appRouter)
+            
+        default:
+            EmptyView()
         }
     }
 }
