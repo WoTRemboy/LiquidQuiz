@@ -26,6 +26,13 @@ struct ContentView: View {
                         route.destinationView(in: .create, appRouter: appRouter)
                     }
             }
+            .tabItem {
+                Label {
+                    Text(Texts.Tabbar.create)
+                } icon: {
+                    Image.Tabbar.create
+                }
+            }
             .tag(AppRouter.Tab.create)
             
             NavigationStack(path: bindingForTab(.sets)) {
@@ -34,6 +41,13 @@ struct ContentView: View {
                     .navigationDestination(for: AppRouter.Route.self) { route in
                         route.destinationView(in: .sets, appRouter: appRouter)
                     }
+            }
+            .tabItem {
+                Label {
+                    Text(Texts.Tabbar.sets)
+                } icon: {
+                    Image.Tabbar.sets
+                }
             }
             .tag(AppRouter.Tab.sets)
         }
