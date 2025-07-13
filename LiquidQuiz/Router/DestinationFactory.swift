@@ -14,7 +14,7 @@ extension AppRouter.Route {
         case .create:
             CreateTabDestinationFactory.view(for: self, appRouter: appRouter)
         case .sets:
-            Text("Sets Page")
+            SetsTabDestinationFactory.view(for: self, appRouter: appRouter)
         }
     }
 }

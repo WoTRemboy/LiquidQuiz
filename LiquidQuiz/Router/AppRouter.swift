@@ -41,6 +41,8 @@ final class AppRouter: ObservableObject {
         case quizInfo(topic: String, count: Int, difficulty: Quiz.Difficulty)
         case quizSelf(quiz: Quiz)
         case quizResult(viewModel: QuizViewModel)
+        
+        case sets
     }
     
     internal func push(_ route: Route, in tab: Tab) {
