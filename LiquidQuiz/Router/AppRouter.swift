@@ -16,15 +16,7 @@ final class AppRouter: ObservableObject {
     enum Tab: CaseIterable, Hashable {
         case create
         case sets
-        
-        internal var icon: Image {
-            switch self {
-            case .create:
-                Image.Tabbar.create
-            case .sets:
-                Image.Tabbar.sets
-            }
-        }
+        case search
         
         internal var title: String {
             switch self {
@@ -32,6 +24,19 @@ final class AppRouter: ObservableObject {
                 Texts.Tabbar.create
             case .sets:
                 Texts.Tabbar.sets
+            case .search:
+                Texts.Tabbar.search
+            }
+        }
+        
+        static internal func image(for tab: Tab) -> String {
+            switch tab {
+            case .create:
+                "plus.square"
+            case .sets:
+                "square.stack.3d.up"
+            case .search:
+                "magnifyingglass"
             }
         }
     }

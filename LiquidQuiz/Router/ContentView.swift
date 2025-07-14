@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var appRouter = AppRouter()
+    @State private var search: String = String()
     
     private func bindingForTab(_ tab: AppRouter.Tab) -> Binding<[AppRouter.Route]> {
         Binding(
@@ -19,37 +20,35 @@ struct ContentView: View {
     
     internal var body: some View {
         TabView(selection: $appRouter.selectedTab) {
-            NavigationStack(path: bindingForTab(.create)) {
-                CreateQuizView()
-                    .environmentObject(appRouter)
-                    .navigationDestination(for: AppRouter.Route.self) { route in
-                        route.destinationView(in: .create, appRouter: appRouter)
-                    }
-            }
-            .tabItem {
-                Label {
-                    Text(Texts.Tabbar.create)
-                } icon: {
-                    Image.Tabbar.create
+            Tab(Texts.Tabbar.create, systemImage: AppRouter.Tab.image(for: .create), value: .create) {
+                NavigationStack(path: bindingForTab(.create)) {
+                    CreateQuizView()
+                        .environmentObject(appRouter)
+                        .navigationDestination(for: AppRouter.Route.self) { route in
+                            route.destinationView(in: .create, appRouter: appRouter)
+                        }
                 }
             }
-            .tag(AppRouter.Tab.create)
             
-            NavigationStack(path: bindingForTab(.sets)) {
-                Text("Sets Tab")
-                    .environmentObject(appRouter)
-                    .navigationDestination(for: AppRouter.Route.self) { route in
-                        route.destinationView(in: .sets, appRouter: appRouter)
-                    }
-            }
-            .tabItem {
-                Label {
-                    Text(Texts.Tabbar.sets)
-                } icon: {
-                    Image.Tabbar.sets
+            Tab(Texts.Tabbar.sets, systemImage: AppRouter.Tab.image(for: .sets), value: .sets) {
+                NavigationStack(path: bindingForTab(.sets)) {
+                    Text("Sets Tab")
+                        .environmentObject(appRouter)
+                        .navigationDestination(for: AppRouter.Route.self) { route in
+                            route.destinationView(in: .sets, appRouter: appRouter)
+                        }
                 }
             }
-            .tag(AppRouter.Tab.sets)
+            
+            Tab(value: .search, role: .search) {
+                NavigationStack {
+                    List {
+                        Text("Search Screen")
+                    }
+                    .navigationTitle("Search")
+                    .searchable(text: $search)
+                }
+            }
         }
     }
 }

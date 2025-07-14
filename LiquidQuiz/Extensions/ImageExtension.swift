@@ -38,5 +38,6 @@ extension Image {
     enum Tabbar {
         static let create = Image(systemName: "plus.square")
         static let sets = Image(systemName: "square.stack.3d.up")
+        static let search = Image(systemName: "magnifyingglass")
     }
 }
