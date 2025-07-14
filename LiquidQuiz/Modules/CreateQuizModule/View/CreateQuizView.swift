@@ -23,12 +23,6 @@ struct CreateQuizView: View {
         }
         .frame(maxHeight: .infinity)
         
-        .safeAreaInset(edge: .bottom) {
-            generateButton
-                .padding(.horizontal, 30)
-                .padding(.vertical)
-        }
-        
         .alert(viewModel.errorAlertContent.title, isPresented: $viewModel.isErrorAlertShown, actions: {
             Button(Texts.QuizGenerate.ModelStatusAlert.demo, role: .confirm) {
                 appRouter.push(.quizSelf(quiz: Quiz.sampleData), in: .create)
@@ -44,6 +38,9 @@ struct CreateQuizView: View {
             CreateQuizControllersView()
             GlassContainerButtons(namespace: namespace)
                 .padding(.top)
+            
+            generateButton
+                .padding(.vertical)
         }
         .padding(.horizontal, 30)
     }

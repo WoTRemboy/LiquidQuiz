@@ -15,6 +15,8 @@ extension AppRouter.Route {
             CreateTabDestinationFactory.view(for: self, appRouter: appRouter)
         case .sets:
             SetsTabDestinationFactory.view(for: self, appRouter: appRouter)
+        case .settings:
+            SettingsTabDestinationFactory.view(for: self, appRouter: appRouter)
         case .search:
             EmptyView()
         }

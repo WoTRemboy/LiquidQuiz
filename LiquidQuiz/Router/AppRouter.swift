@@ -16,14 +16,17 @@ final class AppRouter: ObservableObject {
     enum Tab: CaseIterable, Hashable {
         case create
         case sets
+        case settings
         case search
         
-        internal var title: String {
-            switch self {
+        static internal func title(for tab: Tab) -> String {
+            switch tab {
             case .create:
                 Texts.Tabbar.create
             case .sets:
                 Texts.Tabbar.sets
+            case .settings:
+                Texts.Tabbar.settings
             case .search:
                 Texts.Tabbar.search
             }
@@ -35,6 +38,8 @@ final class AppRouter: ObservableObject {
                 "plus.square"
             case .sets:
                 "square.stack.3d.up"
+            case .settings:
+                "gearshape"
             case .search:
                 "magnifyingglass"
             }
@@ -48,6 +53,7 @@ final class AppRouter: ObservableObject {
         case quizResult(viewModel: QuizViewModel)
         
         case sets
+        case settings
     }
     
     internal func push(_ route: Route, in tab: Tab) {
