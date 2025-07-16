@@ -8,6 +8,46 @@
 import Foundation
 
 struct Texts {
+    enum Onboarding {
+        static let welcome = "Welcome!"
+        static let about = "About"
+        
+        enum Terms {
+            static let markdown = "By clicking Start, you agree to our [Terms of Service](https://avoqode.com/terms-of-service) and [Privacy Policy](https://avoqode.com/privacy-policy)."
+            static let markdownError = "Error parsing Terms of Service and Privacy Policy"
+        }
+        
+        enum Button {
+            static let next = "Next"
+            static let start = "Begin"
+        }
+        
+        enum FirstPage {
+            static let title = "Test your mind"
+            static let description = "Take AI-generated quizzes that adapt to selected level"
+        }
+        
+        enum SecondPage {
+            static let title = "Learn and play"
+            static let description = "Remember, discover new things and develop your thinking in an easy, playful way"
+        }
+        
+        enum ThirdPage {
+            static let title = "In a new way"
+            static let description = "Questions are never repeated - the AI generates them anew every time"
+        }
+        
+        enum FourthPage {
+            static let title = "Style"
+            static let description = "A modern game with a retro soul - design inspired by old games"
+        }
+        
+        enum FifthPage {
+            static let title = "Progression"
+            static let description = "Track your knowledge growth and get rewards for your activity"
+        }
+    }
+    
     enum QuizGenerate {
         static let title = "Quiz"
         static let textField = "ex. Countries"

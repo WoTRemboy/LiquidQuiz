@@ -9,6 +9,12 @@ import SwiftUI
 
 extension Color {
     enum Gradient {
+        enum Onboarding {
+            static let orange = Color("GradientOrange")
+            static let red = Color("GradientRed")
+            static let purple = Color("GradientPurple")
+        }
+        
         static let blue = Color("GradientBlue")
         static let lavender = Color("GradientLavender")
         static let mint = Color("GradientMint")

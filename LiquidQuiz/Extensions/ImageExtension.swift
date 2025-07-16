@@ -8,6 +8,15 @@
 import SwiftUI
 
 extension Image {
+    
+    enum Onboarding {        
+        static let first = Image("OnboardingFirst")
+        static let second = Image("OnboardingSecond")
+        static let third = Image("OnboardingThird")
+        static let fourth = Image("OnboardingFourth")
+        static let fifth = Image("OnboardingFifth")
+    }
+    
     enum QuizGenerate {
         static let clear = Image(systemName: "eraser")
         static let random = Image(systemName: "dice")
