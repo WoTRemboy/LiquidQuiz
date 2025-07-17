@@ -144,3 +144,17 @@ struct Texts {
         }
     }
 }
+
+final class Keys {
+    enum UserDefaults {
+        static let skipOnboarding = "SkipOnboarding"
+    }
+    
+    enum Namespace {
+        enum Onboarding {
+            static let progressCircle = "OnboardingProgressCircle"
+            static let appName = "OnboardingAppName"
+        }
+    }
+}
+

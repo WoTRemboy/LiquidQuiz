@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6313C1582E296EBB00D1F5C3 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6313C1572E296EB300D1F5C3 /* OnboardingViewModel.swift */; };
 		631D38502E082C5700988989 /* AppRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631D384F2E082C5700988989 /* AppRouterTests.swift */; };
 		63203FD12DF9825E0064488F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63203FCD2DF9825E0064488F /* Assets.xcassets */; };
 		63203FD32DF9825F0064488F /* LiquidQuizApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63203FCF2DF9825E0064488F /* LiquidQuizApp.swift */; };
@@ -70,6 +71,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6313C1572E296EB300D1F5C3 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		631D38412E082B9700988989 /* LiquidQuizTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LiquidQuizTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		631D384F2E082C5700988989 /* AppRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouterTests.swift; sourceTree = "<group>"; };
 		63203FBF2DF982520064488F /* LiquidQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiquidQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,6 +145,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6313C1562E296E7200D1F5C3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				6313C1572E296EB300D1F5C3 /* OnboardingViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		631AE9E42DFDDF5D005357C0 /* FoundationModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -444,6 +454,7 @@
 			isa = PBXGroup;
 			children = (
 				63F06AD72E2824B100F71A76 /* Model */,
+				6313C1562E296E7200D1F5C3 /* ViewModel */,
 				63C70CA92DF9F6E90081B4E2 /* SplashScreen */,
 			);
 			path = OpeningModule;
@@ -614,6 +625,7 @@
 				63D142192DFEE3FA0009D7A4 /* QuizInfoView.swift in Sources */,
 				634B81C72DFD797000DA9436 /* CreateTabDestinationFactory.swift in Sources */,
 				63D141D82DFED7470009D7A4 /* QuizQuestionFormatModel.swift in Sources */,
+				6313C1582E296EBB00D1F5C3 /* OnboardingViewModel.swift in Sources */,
 				63DB09852DF9A6CA00A58493 /* ImageExtension.swift in Sources */,
 				63D45A262DF9E0EF0065EC65 /* CreateQuizControllersView.swift in Sources */,
 				634B81C12DFD75BD00DA9436 /* AppRouter.swift in Sources */,
