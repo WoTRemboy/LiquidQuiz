@@ -33,7 +33,7 @@ final class QuizGenerationManager {
             """
         }
         for try await partialQuiz in stream {
-            quiz = partialQuiz
+            quiz = partialQuiz.content
         }
     }
     
