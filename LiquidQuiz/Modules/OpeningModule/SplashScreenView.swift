@@ -22,6 +22,7 @@ struct SplashScreenView: View {
     internal var body: some View {
         if isActive {
             // Step to the main view
+            OnboardingScreenView()
         } else {
             // Shows splash screen
             content
@@ -39,11 +40,11 @@ struct SplashScreenView: View {
     // MARK: - Main vontent
     
     private var content: some View {
-        VStack(spacing: 30) {
+        VStack(spacing: 50) {
             Image.Onboarding.logo
                 .resizable()
                 .scaledToFit()
-                .frame(height: 300)
+                .padding(.horizontal, 100)
             
             Text(texts[id])
                 .foregroundStyle(Color.LabelColors.primary)

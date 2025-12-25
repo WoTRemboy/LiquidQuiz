@@ -12,6 +12,13 @@ extension Image {
         static let logo = Image("SplashScreenIcon")
     }
     
+    enum OnboardingPage {
+        static let first = Image(systemName: "wand.and.outline.inverse")
+        static let second = Image(systemName: "list.bullet")
+        static let third = Image(systemName: "person.2.wave.2.fill")
+        static let fourth = Image(systemName: "bell.and.waves.left.and.right.fill")
+    }
+    
     enum QuizGenerate {
         static let clear = Image(systemName: "eraser")
         static let random = Image(systemName: "dice")

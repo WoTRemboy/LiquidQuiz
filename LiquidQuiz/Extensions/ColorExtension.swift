@@ -22,6 +22,13 @@ extension Color {
         static let primary = Color("BackPrimary")
     }
     
+    enum SupportColors {
+        static let orange = Color("SupportOrange")
+        static let red = Color("SupportRed")
+        static let lightOrange = Color("SupportLightOrange")
+        static let purple = Color("SupportPurple")
+    }
+    
     enum Gradient {
         static let blue = Color("GradientBlue")
         static let lavender = Color("GradientLavender")
