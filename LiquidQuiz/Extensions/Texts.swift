@@ -8,9 +8,13 @@
 import Foundation
 
 struct Texts {
+    enum AppInfo {
+        static let title = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String ?? "Liquidia"
+    }
+    
     enum QuizGenerate {
         static let title = "Quiz"
-        static let textField = "ex. Countries"
+        static let textField = "e.g. Countries"
         static let random = "Suggest"
         static let generate = "Generate"
         static let slider = "Questions Count"

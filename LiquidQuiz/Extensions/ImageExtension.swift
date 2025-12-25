@@ -8,6 +8,10 @@
 import SwiftUI
 
 extension Image {
+    enum Onboarding {
+        static let logo = Image("SplashScreenIcon")
+    }
+    
     enum QuizGenerate {
         static let clear = Image(systemName: "eraser")
         static let random = Image(systemName: "dice")
