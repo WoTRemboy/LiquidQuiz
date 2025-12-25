@@ -1,18 +1,18 @@
 //
-//  CreateTabDestinationFactory.swift
+//  RoadmapTabDestinationFactory.swift
 //  LiquidQuiz
 //
-//  Created by Roman Tverdokhleb on 14/06/2025.
+//  Created by Roman Tverdokhleb on 25/12/2025.
 //
 
 import SwiftUI
 
-struct CreateTabDestinationFactory {
+struct RoadmapTabDestinationFactory {
     @ViewBuilder
     static func view(for route: AppRouter.Route, appRouter: AppRouter) -> some View {
         switch route {
-        case .create:
-            CreateQuizView()
+        case .roadmap:
+            RoadmapThemesView()
             
         case .quizInfo(let topic, let count, let difficulty):
             QuizInfoView(topic: topic, count: count, difficulty: difficulty)
