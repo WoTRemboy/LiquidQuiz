@@ -92,7 +92,10 @@ struct OnboardingScreenView: View {
                 .resizable()
                 .scaledToFit()
                 .symbolRenderingMode(.palette)
-                .foregroundStyle( Color.SupportColors.orange, Color.SupportColors.lightBlue,)
+                .foregroundStyle(
+                    Color.SupportColors.orange,
+                    Color.SupportColors.lightBlue
+                )
                 .frame(width: iconSize, height: iconSize)
                 .transition(.symbolEffect(.drawOn.individually))
         } else {

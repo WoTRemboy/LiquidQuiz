@@ -7,7 +7,7 @@
     },
     {
       "appearance" : "dark",
-      "value" : "automatic"
+      "value" : "system-dark"
     }
   ],
   "groups" : [
@@ -26,6 +26,7 @@
           }
         },
         {
+          "fill" : "none",
           "image-name" : "Star 1.svg",
           "name" : "Star 1"
         }
@@ -43,6 +44,7 @@
       "blend-mode" : "normal",
       "layers" : [
         {
+          "fill" : "none",
           "image-name" : "Vector.svg",
           "name" : "Vector",
           "position" : {
@@ -54,6 +56,7 @@
           }
         },
         {
+          "fill" : "none",
           "image-name" : "Vector.png",
           "name" : "Vector",
           "position" : {
