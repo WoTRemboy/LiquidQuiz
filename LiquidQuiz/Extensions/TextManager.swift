@@ -102,7 +102,10 @@ struct Texts {
     }
     
     enum Tabbar {
+        static let roadmap = "Career"
         static let create = "Create"
+        static let profile = "Profile"
+        static let shop = "Shop"
     }
     
     enum Namespace {

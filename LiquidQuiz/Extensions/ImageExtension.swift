@@ -47,6 +47,9 @@ extension Image {
     }
     
     enum Tabbar {
-        static let create = Image(systemName: "plus")
+        static let roadmap = Image(systemName: "point.bottomleft.filled.forward.to.point.topright.scurvepath")
+        static let create = Image(systemName: "sparkles")
+        static let profile = Image(systemName: "person")
+        static let shop = Image(systemName: "cart")
     }
 }
