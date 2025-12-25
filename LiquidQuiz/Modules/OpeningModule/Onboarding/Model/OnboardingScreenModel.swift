@@ -39,8 +39,7 @@ extension OnboardingStep {
         let fourth = OnboardingStep(
             name: Texts.OnboardingPage.FourthPage.title,
             description: Texts.OnboardingPage.FourthPage.description,
-            image: .OnboardingPage.fourth,
-            grantedAccess: true
+            image: .OnboardingPage.fourth
         )
         
         return [first, second, third, fourth]
@@ -73,8 +72,13 @@ enum OnboardingButtonType: Equatable {
         switch self {
         case .nextPage:
             return false
-        case .getNotificationPermission:
-            return true
+        case .getNotificationPermission(let access):
+            switch access {
+            case .authorized, .provisional, .ephemeral:
+                return false
+            default:
+                return true
+            }
         }
     }
     
@@ -82,5 +86,4 @@ enum OnboardingButtonType: Equatable {
         return lhs.title == rhs.title
     }
 }
-
 

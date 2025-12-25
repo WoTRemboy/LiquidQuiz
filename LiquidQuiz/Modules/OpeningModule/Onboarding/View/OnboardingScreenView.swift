@@ -91,7 +91,8 @@ struct OnboardingScreenView: View {
             viewModel.steps[index].image
                 .resizable()
                 .scaledToFit()
-                .foregroundStyle(Color.SupportColors.orange)
+                .symbolRenderingMode(.palette)
+                .foregroundStyle( Color.SupportColors.orange, Color.SupportColors.lightBlue,)
                 .frame(width: iconSize, height: iconSize)
                 .transition(.symbolEffect(.drawOn.individually))
         } else {
@@ -106,7 +107,7 @@ struct OnboardingScreenView: View {
                 if step == page.index {
                     Circle()
                         .frame(width: 15, height: 15)
-                        .foregroundStyle(Color.black)
+                        .foregroundStyle(Color.SupportColors.lightBlue)
                         .transition(.scale)
                 } else {
                     Circle()
@@ -143,4 +144,3 @@ struct OnboardingScreenView: View {
 #Preview {
     OnboardingScreenView()
 }
-

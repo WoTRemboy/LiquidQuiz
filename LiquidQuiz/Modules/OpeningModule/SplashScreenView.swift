@@ -44,7 +44,7 @@ struct SplashScreenView: View {
             Image.Onboarding.logo
                 .resizable()
                 .scaledToFit()
-                .padding(.horizontal, 100)
+                .padding(.horizontal, 50)
             
             Text(texts[id])
                 .foregroundStyle(Color.LabelColors.primary)
