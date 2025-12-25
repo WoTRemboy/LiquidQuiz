@@ -10,17 +10,44 @@ import SwiftUI
 import Combine
 import UserNotifications
 
+@MainActor
 final class OnboardingViewModel: ObservableObject {
     
     private var cancellables = Set<AnyCancellable>()
+    private let notificationService = NotificationService.shared
     
     @AppStorage(Texts.UserDefaults.skipOnboarding) var skipOnboarding: Bool = false
     @Published internal var steps = OnboardingStep.stepsSetup()
     @Published internal var currentStep = 0
 
+    @Published internal var notificationAuthorizationStatus: UNAuthorizationStatus = .notDetermined
     @Published internal var notificationsGranted: Bool = true
     @Published internal var showNotificationsPermissionAlert: Bool = false
 
+    init() {
+        notificationService.$authorizationStatus
+            .receive(on: DispatchQueue.main)
+            .assign(to: \OnboardingViewModel.notificationAuthorizationStatus, on: self)
+            .store(in: &cancellables)
+        
+        notificationService.$authorizationStatus
+            .sink { [weak self] status in
+                guard let self else { return }
+                self.notificationsGranted = (status == .authorized || status == .provisional || status == .ephemeral)
+                withAnimation {
+                    self.steps[3].grantedAccess = self.notificationsGranted
+                }
+            }
+            .store(in: &cancellables)
+
+        notificationService.refreshAuthorizationStatus()
+        setupAppLifecycleObservers()
+    }
+    
+    deinit {
+        cancellables.forEach { $0.cancel() }
+        cancellables.removeAll()
+    }
     
     // MARK: - Computed Properties
     
@@ -37,7 +64,8 @@ final class OnboardingViewModel: ObservableObject {
         if currentStep < steps.count - 1 {
             return .nextPage
         } else {
-            return .getNotificationPermission(access: .authorized)
+            let status = notificationAuthorizationStatus
+            return .getNotificationPermission(access: status)
         }
     }
     
@@ -75,7 +103,10 @@ final class OnboardingViewModel: ObservableObject {
             case .authorized, .provisional, .ephemeral:
                 withAnimation { self.transferToMainPage() }
             case .notDetermined:
-                externalAction()
+                Task { [weak self] in
+                    guard let self else { return }
+                    let _ = await self.notificationService.requestAuthorization(options: [.alert, .badge, .sound])
+                }
             default:
                 showNotificationsPermissionAlert.toggle()
             }
@@ -89,5 +120,25 @@ final class OnboardingViewModel: ObservableObject {
         default:
             withAnimation { externalAction() }
         }
+    }
+    
+    internal func openSettings() {
+        notificationService.openAppSettings()
+    }
+    
+    // MARK: - App Lifecycle Observers
+
+    private func setupAppLifecycleObservers() {
+        NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)
+            .sink { [weak self] _ in
+                self?.notificationService.refreshAuthorizationStatus()
+            }
+            .store(in: &cancellables)
+        
+        NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)
+            .sink { [weak self] _ in
+                self?.notificationService.refreshAuthorizationStatus()
+            }
+            .store(in: &cancellables)
     }
 }

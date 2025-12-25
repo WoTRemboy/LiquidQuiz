@@ -49,6 +49,8 @@ struct OnboardingActionButtonsView: View {
         
         .frame(height: 50)
         .frame(maxWidth: .infinity)
+        
+        .animation(.easeInOut, value: viewModel.notificationAuthorizationStatus)
     }
     
     private var skipPermissionButton: some View {
