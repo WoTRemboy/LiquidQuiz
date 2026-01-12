@@ -8,6 +8,29 @@
 import SwiftUI
 
 extension Color {
+    enum LabelColors {
+        static let primary = Color("LabelPrimary")
+        static let secondary = Color("LabelSecondary")
+        static let disable = Color("LabelDisable")
+        static let blue = Color("LabelBlue")
+        static let purple = Color("LabelPurple")
+        static let white = Color("LabelWhite")
+    }
+    
+    enum BackgroundColors {
+        static let main = Color("BackMain")
+        static let primary = Color("BackPrimary")
+    }
+    
+    enum SupportColors {
+        static let orange = Color("SupportOrange")
+        static let red = Color("SupportRed")
+        static let lightOrange = Color("SupportLightOrange")
+        static let blue = Color("SupportBlue")
+        static let lightBlue = Color("SupportLightBlue")
+        static let purple = Color("SupportPurple")
+    }
+    
     enum Gradient {
         static let blue = Color("GradientBlue")
         static let lavender = Color("GradientLavender")

@@ -8,9 +8,46 @@
 import Foundation
 
 struct Texts {
+    enum AppInfo {
+        static let title = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String ?? "Liquidia"
+    }
+    
+    enum OnboardingPage {
+        static let skip = "Skip"
+        static let next = "Next"
+        static let begin = "Begin"
+        static let forbidden = "Unavailable"
+        static let permission = "Allow"
+        static let skipPermission = "Later"
+        
+        enum FirstPage {
+            static let title = "Welcome!"
+            static let description = "Test your knowledge against AI.\nEach attempt is unique."
+        }
+        enum SecondPage {
+            static let title = "Career"
+            static let description = "Take quizzes and earn rewards.\nUnlock new content as you progress."
+        }
+        enum ThirdPage {
+            static let title = "Friends"
+            static let description = "Team up or compete to see who's best.\nMake as many friends as you can."
+        }
+        enum FourthPage {
+            static let title = "Notifications"
+            static let description = "Helps keep up with your progress.\nStay informed about energy restoration."
+        }
+        
+        enum NotificationsAlert {
+            static let title = "Notifications Access Denied"
+            static let content = "To continue, allow access in Settings."
+            static let settings = "Settings"
+            static let cancel = "Cancel"
+        }
+    }
+    
     enum QuizGenerate {
         static let title = "Quiz"
-        static let textField = "ex. Countries"
+        static let textField = "e.g. Countries"
         static let random = "Suggest"
         static let generate = "Generate"
         static let slider = "Questions Count"
@@ -65,7 +102,10 @@ struct Texts {
     }
     
     enum Tabbar {
+        static let roadmap = "Career"
         static let create = "Create"
+        static let profile = "Profile"
+        static let shop = "Shop"
     }
     
     enum Namespace {
@@ -100,4 +140,16 @@ struct Texts {
             static let timer = "QuizResultsTimer"
         }
     }
+    
+    enum GlassEffectId {
+        enum Onboarding {
+            static let permission = "OnboardingPermissionGlassEffect"
+            static let skipPermission = "OnboardingSkipPermissionGlassEffect"
+        }
+    }
+    
+    enum UserDefaults {
+        static let skipOnboarding = "SkipOnboardingStage"
+    }
 }
+
