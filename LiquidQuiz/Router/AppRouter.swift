@@ -10,49 +10,29 @@ import Combine
 
 final class AppRouter: ObservableObject {
     
-    @Published internal var selectedTab: Tab = .roadmap
+    @Published internal var selectedTab: Tab = .create
     @Published internal var navigationPaths: [Tab: [Route]] = Tab.allCases.reduce(into: [:]) { $0[$1] = [] }
     
     enum Tab: CaseIterable, Hashable {
-        case roadmap
         case create
-        case profile
-        case shop
-        
-        internal var title: String {
-            switch self {
-            case .roadmap: Texts.Tabbar.roadmap
-            case .create: Texts.Tabbar.create
-            case .profile: Texts.Tabbar.profile
-            case .shop: Texts.Tabbar.shop
-            }
-        }
         
         internal var icon: Image {
             switch self {
-            case .roadmap: Image.Tabbar.roadmap
-            case .create: Image.Tabbar.create
-            case .profile: Image.Tabbar.profile
-            case .shop: Image.Tabbar.shop
+            case .create:
+                Image.Tabbar.create
             }
         }
         
-        internal var systemName: String {
+        internal var title: String {
             switch self {
-            case .roadmap: "point.bottomleft.filled.forward.to.point.topright.scurvepath"
-            case .create: "sparkles"
-            case .profile: "person"
-            case .shop: "cart"
+            case .create:
+                Texts.Tabbar.create
             }
         }
     }
     
     enum Route: Hashable {
-        case roadmap
         case create
-        case profile
-        case shop
-        
         case quizInfo(topic: String, count: Int, difficulty: Quiz.Difficulty)
         case quizSelf(quiz: Quiz)
         case quizResult(viewModel: QuizViewModel)

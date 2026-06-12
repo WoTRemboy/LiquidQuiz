@@ -19,40 +19,17 @@ struct ContentView: View {
     
     internal var body: some View {
         TabView(selection: $appRouter.selectedTab) {
-            Tab(AppRouter.Tab.roadmap.title,
-                systemImage: AppRouter.Tab.roadmap.systemName,
-                value: .roadmap) {
-                NavigationStack(path: bindingForTab(.roadmap)) {
-                    TabItems.roadmapTab(appRouter: appRouter)
-                }
+            NavigationStack(path: bindingForTab(.create)) {
+                CreateQuizView()
+                    .environmentObject(appRouter)
+                
+                    .navigationDestination(for: AppRouter.Route.self) { route in
+                        route.destinationView(in: .create, appRouter: appRouter)
+                    }
             }
-            
-            Tab(AppRouter.Tab.create.title,
-                systemImage: AppRouter.Tab.create.systemName,
-                value: .create) {
-                NavigationStack(path: bindingForTab(.create)) {
-                    TabItems.createTab(appRouter: appRouter)
-                }
-            }
-            
-            Tab(AppRouter.Tab.profile.title,
-                systemImage: AppRouter.Tab.profile.systemName,
-                value: .profile) {
-                NavigationStack(path: bindingForTab(.profile)) {
-                    TabItems.profileTab(appRouter: appRouter)
-                }
-            }
-            
-            Tab(AppRouter.Tab.shop.title,
-                systemImage: AppRouter.Tab.shop.systemName,
-                value: .shop,
-                role: .search) {
-                NavigationStack(path: bindingForTab(.shop)) {
-                    TabItems.shopTab(appRouter: appRouter)
-                }
-            }
+            .tag(AppRouter.Tab.create)
+            .toolbarVisibility(.hidden, for: .tabBar)
         }
-        .accentColor(Color.SupportColors.orange)
     }
 }
 
