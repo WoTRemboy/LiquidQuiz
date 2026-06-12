@@ -61,6 +61,8 @@ struct Texts {
         enum GenerateErrorAlert {
             static let title = "Retry in 10 seconds"
             static let message = "The Quiz could not be generated. Please try again."
+            static let unsupportedLanguageMessage = "This language is not supported by Apple Intelligence yet."
+            static let invalidGeneratedQuizMessage = "The generated quiz did not meet the requirements. Please regenerate it."
             static let button = "Return"
         }
         
@@ -75,7 +77,7 @@ struct Texts {
             
             enum NotReady {
                 static let title = "Model Not Ready"
-                static let message = "Try again later."
+                static let message = "Apple Intelligence is still downloading the model. Keep the device online and try again later."
             }
             
             enum NotEligible {
@@ -102,10 +104,7 @@ struct Texts {
     }
     
     enum Tabbar {
-        static let roadmap = "Career"
         static let create = "Create"
-        static let profile = "Profile"
-        static let shop = "Shop"
     }
     
     enum Namespace {
@@ -152,4 +151,3 @@ struct Texts {
         static let skipOnboarding = "SkipOnboardingStage"
     }
 }
-
