@@ -12,25 +12,25 @@ import FoundationModels
 struct QuizQuestion: Identifiable, Codable, Hashable {
     var id = UUID()
     
-    @Guide(description: "The format of the question that corresponds to the test topic.", .anyOf(QuizQuestion.Format.allCases.map(\.rawValue)))
+    @Guide(description: "Question format. Choose the format that best matches the topic and question.", .anyOf(QuizQuestion.Format.allCases.map(\.rawValue)))
     var format: String
     
-    @Guide(description: "A question about an interesting fact that corresponds to the test topic.")
+    @Guide(description: "A clear question about the quiz topic. It must have exactly one correct answer among the options.")
     var question: String
     
-    @Guide(description: "A short based idea or fact of the question exactly in 1-2 words. Not a question or answer format.")
+    @Guide(description: "A concise label for the question, 1 to 3 words. Do not write it as a question.")
     var title: String
     
-    @Guide(description: "Possible different answers to a question where there is only one correct answer. The answer must be 100% correct to the question. No multiple selection or answers.", .count(2...4))
+    @Guide(description: "Unique answer options. Exactly one option must be correct and all other options must be incorrect.", .count(2...4))
     var options: [QuizOption]
     
-    @Guide(description: "A reward for correct answer. The more difficult the question, the higher the value.", .range(10...100))
+    @Guide(description: "Reward for a correct answer. Use higher values for harder questions and keep the value within the requested difficulty range.", .range(10...100))
     var price: Int
     
-    @Guide(description: "A short, concise hint for the answer, no more than 3 words.")
+    @Guide(description: "A helpful hint for the correct answer, no more than 3 words. Do not reveal the answer directly.")
     var hint: String
     
-    @Guide(description: "A short explanation of the correct answer to the question.")
+    @Guide(description: "One short sentence explaining why the correct answer is correct.")
     var explanation: String
     
     var selectedAnswer: QuizOption? = nil
