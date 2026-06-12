@@ -17,6 +17,7 @@ struct QuizInfoView: View {
     @State private var isResponding: Bool = true
     @State private var isGenerated: Bool = false
     @State private var showErrorAlert: Bool = false
+    @State private var generationErrorMessage: String = Texts.QuizGenerate.GenerateErrorAlert.message
     
     @State private var generateManager: QuizGenerationManager?
     @State private var generationTask: Task<Void, Never>? = nil
@@ -79,7 +80,7 @@ struct QuizInfoView: View {
                 appRouter.popToRoot(in: .create)
             }
         }, message: {
-            Text(Texts.QuizGenerate.GenerateErrorAlert.message)
+            Text(generationErrorMessage)
         })
         
         .task {
@@ -143,6 +144,8 @@ struct QuizInfoView: View {
             isGenerated = true
             logger.info("Quiz generated successfully")
         } catch {
+            isResponding = false
+            generationErrorMessage = error.localizedDescription
             showErrorAlert = true
             logger.error("Generate Quiz error: \(error.localizedDescription)")
         }

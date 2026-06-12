@@ -11,14 +11,8 @@ extension AppRouter.Route {
     @ViewBuilder
     internal func destinationView(in tab: AppRouter.Tab, appRouter: AppRouter) -> some View {
         switch tab {
-        case .roadmap:
-            RoadmapTabDestinationFactory.view(for: self, appRouter: appRouter)
         case .create:
             CreateTabDestinationFactory.view(for: self, appRouter: appRouter)
-        case .profile:
-            ProfileTabDestinationFactory.view(for: self, appRouter: appRouter)
-        case .shop:
-            ShopTabDestinationFactory.view(for: self, appRouter: appRouter)
         }
     }
 }
